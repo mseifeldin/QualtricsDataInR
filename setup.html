@@ -1,0 +1,206 @@
+<!DOCTYPE HTML>
+<!--
+	Arcana by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Qualtrics & R</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header">
+
+					<!-- Logo -->
+						<h1><a href="index.html" id="logo">Basic Qualtrics Data Processing & Analysis in R</h1>
+
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li><a href="index.html">Home</a></li>
+								<li class="current">
+									<a href="setup.html">Setup</a>
+									<ul>
+										<li><a href="#download_data">Download Data</a></li>
+										<li><a href="#install_r">Install R</a></li>
+										<li><a href="#install_rstudio">Install RStudio</a></li>
+										<li><a href="#install_packages">Install Packages</a></li>
+									</ul>
+								</li>
+								<li>
+									<a href="preprocessing.html">Preprocessing</a>
+									<ul>
+										<li><a href="preprocessing.html#load_data">Load Data</a></li>
+										<li><a href="preprocessing.html#clean_data">Cleaning Data</a></li>
+									</ul>
+								</li>
+								<li><a href="dataprocessing.html">Data Processing</a>
+									<ul>
+										<li><a href="dataprocessing.html#condense_columns">Condensing Columns</a></li>
+										<li><a href="dataprocessing.html#new_columns">New Columns</a></li>
+										<li><a href="dataprocessing.html#reverse_coding">Reverse Coding</a></li>
+										<li><a href="dataprocessing.html#internal_reliability">Internal Reliability</a></li>
+										<li><a href="dataprocessing.html#dummy_coding">Dummy Coding</a></li>
+									</ul>
+								</li>
+								<li><a href="descriptivestats.html">Descriptive Statistics</a>
+									<ul>
+										<li><a href="descriptivestats.html#calculations">Calculations</a></li>
+										<li><a href="descriptivestats.html#grouping">Grouping</a></li>
+										<li><a href="descriptivestats.html#frequency">Frequency</a></li>
+									</ul>
+								</li>
+								<li><a href="hypothesistesting.html">Hypothesis Testing</a>
+									<ul>
+										<li><a href="hypothesistesting.html#id_categorical">Categorical ID</a></li>
+										<li><a href="hypothesistesting.html#id_continuous">Continuous ID</a></li>
+										<li><a href="hypothesistesting.html#id_multiple">Multiple ID's</a></li>	
+									</ul>
+								</li>
+								<li><a href="visualization.html">Visualization</a>
+									<ul>
+										<li><a href="visualization.html#histograms">Histograms</a></li>
+										<li><a href="visualization.html#bargraphs">Bar Graphs</a></li>
+										<li><a href="visualization.html#scatterplots">Scatter Plots</a></li>
+										<li><a href="visualization.html#lines_and_error">Lines & Error</a></li>
+									</ul>
+								</li>	
+							</ul>
+						</nav>
+
+				</div>
+
+			<!-- Main -->
+				<section class="wrapper style1">
+					<div class="container">
+						<div class="row gtr-200">
+							<div class="col-2 col-12-narrower">
+								<div class="sidebar" id="sidebar">
+
+									<!-- Sidebar -->
+
+										<section>
+											<h3>Topics</h3>
+											<ul class="links">
+												<li><a href="#download_data">Download Data</a></li>
+												<li><a href="#install_r">Install R</a></li>
+												<li><a href="#install_rstudio">Install RStudio</a></li>
+												<li><a href="#install_packages">Install Packages</a></li>
+											</ul>
+<!-- 											<footer>
+												<a href="#" class="button">Continue Reading</a>
+											</footer> -->
+										</section>
+
+<!-- 										<section>
+											<h3>Another Subheading</h3>
+											
+											<footer>
+												<a href="#" class="button">More Random Links</a>
+											</footer>
+										</section> -->
+
+								</div>
+							</div>
+							<div class="col-10  col-12-narrower imp-narrower">
+								<div id="content">
+
+									<!-- Content -->
+
+										<article>
+											<header>
+												<h2>Setup</h2>
+												<!-- <p>Sidebar on the left, content on the right.</p> -->
+											</header>
+
+											<!-- <span class="image featured"><img src="images/banner.jpg" alt="" /></span> -->
+
+											<h3 id=download_data>First, download your data from Qualtrics</h3>
+											<p>Open your survey in Qualtrics and hit the "Data & Analysis" tab in the top menu bar:</p>
+											<span class="image featured"><img src="images/q-data-tab.png" alt="qualtrics data tab location" /></span>
+											<p>Find the "Export and Import" dropdown menu above the data and select "Export Data..."</p>
+											<p>Note the default is to download the data as a CSV file with the display text in the survey entered as the data output ("Use choice text"). You also have the option to download the data as "numerical values", or dummy coded. For our purposes, download both versions ov the data so we can look at them. You'll have to go through the process of downloading twice.</p>
+											<p>Make sure to save these files in a folder (directory) where you want to keep them, and where you plan to store the script you will use to analyze this data.</p>
+
+											<p><b>In examples, this tutorial will use data from an informal Qualtrics experiment on altruistic behavior and the valuation of reputation. You can download both versions of the data here:</b></p>
+											
+											<a href="R/altruism_data_numeric.csv" class="button">Numerical Data</a>
+											<a href="R/altruism_data_values.csv" class="button">Choice Text Data</a>
+			
+											<h3 id=install_r>Make sure you have R installed on your computer</h3>
+											<p>If you don't, go to <a href="https://repo.miserver.it.umich.edu/cran/" target="blank">this page</a> and click the link consistent with your computer's OS (Windows, Mac, or Linux)
+											</p>
+											<p>If you're on a Mac, hit the first .pkg link under "Latest release" to download on the next page and go through installation.</p>
+											<p>If you're using a PC, click the "install R for the first time" link on the next page to downloadand go through installation.</p>
+
+											<h3 id=install_rstudio>Make sure you have RStudio on your computer too</h3>
+											<p>If you don't, go to <a href="https://rstudio.com/products/rstudio/download/#download" target="blank">this page</a> and you will find a list of free versions of rStudio Desktop. Download the version consistent with your OS (Windows, Mac, Linux, etc.)</p>
+
+											<h3 id=install_packages>Install some helpful packages in your RStudio Environemnt</h3>
+
+											<p>Some functions (for example mean(data)) come built in to base R, but packages give us access to helpful functions that make life easier. dplyr gives us shortcuts to deal with dataframes, ggplot2 gives us the ability to generate more intuitive and interpretable plots of our data, and Hmisc and ltm give us a few statistical tests that don't happen to be built in to base R.</p>
+
+											<p>With RStudio, there are two ways to install packages:</p>
+
+											<h4>Method 1: Copy the following code into the console and run it:</h4>
+											<iframe class='smallframe' src="R/install_packages.html"></iframe>
+
+											<h4>Method 2: Use the bottom right window GUI interface</h4>
+											<p>Click on the "Packages" tab, then the "Install" button underneath it. Type the four packages names into the input bar with spaces in between:</p>
+											<p>dplyr ggplot2 ltm Hmisc</p>
+											<p>Then make sure the "Install dependencies" box is checked, and press "Install"</p>
+
+											<p> A bunch of stuff will print in the console VERY fast. If you get warnings, that's ok. But if you get errors, read them and see if you can figure them out. Sometimes, depending on your computer, you may need to install other packages to support these ones.</p>
+
+											<h3>And you're ready to go! <a href="preprocessing.html">Head on over to Data Preprocessing</a></h3>
+										</article>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+			<!-- Footer -->
+				<div id="footer">
+					<div class="container">
+						<div class="row">
+							<section class="col6 col-6-narrower col-12-mobilep">
+								<h3>Links to Stuff</h3>
+								<ul class="footerlinks">
+									<li><a href="#">R Download</a></li>
+									<li><a href="#">RStudio Download</a></li>
+									<li><a href="#">Qualtrics</a></li>
+								</ul>
+							</section>
+						</div>
+					</div>
+
+
+					<!-- Copyright -->
+						<div class="copyright">
+							<ul class="menu">
+								<li>&copy; Maryam Seifeldin 2019. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

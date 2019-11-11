@@ -1,0 +1,345 @@
+StartDate,EndDate,Status,IPAddress,Progress,Duration (in seconds),Finished,RecordedDate,ResponseId,RecipientLastName,RecipientFirstName,RecipientEmail,ExternalReference,LocationLatitude,LocationLongitude,DistributionChannel,UserLanguage,Consent,praise_rejection_1,praise_rejection_2,praise_rejection_3,praise_rejection_4,praise_rejection_5,praise_rejection_6,praise_rejection_7,praise_rejection_8,praise_rejection_9,praise_rejection_10,praise_rejection_11,praise_rejection_12,praise_rejection_13,praise_rejection_14,praise_rejection_15,praise_rejection_16,praise_rejection_17,praise_rejection_18,Q13,likely_nonpro,bot_catcher,likely_pro,botcatcher
+Start Date,End Date,Response Type,IP Address,Progress,Duration (in seconds),Finished,Recorded Date,Response ID,Recipient Last Name,Recipient First Name,Recipient Email,External Data Reference,Location Latitude,Location Longitude,Distribution Channel,User Language,"We will ask you to answer questions about yourself, to read a short vignette (3 sentences), and to answer a question about it, and explain your answer. The entire survey will take about 5 minutes. Do you agree to complete the survey?","Please indicate how much you agree or disagree with the following statements... - When I talk to people, I like to present myself as well as possible.","Please indicate how much you agree or disagree with the following statements... - When I’m not being noticed, I feel an urge to attract people’s attention.",Please indicate how much you agree or disagree with the following statements... - I’m eager to make myself stand out in a crowd of people.,Please indicate how much you agree or disagree with the following statements... - I endeavor to gain people’s trust by advertising my skills.,Please indicate how much you agree or disagree with the following statements... - I try to impress people when I meet them for the first time.,"Please indicate how much you agree or disagree with the following statements... - When I work with someone, I make an effort to show them my strengths.",Please indicate how much you agree or disagree with the following statements... - I like to use any chance I get to be acknowledged by my superiors.,Please indicate how much you agree or disagree with the following statements... - I feel that being in a position of power is a chance for me to impress others.,Please indicate how much you agree or disagree with the following statements... - I sometimes wish I was a famous celebrity who is loved by all.,Please indicate how much you agree or disagree with the following statements... - I worry whether others disagree with my opinions.,"Please indicate how much you agree or disagree with the following statements... - When I do something conspicuous, I worry whether I’m being judged.",Please indicate how much you agree or disagree with the following statements... - I get flustered if my opinions get criticized even slightly.,"Please indicate how much you agree or disagree with the following statements... - If someone looks displeased, I hasten to improve their mood.",Please indicate how much you agree or disagree with the following statements... - I’m always careful to avoid getting laughed at for inappropriate behavior.,"Please indicate how much you agree or disagree with the following statements... - When I’m with a group of talented people, I worry whether I’m out of place.","Please indicate how much you agree or disagree with the following statements... - When making a complaint to someone, I’m careful not to provoke them.",Please indicate how much you agree or disagree with the following statements... - I prefer to avoid discussions that might be lead to awkwardness.,Please indicate how much you agree or disagree with the following statements... - I take care to socialize in a way that won’t antagonize others.,Indicate your numerical age in years:,"Imagine that you are chatting with three or four friends in a park. You notice an elderly person nearby who seems to have lost something; she is anxiously looking around the area. Although your friends also seem to notice, none of them offers to help. 
+ 
+
+ If you were in this situation, would you help the person to find their lost things?","In one sentence, explain why you chose this response.","Imagine that you are chatting with three or four friends in a park. You notice an elderly person nearby who seems to have lost something; she is anxiously looking around the area. Your friends also seem to have noticed, and they are going to help the person looking for lost things. 
+ If you were in this situation, would you also help the person to find their lost things?","In one sentence, explain why you chose this response."
+"{""ImportId"":""startDate"",""timeZone"":""America/Denver""}","{""ImportId"":""endDate"",""timeZone"":""America/Denver""}","{""ImportId"":""status""}","{""ImportId"":""ipAddress""}","{""ImportId"":""progress""}","{""ImportId"":""duration""}","{""ImportId"":""finished""}","{""ImportId"":""recordedDate"",""timeZone"":""America/Denver""}","{""ImportId"":""_recordId""}","{""ImportId"":""recipientLastName""}","{""ImportId"":""recipientFirstName""}","{""ImportId"":""recipientEmail""}","{""ImportId"":""externalDataReference""}","{""ImportId"":""locationLatitude""}","{""ImportId"":""locationLongitude""}","{""ImportId"":""distributionChannel""}","{""ImportId"":""userLanguage""}","{""ImportId"":""QID1""}","{""ImportId"":""QID12_1""}","{""ImportId"":""QID12_2""}","{""ImportId"":""QID12_3""}","{""ImportId"":""QID12_4""}","{""ImportId"":""QID12_5""}","{""ImportId"":""QID12_6""}","{""ImportId"":""QID12_7""}","{""ImportId"":""QID12_8""}","{""ImportId"":""QID12_9""}","{""ImportId"":""QID12_10""}","{""ImportId"":""QID12_11""}","{""ImportId"":""QID12_12""}","{""ImportId"":""QID12_13""}","{""ImportId"":""QID12_14""}","{""ImportId"":""QID12_15""}","{""ImportId"":""QID12_16""}","{""ImportId"":""QID12_17""}","{""ImportId"":""QID12_18""}","{""ImportId"":""QID13_TEXT""}","{""ImportId"":""QID8""}","{""ImportId"":""QID9_TEXT""}","{""ImportId"":""QID10""}","{""ImportId"":""QID11_TEXT""}"
+2019-10-04 15:27:28,2019-10-04 15:29:05,IP Address,12.12.130.164,100,97,True,2019-10-04 15:29:06,R_2dLaSvTnJ82aOIK,,,,,41.601806640625,-87.88990020751953125,anonymous,EN,Yes,6,2,2,3,2,4,3,5,3,2,4,2,4,3,5,4,5,5,36,,,6,It is the right thing to do. I would do that for anyone that was seemingly in need of my help.
+2019-10-04 15:27:31,2019-10-04 15:29:33,IP Address,73.3.162.167,100,121,True,2019-10-04 15:29:33,R_3ikGfL9Hh9VxFAC,,,,,39.697296142578125,-104.8394012451171875,anonymous,EN,Yes,"Strongly agree
+7",3,3,5,6,6,6,5,2,"Strongly agree
+7",6,6,"Strongly agree
+7",6,6,"Strongly agree
+7","Strongly agree
+7",6,24,5,"If I see someone worried about something, I feel like I have to help them. ",,
+2019-10-04 15:28:47,2019-10-04 15:30:00,IP Address,66.214.10.101,100,72,True,2019-10-04 15:30:00,R_28IE4XuYjaHXpgL,,,,,33.7902984619140625,-118.12149810791015625,anonymous,EN,Yes,3,4,3,4,5,4,5,5,3,3,5,5,4,5,4,3,3,5,28,,,"Very likely
+7",I'd like to join my friends in a good-willed situation and also I'd want to do it even if it was with less people or by myself willing to help.
+2019-10-04 15:27:25,2019-10-04 15:30:27,IP Address,172.79.21.138,100,181,True,2019-10-04 15:30:27,R_Ua8ubAjCAzU5mNP,,,,,36.052703857421875,-85.01380157470703125,anonymous,EN,Yes,"Strongly agree
+7","Strongly disagree
+1","Strongly disagree
+1",3,4,6,2,2,"Strongly disagree
+1",2,6,2,5,4,4,6,6,"Strongly agree
+7",28,6,"If the elderly person needed help, I would want to help them.",,
+2019-10-04 15:30:06,2019-10-04 15:30:42,IP Address,66.214.10.101,100,36,True,2019-10-04 15:30:43,R_1MVVJsWofIc4qM4,,,,,33.7902984619140625,-118.12149810791015625,anonymous,EN,Yes,3,3,,5,3,4,5,3,3,5,4,4,3,4,6,4,4,3,28,"Very likely
+7",I'd want to help them out in a situation where they're being decent people but would want to do this even if I were by myself.,,
+2019-10-04 15:29:03,2019-10-04 15:30:45,IP Address,73.48.80.170,100,102,True,2019-10-04 15:30:45,R_2uCDOaGAJgOTcI9,,,,,30.4907989501953125,-84.31580352783203125,anonymous,EN,Yes,5,"Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1",5,3,"Strongly agree
+7",3,2,3,5,6,6,5,37,,,5,I would feel lazy and selfish to be the only one sitting there doing nothing.
+2019-10-04 15:30:21,2019-10-04 15:30:55,IP Address,12.12.130.164,100,33,True,2019-10-04 15:30:55,R_2sR7yOPx8IKFwAJ,,,,,41.601806640625,-87.88990020751953125,anonymous,EN,Yes,5,6,6,4,5,4,4,5,3,4,5,4,4,5,5,5,6,5,36,,,6,it is the right thing to do and I would want to help my friends
+2019-10-04 15:29:01,2019-10-04 15:31:16,IP Address,73.208.246.176,100,134,True,2019-10-04 15:31:16,R_2uICuQoaRpR5730,,,,,41.8054962158203125,-89.7053985595703125,anonymous,EN,Yes,6,4,3,5,6,"Strongly agree
+7",5,5,6,3,5,"Strongly disagree
+1",5,5,3,5,4,4,39,6,"I probably would. I didn't go all the way with a 7 because I might not depending on how I was feeling that day. ",,
+2019-10-04 15:29:34,2019-10-04 15:31:21,IP Address,172.90.144.178,100,107,True,2019-10-04 15:31:22,R_3hgvG600t0wzq16,,,,,33.744293212890625,-116.9763946533203125,anonymous,EN,Yes,6,2,2,5,3,6,3,5,2,3,4,3,3,3,2,4,4,5,31,"Very likely
+7","I would offer some assistance and ask what it was they were looking for. ",,
+2019-10-04 15:28:39,2019-10-04 15:31:29,IP Address,174.128.227.226,100,170,True,2019-10-04 15:31:29,R_6umJgyf3Qhv6ich,,,,,39.7501068115234375,-104.995697021484375,anonymous,EN,Yes,4,2,5,3,"Strongly agree
+7",4,"Strongly agree
+7",4,6,4,5,2,"Strongly disagree
+1",4,5,5,6,2,25,,,"Very likely
+7",It is good to help elders.
+2019-10-04 15:30:32,2019-10-04 15:32:47,IP Address,23.123.1.9,100,134,True,2019-10-04 15:32:47,R_3KAsIr0Wc2ZrsPo,,,,,39.1060943603515625,-121.61589813232421875,anonymous,EN,Yes,"Strongly agree
+7","Strongly disagree
+1",2,"Strongly disagree
+1","Strongly disagree
+1",2,"Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1",2,"Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1",6,2,33,"Very likely
+7",Because i know how it is to not be able to find what i lost its not a good feeling.,,
+2019-10-04 15:30:14,2019-10-04 15:33:02,IP Address,191.101.170.69,100,167,True,2019-10-04 15:33:02,R_1E4BYmQ53jtgLdk,,,,,41.848297119140625,-87.651702880859375,anonymous,EN,Yes,"Strongly agree
+7",3,2,5,4,5,3,2,"Strongly disagree
+1",5,6,6,3,5,5,5,5,5,48,,,"Very likely
+7","I feel as if I were in their shoes I would want someone to help me. "
+2019-10-04 15:31:07,2019-10-04 15:33:24,IP Address,144.92.38.238,100,137,True,2019-10-04 15:33:24,R_31BD7RK6fwSEZfQ,,,,,43.076904296875,-89.40940093994140625,anonymous,EN,Yes,4,"Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1",3,"Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1",4,5,2,3,5,"Strongly agree
+7",5,6,6,37,,,"Very likely
+7",Helping everyone look is the right thing to do. I like helping people.
+2019-10-04 15:33:19,2019-10-04 15:34:23,IP Address,98.220.196.13,100,63,True,2019-10-04 15:34:23,R_1LoJRQbvKW0L4LO,,,,,41.6837005615234375,-88.3498992919921875,anonymous,EN,Yes,"Strongly agree
+7","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1","Strongly agree
+7","Strongly agree
+7","Strongly disagree
+1","Strongly disagree
+1","Strongly agree
+7","Strongly agree
+7","Strongly disagree
+1","Strongly agree
+7","Strongly agree
+7","Strongly agree
+7","Strongly agree
+7","Strongly agree
+7","Strongly agree
+7",25,"Very likely
+7",It would be nice to help them out to calm them.,,
+2019-10-04 15:33:53,2019-10-04 15:35:31,IP Address,68.173.89.140,100,98,True,2019-10-04 15:35:32,R_2xLWbXE1Rt9CyGI,,,,,40.7429046630859375,-73.93920135498046875,anonymous,EN,Yes,"Strongly agree
+7","Strongly disagree
+1","Strongly disagree
+1",4,"Strongly agree
+7","Strongly agree
+7","Strongly disagree
+1",4,4,"Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1",4,27,,,"Very likely
+7",I would want someone to help me.
+2019-10-04 15:34:11,2019-10-04 15:35:34,IP Address,68.101.137.252,100,83,True,2019-10-04 15:35:34,R_PArZmoBPBYurQ5j,,,,,33.1432037353515625,-117.166595458984375,anonymous,EN,Yes,"Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1",2,3,5,"Strongly disagree
+1",5,"Strongly disagree
+1",5,35,"Very likely
+7",i see it as a duty to help the elderly,,
+2019-10-04 15:36:38,2019-10-04 15:38:36,IP Address,47.149.21.163,100,117,True,2019-10-04 15:38:36,R_3CZUyVJCJQ7Nqf9,,,,,34.042999267578125,-117.7555999755859375,anonymous,EN,Yes,4,2,"Strongly disagree
+1",3,3,4,2,3,3,6,6,5,4,5,6,5,5,6,35,,,"Very likely
+7",i want to help out since my friends are doing it too
+2019-10-04 15:37:47,2019-10-04 15:40:38,IP Address,99.141.213.29,100,170,True,2019-10-04 15:40:38,R_10IyozvUksOlub4,,,,,41.873199462890625,-88.0001983642578125,anonymous,EN,Yes,5,"Strongly disagree
+1","Strongly disagree
+1",2,2,3,2,"Strongly disagree
+1","Strongly disagree
+1",2,3,2,2,3,"Strongly disagree
+1",6,5,3,37,"Not at all likely
+1",I'd be concerned that attempting to assist an unfamiliar female may lead to a negative outcome.,,
+2019-10-04 15:42:13,2019-10-04 15:44:35,IP Address,76.185.183.214,100,142,True,2019-10-04 15:44:36,R_2U3oae7fPVRK56q,,,,,29.4275054931640625,-98.4600982666015625,anonymous,EN,Yes,2,"Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1",4,6,6,5,6,6,38,,,"Very likely
+7",More eye on trying to find something that was lost would make it easier to find what the lady is missing.
+2019-10-04 15:46:49,2019-10-04 15:47:44,IP Address,73.188.224.87,100,55,True,2019-10-04 15:47:44,R_1DUYGpjO3bLVaKF,,,,,40.1262054443359375,-75.52680206298828125,anonymous,EN,Yes,"Strongly agree
+7","Strongly agree
+7","Strongly agree
+7",6,"Strongly agree
+7",6,5,5,5,"Strongly disagree
+1",4,4,4,4,3,3,3,"Strongly disagree
+1",20,"Very likely
+7","I would want to help the old lady, would not want to leave her stranded",,
+2019-10-04 15:46:17,2019-10-04 15:48:59,IP Address,96.232.36.173,100,161,True,2019-10-04 15:48:59,R_20MaAQdTrC2Xe90,,,,,40.6208038330078125,-74.0426025390625,anonymous,EN,Yes,5,4,3,2,3,3,4,4,2,2,3,2,5,3,4,5,3,4,31,5,I would see if we can help,,
+2019-10-04 15:48:56,2019-10-04 15:50:13,IP Address,74.187.141.211,100,76,True,2019-10-04 15:50:13,R_3GcCREoevXXB0Xd,,,,,36.34320068359375,-79.6641998291015625,anonymous,EN,Yes,6,2,2,2,2,6,4,6,"Strongly agree
+7","Strongly disagree
+1",3,"Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1",2,"Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1",55,,,"Very likely
+7",It's the polite thing to do.
+2019-10-04 15:47:05,2019-10-04 15:52:20,IP Address,73.158.98.136,100,315,True,2019-10-04 15:52:21,R_2v1TmIpjNj4W0iY,,,,,37.7595062255859375,-122.43669891357421875,anonymous,EN,Yes,3,3,4,2,4,3,4,3,4,5,5,5,5,3,5,4,4,5,47,,,"Very likely
+7",to join the crew
+2019-10-04 15:52:33,2019-10-04 15:53:43,IP Address,73.158.98.136,100,70,True,2019-10-04 15:53:43,R_1jHgZZNVGQ5pD1a,,,,,37.7595062255859375,-122.43669891357421875,anonymous,EN,Yes,5,3,5,5,4,4,5,5,4,5,4,3,3,4,5,5,3,4,47,"Very likely
+7",To help the elderly person too,,
+2019-10-04 15:54:57,2019-10-04 15:57:27,IP Address,52.128.53.157,100,149,True,2019-10-04 15:57:28,R_YPLysFipUE0tJtf,,,,,32.7494964599609375,-97.68939971923828125,anonymous,EN,Yes,"Strongly agree
+7","Strongly disagree
+1",3,3,4,5,4,4,2,"Strongly disagree
+1",4,"Strongly disagree
+1",4,5,"Strongly disagree
+1",4,4,5,37,,,"Very likely
+7",Because it is the right thing to help the person.
+2019-10-04 15:57:50,2019-10-04 15:58:53,IP Address,24.190.97.249,100,62,True,2019-10-04 15:58:53,R_4Jl14SwNkcb1VbH,,,,,40.69140625,-73.372802734375,anonymous,EN,Yes,6,"Strongly disagree
+1","Strongly disagree
+1",5,5,"Strongly agree
+7",4,4,2,"Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1",28,"Very likely
+7",Simply because she clearly needs help.,,
+2019-10-04 15:59:42,2019-10-04 16:01:43,IP Address,98.199.33.227,100,121,True,2019-10-04 16:01:43,R_2WwHFpU9Oww1L0E,,,,,29.7841949462890625,-95.2301025390625,anonymous,EN,Yes,"Strongly agree
+7",2,2,"Strongly agree
+7","Strongly agree
+7","Strongly agree
+7",6,"Strongly agree
+7","Strongly agree
+7",4,5,3,6,6,6,"Strongly agree
+7","Strongly agree
+7",6,23,"Very likely
+7",People like the elderly can always use some help.,,
+2019-10-04 15:59:56,2019-10-04 16:02:04,IP Address,97.114.2.16,100,127,True,2019-10-04 16:02:04,R_4T8UX4HX9zUCGt3,,,,,34.91900634765625,-92.14189910888671875,anonymous,EN,Yes,"Strongly agree
+7",2,"Strongly disagree
+1",2,4,6,4,"Strongly agree
+7","Strongly disagree
+1","Strongly disagree
+1",2,"Strongly disagree
+1",2,5,"Strongly disagree
+1",4,6,6,54,"Very likely
+7",It would just be the polite thing to do.,,
+2019-10-04 16:00:55,2019-10-04 16:03:26,IP Address,85.104.107.172,100,151,True,2019-10-04 16:03:27,R_2OOsSwOrALOOdib,,,,,39.9149932861328125,32.8108062744140625,anonymous,EN,Yes,6,3,3,3,5,6,5,5,2,3,3,"Strongly disagree
+1",3,5,2,5,5,6,35,,,"Very likely
+7","Whether my friends were helping her or not, I would help her anyway."
+2019-10-04 16:03:10,2019-10-04 16:04:52,IP Address,24.142.157.242,100,102,True,2019-10-04 16:04:52,R_23aCQKbxlksAoiL,,,,,41.0413055419921875,-83.6461029052734375,anonymous,EN,Yes,6,5,5,5,5,6,5,5,3,5,4,2,5,5,6,"Strongly agree
+7","Strongly agree
+7",6,48,,,"Very likely
+7","It is my responsibility to honor and help my elders. "
+2019-10-04 16:03:37,2019-10-04 16:07:57,IP Address,73.198.13.141,100,259,True,2019-10-04 16:07:58,R_3HLg9VHrROlC4Vb,,,,,39.3773040771484375,-74.61229705810546875,anonymous,EN,Yes,"Strongly agree
+7",4,4,5,6,6,5,5,4,5,5,4,5,6,4,4,6,6,28,5,I think I would help if they really did seem that distressed because I'd be thinking about my own grandfather.,,
+2019-10-04 16:04:24,2019-10-04 16:09:05,IP Address,45.56.161.166,100,280,True,2019-10-04 16:09:05,R_tETsh6OsuD5G32V,,,,,40.7592010498046875,-111.8874969482421875,anonymous,EN,Yes,6,4,4,5,4,5,4,4,3,4,4,4,5,6,4,5,4,5,30,"Very likely
+7",with my help there is more chance that item will be recovered,,
+2019-10-04 16:06:21,2019-10-04 16:09:44,IP Address,174.58.253.12,100,202,True,2019-10-04 16:09:44,R_1rGIOYUIKFVo8Id,,,,,28.8549957275390625,-81.67890167236328125,anonymous,EN,Yes,"Strongly agree
+7","Strongly disagree
+1","Strongly disagree
+1",2,2,5,"Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1",2,6,5,5,6,3,6,6,5,58,,,"Very likely
+7",I always say treat someone the way you would want to be treated. I would want someone to help me so I would help them. Even if my friends didn't help.
+2019-10-04 16:10:51,2019-10-04 16:12:59,IP Address,97.113.168.187,100,128,True,2019-10-04 16:12:59,R_wMMPyhP2244LKZr,,,,,47.6300048828125,-122.2971954345703125,anonymous,EN,Yes,6,3,2,4,4,5,5,4,3,5,5,5,5,4,5,6,5,5,28,,,"Very likely
+7",Because I'd want to help the person find her things and if more people search we'd have a better chance of finding it.
+2019-10-04 16:07:49,2019-10-04 16:13:17,IP Address,174.19.6.57,100,327,True,2019-10-04 16:13:17,R_232GqFF27HqeJoY,,,,,35.62060546875,-77.39440155029296875,anonymous,EN,Yes,"Strongly agree
+7",2,"Strongly disagree
+1",5,6,6,3,4,6,6,6,"Strongly agree
+7",5,6,"Strongly agree
+7",6,"Strongly agree
+7",6,36,6,"What they lost may have been sentimental or important, so offering to help them find it feels like the right thing to do.",,
+2019-10-04 16:19:29,2019-10-04 16:21:33,IP Address,73.236.40.189,100,123,True,2019-10-04 16:21:33,R_1eIQNK9p11HM057,,,,,41.0240936279296875,-80.34539794921875,anonymous,EN,Yes,6,"Strongly disagree
+1",2,3,2,5,2,2,"Strongly disagree
+1",2,3,2,5,4,3,4,6,6,59,,,"Very likely
+7",It would be the right thing to do.
+2019-10-04 16:25:13,2019-10-04 16:25:59,IP Address,98.220.230.70,100,46,True,2019-10-04 16:26:00,R_2s1L62K2n412P0X,,,,,42.0487060546875,-87.8905029296875,anonymous,EN,Yes,"Strongly agree
+7","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1","Strongly agree
+7","Strongly agree
+7","Strongly agree
+7","Strongly agree
+7","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1",24,"Not at all likely
+1","I don't want to help somebody else for no gain. ",,
+2019-10-04 16:21:27,2019-10-04 16:26:37,IP Address,104.12.142.252,100,309,True,2019-10-04 16:26:37,R_2B53k07yG9OyLl5,,,,,34.0312957763671875,-118.31240081787109375,anonymous,EN,Yes,6,"Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1",2,2,"Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1",3,"Strongly disagree
+1","Strongly disagree
+1",5,3,"Strongly disagree
+1",2,"Strongly disagree
+1",26,"Not at all likely
+1",I am a shy person so I doubt I will do anything.,,
+2019-10-04 16:19:25,2019-10-04 16:26:43,IP Address,75.74.124.10,100,437,True,2019-10-04 16:26:43,R_XB570MPRQlD9Hfb,,,,,25.734893798828125,-80.22280120849609375,anonymous,EN,Yes,5,"Strongly agree
+7",4,6,5,"Strongly agree
+7",4,6,5,"Strongly agree
+7",4,6,5,"Strongly agree
+7",4,6,5,"Strongly agree
+7",27,,,6,I am correct this one
+2019-10-04 16:28:22,2019-10-04 16:34:19,IP Address,104.34.43.138,100,357,True,2019-10-04 16:34:20,R_3EEfugjvmDUPlsZ,,,,,33.8419036865234375,-117.60430145263671875,anonymous,EN,Yes,4,2,2,5,4,5,4,3,5,5,5,4,3,4,5,6,6,5,24,,,6,I would feel obligated to help out if all my friends were helping
+2019-10-04 16:35:56,2019-10-04 16:37:48,IP Address,108.185.66.225,100,112,True,2019-10-04 16:37:48,R_1Fx260hnEOsH9sD,,,,,33.92120361328125,-118.14239501953125,anonymous,EN,Yes,6,2,"Strongly disagree
+1","Strongly disagree
+1",3,6,3,2,3,"Strongly disagree
+1",2,2,5,3,5,6,5,6,34,"Very likely
+7","I think it is right to help others when you have the ability to do so and in this case, they need help and I would be more than willing to provide it if nobody else is trying to do so.",,
+2019-10-04 17:58:46,2019-10-04 18:00:55,IP Address,144.92.38.238,100,128,True,2019-10-04 18:00:55,R_2q7PhUFQ9Q1ucUz,,,,,43.076904296875,-89.40940093994140625,anonymous,EN,Yes,4,"Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1",2,3,"Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1",3,4,"Strongly disagree
+1","Strongly disagree
+1",3,"Strongly agree
+7",3,4,3,37,,,"Very likely
+7",Because I feel helping them look is the right thing to do.
+2019-10-04 18:16:22,2019-10-04 18:17:28,IP Address,50.44.111.72,100,66,True,2019-10-04 18:17:28,R_3gYg4A1zk7QFhUl,,,,,39.7339019775390625,-90.22899627685546875,anonymous,EN,Yes,"Strongly agree
+7","Strongly disagree
+1","Strongly disagree
+1",6,6,"Strongly agree
+7",5,6,"Strongly disagree
+1","Strongly agree
+7","Strongly agree
+7","Strongly agree
+7",6,"Strongly agree
+7",6,6,"Strongly agree
+7","Strongly agree
+7",31,3,"It would be the right thing to do, but I'd make sure I wasn't rude to my friends, too.",,
+2019-10-04 18:37:22,2019-10-04 18:39:57,IP Address,108.184.171.98,100,154,True,2019-10-04 18:39:58,R_3ni5q7ywfeIpS3w,,,,,34.109100341796875,-117.7126007080078125,anonymous,EN,Yes,"Strongly agree
+7","Strongly disagree
+1","Strongly disagree
+1",2,6,6,4,"Strongly disagree
+1","Strongly disagree
+1","Strongly agree
+7","Strongly agree
+7",4,4,"Strongly agree
+7","Strongly agree
+7","Strongly agree
+7","Strongly agree
+7","Strongly agree
+7",45,,,"Very likely
+7",It is the right thing to do and respecting your elders is important.
+2019-10-04 18:55:16,2019-10-04 18:56:56,IP Address,75.184.124.108,100,100,True,2019-10-04 18:56:56,R_2YfXlOTgySv5Nrv,,,,,44.49139404296875,-87.92669677734375,anonymous,EN,Yes,5,4,4,4,5,5,3,4,3,5,5,4,5,5,5,6,5,5,43,"Very likely
+7",I am always willing to help when somebody looks like he/she needs help,,
+2019-10-04 18:55:22,2019-10-04 18:57:15,IP Address,64.121.85.105,100,113,True,2019-10-04 18:57:16,R_2VJAy33tlMceJ9Q,,,,,40.595001220703125,-75.528900146484375,anonymous,EN,Yes,5,6,2,6,6,"Strongly agree
+7","Strongly agree
+7",5,3,6,"Strongly agree
+7",5,"Strongly agree
+7",5,"Strongly agree
+7",6,6,6,38,,,5,I believe I can spare a few minutes trying to do a good deed.
+2019-10-04 18:54:36,2019-10-04 19:10:51,IP Address,73.187.250.46,100,974,True,2019-10-04 19:10:51,R_11aLnBc4mrhIdZH,,,,,40.0305023193359375,-76.28330230712890625,anonymous,EN,Yes,5,5,6,5,5,6,6,6,5,6,6,4,5,6,5,5,6,5,24,,,6,I try to help people when I get the chance.
+2019-10-04 19:26:51,2019-10-04 19:29:39,IP Address,68.44.142.12,100,168,True,2019-10-04 19:29:39,R_2VNOsqZ7Y4mF7lm,,,,,39.6757049560546875,-86.06939697265625,anonymous,EN,Yes,6,2,4,4,3,4,5,3,3,2,2,2,3,3,4,5,5,4,46,6,I always try to help the elderly when they need it,,
+2019-10-04 20:55:36,2019-10-04 20:58:26,IP Address,71.58.89.89,100,169,True,2019-10-04 20:58:26,R_1i996ZVr8aE3LoI,,,,,40.7957000732421875,-77.8618011474609375,anonymous,EN,Yes,6,6,6,6,6,6,6,6,2,2,4,2,"Strongly disagree
+1",3,2,2,2,2,25,,,6,I feel bad for old people and I know they would be extremely happy if I helped them out
+2019-10-04 21:05:58,2019-10-04 21:08:08,IP Address,76.202.211.178,100,130,True,2019-10-04 21:08:09,R_2TGYNvVh6HuWW8q,,,,,41.8733062744140625,-88.116302490234375,anonymous,EN,Yes,"Strongly agree
+7","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1",4,6,"Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1","Strongly disagree
+1",6,4,6,6,4,6,6,6,29,,,"Very likely
+7",The person is distressed and I could easily help.

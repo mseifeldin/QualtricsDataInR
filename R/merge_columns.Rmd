@@ -1,0 +1,37 @@
+---
+# title: "Tutorial"
+# author: "Maryam Seifeldin"
+# date: "11/4/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(ggplot2)
+library(ltm)
+
+valdata <- read.csv("altruism_data_values.csv", header=TRUE)
+numdata <- read.csv("altruism_data_numeric.csv", header=TRUE)
+fulldata <- numdata
+ourdata <- subset(fulldata, Consent==1)
+data <- dplyr::select(ourdata,.data$praise_rejection_1 : .data$botcatcher)
+colnames(data)[19] <- "Age"
+data[,] <- sapply(data[,], as.character)
+```
+First, we make a new column called "condition" that labels each row according to which condition the subject is in. The notation "dataframe$column" is a good one to know, because you can refer to specific existing columns this way, and we can also create new columns by simply using the syntax then assigning it values, like we do here:
+```{r, eval = TRUE}
+data$condition <- ifelse(data$likely_nonpro != "", "nonpro", "pro")
+```
+Code transaltion: we're telling R to create a new column "condition" in the dataframe called "data", then using an ifelse statement to say go through the "likely_nonpro" column (the column where participants in the non-prosocial condition's data was collected) and for each value, if it's NOT (!=) empty (""), assign the value of the same row in the condition column to "nonpro". Otherwise, assign it the value of "pro".   
+
+Next, we create a new column using a similar stragety that takes the responses from non-empty cells in both output columns:
+```{r, eval = TRUE}
+data$vignette_response <- ifelse(data$likely_nonpro == "", data$likely_pro, data$likely_nonpro)
+```
+Code translation: we tell R to create a new column called "vignette_response" in the dataframe "data", then we use an ifelse statement again to say to go through the "likely_nonpro" column. This time, for each cell, we check if it IS empty (== "") and if this is true, fill the corresponding row in the "vignette_response" column with a copy of what is in the corresponding "likely_pro" column. Otherwise, copy what's in the "likely_nonpro" column.   
+
+Finally, we do the same thing with the two bot catcher verbal response columns, copying the nonempty rows of both into a new column called "justification:
+```{r, eval = TRUE}
+data$justification <- ifelse(data$bot_catcher == "", data$botcatcher, data$bot_catcher)
+```

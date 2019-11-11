@@ -1,0 +1,13 @@
+---
+# title: "Tutorial"
+# author: "Maryam Seifeldin"
+# date: "11/4/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r, eval = FALSE}
+install.packages(c("dplyr","ggplot2","ltm", "Hmisc"))
+```

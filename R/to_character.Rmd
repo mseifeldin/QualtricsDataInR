@@ -1,0 +1,23 @@
+---
+# title: "Tutorial"
+# author: "Maryam Seifeldin"
+# date: "11/4/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(ggplot2)
+library(ltm)
+
+valdata <- read.csv("altruism_data_values.csv", header=TRUE)
+numdata <- read.csv("altruism_data_numeric.csv", header=TRUE)
+fulldata <- numdata
+ourdata <- subset(fulldata, Consent==1)
+data <- dplyr::select(ourdata,.data$praise_rejection_1 : .data$botcatcher)
+colnames(data)[19] <- "Age"
+```
+```{r, eval = TRUE}
+data[,] <- sapply(data[,], as.character)
+```

@@ -1,0 +1,25 @@
+---
+# title: "Tutorial"
+# author: "Maryam Seifeldin"
+# date: "11/4/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+First, we load some packages (also called libraries) that will be helpful for our data analysis. We installed them earlier, but this activates them for the current session.
+```{r, eval = FALSE}
+library(dplyr)
+library(ggplot2)
+library(ltm)
+```
+Here we load in both versions of the data and see which one we want to use:
+```{r, eval = TRUE}
+valdata <- read.csv("altruism_data_values.csv", header=TRUE)
+numdata <- read.csv("altruism_data_numeric.csv", header=TRUE)
+```
+I encourage you to inspect these two dataframes and look at the data so you can make the best decision for your purposes. But for our current data, we choose the number based data, because otherwise we'd have to manually remove the anchor text in our scales.
+```{r, eval = TRUE}
+fulldata <- numdata
+```

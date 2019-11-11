@@ -1,0 +1,196 @@
+<!DOCTYPE HTML>
+<!--
+	Arcana by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Qualtrics & R</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header">
+
+					<!-- Logo -->
+						<h1><a href="index.html" id="logo">Basic Qualtrics Data Processing & Analysis in R</h1>
+
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li><a href="index.html">Home</a></li>
+								<li>
+									<a href="setup.html">Setup</a>
+									<ul>
+										<li><a href="setup.html#download_data">Download Data</a></li>
+										<li><a href="setup.html#install_r">Install R</a></li>
+										<li><a href="setup.html#install_rstudio">Install RStudio</a></li>
+										<li><a href="setup.html#install_packages">Install Packages</a></li>
+									</ul>
+								</li>
+								<li>
+									<a href="preprocessing.html">Preprocessing</a>
+									<ul>
+										<li><a href="preprocessing.html#load_data">Load Data</a></li>
+										<li><a href="preprocessing.html#clean_data">Cleaning Data</a></li>
+									</ul>
+								</li>
+								<li class="current"><a href="dataprocessing.html">Data Processing</a>
+									<ul>
+										<li><a href="#condense_columns">Condensing Columns</a></li>
+										<li><a href="#new_columns">New Columns</a></li>
+										<li><a href="#reverse_coding">Reverse Coding</a></li>
+										<li><a href="#internal_reliability">Internal Reliability</a></li>
+										<li><a href="#dummy_coding">Dummy Coding</a></li>
+									</ul>
+								</li>
+								<li><a href="descriptivestats.html">Descriptive Statistics</a>
+									<ul>
+										<li><a href="descriptivestats.html#calculations">Calculations</a></li>
+										<li><a href="descriptivestats.html#grouping">Grouping</a></li>
+										<li><a href="descriptivestats.html#frequency">Frequency</a></li>
+									</ul>
+								</li>
+								<li><a href="hypothesistesting.html">Hypothesis Testing</a>
+									<ul>
+										<li><a href="hypothesistesting.html#id_categorical">Categorical ID</a></li>
+										<li><a href="hypothesistesting.html#id_continuous">Continuous ID</a></li>
+										<li><a href="hypothesistesting.html#id_multiple">Multiple ID's</a></li>	
+									</ul>
+								</li>
+								<li><a href="visualization.html">Visualization</a>
+									<ul>
+										<li><a href="visualization.html#histograms">Histograms</a></li>
+										<li><a href="visualization.html#bargraphs">Bar Graphs</a></li>
+										<li><a href="visualization.html#scatterplots">Scatter Plots</a></li>
+										<li><a href="visualization.html#lines_and_error">Lines & Error</a></li>
+									</ul>
+								</li>	
+							</ul>
+						</nav>
+
+				</div>
+
+			<!-- Main -->
+				<section class="wrapper style1">
+					<div class="container">
+						<div class="row gtr-200">
+							<div class="col-2 col-12-narrower">
+								<div class="sidebar" id="sidebar">
+
+									<!-- Sidebar -->
+
+										<section>
+											<h3>Topics</h3>
+											<ul class="links">
+												<li><a href="#condense_columns">Condensing Columns</a></li>
+												<li><a href="#new_columns">New Columns</a></li>
+												<li><a href="#reverse_coding">Reverse Coding</a></li>
+												<li><a href="#internal_reliability">Internal Reliability</a></li>
+												<li><a href="#dummy_coding">Dummy Coding</a></li>
+											</ul>
+<!-- 											<footer>
+												<a href="#" class="button">Continue Reading</a>
+											</footer> -->
+										</section>
+
+
+								</div>
+							</div>
+							<div class="col-10  col-12-narrower imp-narrower">
+								<div id="content">
+
+									<!-- Content -->
+
+										<article>
+											<header>
+												<h2>Data Processing</h2>
+											</header>
+
+											<!-- <span class="image featured"><img src="images/banner.jpg" alt="" /></span> -->
+
+											<h3 id="condense_columns">Condensing cross-condition columns</h3>
+											<p>We won't go into too much detail about this here, but any object (variable, dataframe, data cell, column, etc) in R has a <b>data type</b>. For example, let's say you look at a dataframe column and one of the cells has a value of 3. If it is a numeric data type, R will interpret it as the numerical quantity of 3. With numeric data types, you can perform mathematical operations like adding and subracting. If it is a character data type, R will interpret it as just the symbol "3" with no numeric value, as if it were a letter and will not be able to perform mathematical operations. But with character datatypes you can see if sequences of characters match each other or not.</p>
+
+											<p>In the next step, we're going to build new columns in our data frame on the condition of matching character sequences. So for now, let's convert all our data to the character data type:</p>
+
+											<iframe class='smallframe'src="R/to_character.html"></iframe>
+
+											<p>Now let's take a quick look at some of the columns in our dataframe. The way we can tell the difference between data from participants in the "prosocial" vignette condition and participants in the "non-prosocial" vignette condition is that their data is in separate columns. So, in each of the response columns, rows where the subject belongs to the other condition, the cell is empty. We'll take advantage of this to merge the columns. We take two steps:</p>
+
+											<span class="image featured"><img src="images/banner.jpg" alt="" /></span>
+
+											<h3 id="new_columns">Creating a new column with a calculation</h3>
+											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac quam risus, at tempus
+											justo. Sed dictum rutrum massa eu volutpat. Quisque vitae hendrerit sem. Pellentesque lorem felis,
+											ultricies a bibendum id, bibendum sit amet nisl. Mauris et lorem quam. Maecenas rutrum imperdiet
+											vulputate. Nulla quis nibh ipsum, sed egestas justo. Morbi ut ante mattis orci convallis tempor.
+											Etiam a lacus a lacus pharetra porttitor quis accumsan odio. Sed vel euismod nisi. Etiam convallis
+											rhoncus dui quis euismod. Maecenas lorem tellus, congue et condimentum ac, ullamcorper non sapien.
+											Donec sagittis massa et leo semper a scelerisque metus faucibus. Morbi congue mattis mi.
+											Phasellus sed nisl vitae risus tristique volutpat. Cras rutrum commodo luctus.</p>
+
+											<iframe src="R/merge_columns.html"></iframe>
+
+											<h3 id="reverse_coding">Reverse coding scales</h3>
+											<p>Phasellus odio risus, faucibus et viverra vitae, eleifend ac purus. Praesent mattis, enim
+											quis hendrerit porttitor, sapien tortor viverra magna, sit amet rhoncus nisl lacus nec arcu.
+											Suspendisse laoreet metus ut metus imperdiet interdum aliquam justo tincidunt. Mauris dolor urna,
+											fringilla vel malesuada ac, dignissim eu mi. Praesent mollis massa ac nulla pretium pretium.
+											Maecenas tortor mauris, consectetur pellentesque dapibus eget, tincidunt vitae arcu.
+											Vestibulum purus augue, tincidunt sit amet iaculis id, porta eu purus.</p>
+
+											<h3 id="internal_reliability">Checking internal reliability</h3>
+											<h3 id="dummy_coding">Grouping variable levels & dummy coding</h3>
+
+											<h3>Now our data is ready for analysis. <a href="descriptivestats.html">Let's start with the descriptives</a></h3>
+										</article>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+			<!-- Footer -->
+				<div id="footer">
+					<div class="container">
+						<div class="row">
+							<section class="col6 col-6-narrower col-12-mobilep">
+								<h3>Links to Stuff</h3>
+								<ul class="footerlinks">
+									<li><a href="#">R Download</a></li>
+									<li><a href="#">RStudio Download</a></li>
+									<li><a href="#">Qualtrics</a></li>
+								</ul>
+							</section>
+						</div>
+					</div>
+
+
+					<!-- Copyright -->
+						<div class="copyright">
+							<ul class="menu">
+								<li>&copy; Maryam Seifeldin 2019. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

@@ -1,0 +1,33 @@
+---
+# title: "Tutorial"
+# author: "Maryam Seifeldin"
+# date: "11/4/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(ggplot2)
+library(ltm)
+
+valdata <- read.csv("altruism_data_values.csv", header=TRUE)
+numdata <- read.csv("altruism_data_numeric.csv", header=TRUE)
+fulldata <- numdata
+```
+```{r, include=FALSE}
+
+```
+Take a look at the column called "Consent". Two things to note here: 1) If someone didn't say yes to the consent question, even if they finished the survey anyway, it's unethical to use their data. 2) The first two rows don't contain indicators of consent either, because they're not participant data.
+
+In other words, we only want the rows where Consent = 1. We can use the subset(dataframe, logical evaluator) command to do this. Notice we have to use "==" because a single "=" is for assigning values, not evaluating whether two things are equal to one another.
+
+```{r, eval = TRUE}
+ourdata <- subset(fulldata, Consent==1)
+```
+
+Then, we use the select() command that we got from dplyr to copy only the columns that contain actual participant response data from our survey into a new dataframe simply called "data". (note -- the : character means "through" in R). Finally, you might have noticed that the column containing participants' responses to a question about their age is currently called "Q13". Let's rename it to "Age" too:
+```{r, eval = TRUE}
+data <- dplyr::select(ourdata,.data$praise_rejection_1 : .data$botcatcher)
+colnames(data)[19] <- "Age"
+```
