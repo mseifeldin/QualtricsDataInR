@@ -121,9 +121,13 @@
 
 											<iframe class='smallframe'src="R/to_character.html"></iframe>
 
-											<p>Now let's take a quick look at some of the columns in our dataframe. The way we can tell the difference between data from participants in the "prosocial" vignette condition and participants in the "non-prosocial" vignette condition is that their data is in separate columns. So, in each of the response columns, rows where the subject belongs to the other condition, the cell is empty. We'll take advantage of this to merge the columns. We take two steps:</p>
+											<p>Now let's take a quick look at some of the columns in our dataframe. The way we can tell the difference between data from participants in the "prosocial" vignette condition and participants in the "non-prosocial" vignette condition is that their data is in separate columns. So, in each of the response columns, rows where the subject belongs to the other condition, the cell is empty.</p>
 
 											<span class="image featured"><img src="images/banner.jpg" alt="" /></span>
+
+											<p>We'll take advantage of this to merge the columns. We take two steps:</p>
+
+											<iframe src="R/merge_columns.html"></iframe>
 
 											<h3 id="new_columns">Creating a new column with a calculation</h3>
 											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac quam risus, at tempus
@@ -135,15 +139,13 @@
 											Donec sagittis massa et leo semper a scelerisque metus faucibus. Morbi congue mattis mi.
 											Phasellus sed nisl vitae risus tristique volutpat. Cras rutrum commodo luctus.</p>
 
-											<iframe src="R/merge_columns.html"></iframe>
+											
 
 											<h3 id="reverse_coding">Reverse coding scales</h3>
-											<p>Phasellus odio risus, faucibus et viverra vitae, eleifend ac purus. Praesent mattis, enim
-											quis hendrerit porttitor, sapien tortor viverra magna, sit amet rhoncus nisl lacus nec arcu.
-											Suspendisse laoreet metus ut metus imperdiet interdum aliquam justo tincidunt. Mauris dolor urna,
-											fringilla vel malesuada ac, dignissim eu mi. Praesent mollis massa ac nulla pretium pretium.
-											Maecenas tortor mauris, consectetur pellentesque dapibus eget, tincidunt vitae arcu.
-											Vestibulum purus augue, tincidunt sit amet iaculis id, porta eu purus.</p>
+											<p>So we don't need to use this technique with this particular dataset, but we can still demonstrate it. You would use reverse coding if, in a scale with multiple questions, the answers for different questions that would be consistent with one another are in reverse order from one another.</p>
+											<p>For example, if one of your scale questions was "Do you feel positively about your career prospects?" and another was "Do you feel negatively about your career prospects?". For both questions, participants have to answer on a likert scale from 1 (strongly agree) to 5 (strongly disagree). If someone answered "1" to the first question and is answering consistently, we would expect them to answer "5" to the second question, but these scores will mathematically cancel one another out in our analyses. So we systemically recode people's answers to the second question so anyone who answered "1" is marked "5", who answered "2" is marked "4", is marked "3" stays the same", "4" is marked "2" and "5" is marked "1" so answers are consistent and we can later check the internal reliability of our scale (next step)</p>
+
+											<iframe src="R/reverse_code.html"></iframe>
 
 											<h3 id="internal_reliability">Checking internal reliability</h3>
 											<h3 id="dummy_coding">Grouping variable levels & dummy coding</h3>
