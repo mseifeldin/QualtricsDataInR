@@ -123,19 +123,16 @@
 											
 											<h4>Independent vs Dependent</h4>
 											<h5>Independent Variables</h5>
-											<p>Independent variables are what would go on your x-axis if you drew a graph of your data. They are what </p>
+											<p>Independent variables are what would go on your x-axis if you drew a graph of your data. They are what "predicts" the dependent variable in your hypothesis. Anything you as the researcher have control over (like experimental condition) is an independent variable. Demographic modifiers are also a type of independent variable, because they are posed as predictive in the context of the research question and subsequent data analysis.</p>
 
-											<p>It “predicts” the dependent variable in your hypothesis, 
-											You have control over it (it’s an experimental condition)
-											It’s a demographic modifier</p>
 
 											
 											<h5>Dependent Variables</h5>
-											<p>It’s what you’re “measuring. It is “predicted” by the independent variable</p>
+											<p>Dependent variables are what would go on your y-axis if you drew a graph of your data. It’s what you’re “measuring", or  what is “predicted” by the independent variable. If it is something that you could not know or decide about your participants before your study, it is likely a dependent variable.</p>
 
 											<h4>Categorical vs Continuous</h4>
 											<h5>Categorical Variables</h5>
-											<p>Categorical variables a distinct set of finite possible values that don't need to be put in a particular order. For example: gender, experimental condition, geographic region, favorite movie, academic major, medical treatment status, hair color, political party registration, citizenship, age bracket, track meet event, or income bracket</p>
+											<p>Categorical variables a distinct set of finite possible values that don't need to be put in a particular order. For example: gender, experimental condition, geographic region, favorite movie, academic major, medical treatment status, hair color, political party registration, citizenship, age bracket, track meet event, or income bracket.</p>
 
 											
 											<h5>Continuous Variables</h5>
@@ -145,29 +142,37 @@
 											<p>If you had a large set of responses and you attempted to sort the data for your variable into categories based on their exact responses or values, do you think each category would have more than one (maybe two) data points in it? Would you have a reasonable number of categories to analyze? If you compared the relationship between two of your variables, would it still match up in scope to your original question? If yes, it's likely a categorical variable. If no, it's likely a continuous variable. For example: If your research question is, "Are optimism level and political party related?", then breaking things down to the categories looks like: "Is there a difference between registered republicans' and registered democrats (categorical independent variable) level of optimism?", which isn't the same question, but covers a significant and interesting component of the original question. However, if our research question is, "Do people become more optimistic as they age? ", breaking things down into categories gives us the question, "Is there a difference in optimism level between someone who is 48 years 2 months old and someone who is 48 years 3 months old?". Comparing those two categories doesn't really speak to our original question. Or, if our question is: "Is extraverted behavior related to optimism?" and we use a likert scale of 1 to 7 to measure extraverted behavior, our question breaks down to: "Is there a difference in optimism between someone who scored 3.57 on the extraversion scale and someone who scored 6.35?" Even though these scores are very different, the "categories" of 3.57 and 6.35 are an arbitrary comparison in light of our original question.</p>
 
 											<h3 id="decision_tree">Analysis Decision Tree</h3>
+
+											<p>So take a moment to identify what your variables are, which ones are the independent variables, and which one is your dependent variable for the specific analysis you are about to undertake. Next, figure out for each of your dependent *and* independent variables whether the contents of its data are categorical or continuous. Then you can use this tree to figure out which is the appropriate hypothesis analysis to perform on your data.</p>
+
 											<span class="image featured"><img src="images/Variables_and_Analysis.png" alt="analysis decision tree" /></span>
 
 											<h3 id="correlation">Correlations</h3>
-											<p>Phasellus odio risus, faucibus et viverra vitae, eleifend ac purus. Praesent mattis, enim
-											quis hendrerit porttitor, sapien tortor viverra magna, sit amet rhoncus nisl lacus nec arcu.
-											Suspendisse laoreet metus ut metus imperdiet interdum aliquam justo tincidunt. Mauris dolor urna,
-											fringilla vel malesuada ac, dignissim eu mi. Praesent mollis massa ac nulla pretium pretium.
-											Maecenas tortor mauris, consectetur pellentesque dapibus eget, tincidunt vitae arcu.
-											Vestibulum purus augue, tincidunt sit amet iaculis id, porta eu purus.</p>
+											<p>Use a Pearson correlation for data where both the independent and dependent variables are continuous.</p>
 
 											<iframe src="R/correlation.html"></iframe>
+											<h4>Interpretation & Reporting</h4>
+
 
 											<h3 id="t_test">T-tests</h3>
+											<p>Use a t-test for data where you have one categorical independent variable that has only two data levels (i.e. is only manual vs automatic, rather than green vs yellow vs orange) and one continuous dependent variable.</p>
 
 											<iframe src="R/t_test.html"></iframe>
+											<h4>Interpretation & Reporting</h4>
 
 											<h3 id="anova">ANOVAs</h3>
 
+											<p>Use a one-way ANOVA for data where you have one categorical independent variable that can have two or more data levels and one continuous dependent variable.</p>
+
 											<iframe src="R/anova.html"></iframe>
+											<h4>Interpretation & Reporting</h4>
 
 											<h3 id="mult_regression">Multiple Regressions</h3>
 
+											<p>Use a multiple linear regression for data where you have more than one independent variable in your analysis.</p>
+
 											<iframe src="R/mult_regression.html"></iframe>
+											<h4>Interpretation & Reporting</h4>
 
 											<h3>When you're done here, it's time to <a href="visualization.html">visualize your data so these results are more intuitive to understand</a></h3>
 										</article>
