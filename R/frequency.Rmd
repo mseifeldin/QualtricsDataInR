@@ -1,0 +1,45 @@
+---
+# title: "Tutorial"
+# author: "Maryam Seifeldin"
+# date: "11/4/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(ggplot2)
+library(ltm)
+library(car)
+library(fastDummies)
+
+valdata <- read.csv("altruism_data_values.csv", header=TRUE)
+numdata <- read.csv("altruism_data_numeric.csv", header=TRUE)
+fulldata <- numdata
+ourdata <- subset(fulldata, Consent==1)
+data <- dplyr::select(ourdata,.data$praise_rejection_1 : .data$botcatcher)
+colnames(data)[19] <- "Age"
+data[,] <- sapply(data[,], as.character)
+data$condition <- ifelse(data$likely_nonpro != "", "nonpro", "pro")
+data$vignette_response <- ifelse(data$likely_nonpro == "", data$likely_pro, data$likely_nonpro)
+data$justification <- ifelse(data$bot_catcher == "", data$botcatcher, data$bot_catcher)
+data <- subset(data, select = -c(likely_nonpro, likely_pro, botcatcher, bot_catcher))
+data$vignette_response <- as.numeric(data$vignette_response)
+data$Age <- as.numeric(data$Age)
+data[,1:18] <- sapply(data[,1:18],as.numeric)
+data <- data %>%
+  mutate(justification,
+         praise_rejection = rowMeans(dplyr::select(., -c(Age, condition, vignette_response, justification)),na.rm = TRUE))
+data$age_bracket <- ifelse(data$Age < 30 , "20s" , 
+                           ifelse(data$Age < 40 , "30s", 
+                                  ifelse(data$Age < 50 , "40s", "50s")))
+dummies <- dummy_cols(data$age_bracket)
+
+data$dummies_20s <- dummies$.data_20s
+data$dummies_30s <- dummies$.data_30s
+data$dummies_40s <- dummies$.data_40s
+data$dummies_50s <- dummies$.data_50s
+```
+```{r, eval = TRUE} 
+ftable(data$age_bracket)
+```

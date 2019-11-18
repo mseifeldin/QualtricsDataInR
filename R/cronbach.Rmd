@@ -1,0 +1,41 @@
+---
+# title: "Tutorial"
+# author: "Maryam Seifeldin"
+# date: "11/4/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(ggplot2)
+library(ltm)
+library(car)
+
+valdata <- read.csv("altruism_data_values.csv", header=TRUE)
+numdata <- read.csv("altruism_data_numeric.csv", header=TRUE)
+fulldata <- numdata
+ourdata <- subset(fulldata, Consent==1)
+data <- dplyr::select(ourdata,.data$praise_rejection_1 : .data$botcatcher)
+colnames(data)[19] <- "Age"
+data[,] <- sapply(data[,], as.character)
+data$condition <- ifelse(data$likely_nonpro != "", "nonpro", "pro")
+data$vignette_response <- ifelse(data$likely_nonpro == "", data$likely_pro, data$likely_nonpro)
+data$justification <- ifelse(data$bot_catcher == "", data$botcatcher, data$bot_catcher)
+data <- subset(data, select = -c(likely_nonpro, likely_pro, botcatcher, bot_catcher))
+data$vignette_response <- as.numeric(data$vignette_response)
+data$Age <- as.numeric(data$Age)
+data[,1:18] <- sapply(data[,1:18],as.numeric)
+data <- data %>%
+  mutate(justification,
+         praise_rejection = rowMeans(dplyr::select(., -c(Age, condition, vignette_response, justification)),na.rm = TRUE))
+```
+first we assign just the raw (and reverse-coded) columns to a new dataframe called scale_scores:
+```{r, eval = TRUE}
+scale_scores <- data  %>% dplyr::select(., -c(Age, condition, vignette_response, justification, praise_rejection))
+```
+then we run cronbach's alpha test to check our scale reliability:
+```{r, eval = TRUE}
+cronbach.alpha(scale_scores, na.rm = TRUE)
+```
+Note: alpha scores above .7 are considered a good score

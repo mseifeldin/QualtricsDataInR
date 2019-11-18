@@ -195,7 +195,9 @@ $(document).ready(function () {
 <p>First, we load some packages (also called libraries) that will be helpful for our data analysis. We installed them earlier, but this activates them for the current session.</p>
 <pre class="r"><code>library(dplyr)
 library(ggplot2)
-library(ltm)</code></pre>
+library(ltm)
+library(car)
+library(fastDummies)</code></pre>
 <p>Here we load in both versions of the data and see which one we want to use:</p>
 <pre class="r"><code>valdata &lt;- read.csv(&quot;altruism_data_values.csv&quot;, header=TRUE)
 numdata &lt;- read.csv(&quot;altruism_data_numeric.csv&quot;, header=TRUE)</code></pre>

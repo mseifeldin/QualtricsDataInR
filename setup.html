@@ -58,14 +58,18 @@
 								</li>
 								<li><a href="hypothesistesting.html">Hypothesis Testing</a>
 									<ul>
-										<li><a href="hypothesistesting.html#id_categorical">Categorical ID</a></li>
-										<li><a href="hypothesistesting.html#id_continuous">Continuous ID</a></li>
-										<li><a href="hypothesistesting.html#id_multiple">Multiple ID's</a></li>	
+										<li><a href="hypothesistesting.html#variables">Types of Variables</a></li>
+										<li><a href="hypothesistesting.html#decision_tree">Analysis Decision Tree</a></li>
+										<li><a href="hypothesistesting.html#correlation">Correlations</a></li>
+										<li><a href="hypothesistesting.html#t_test">T-tests</a></li>
+										<li><a href="hypothesistesting.html#anova">ANOVAs</a></li>
+										<li><a href="hypothesistesting.html#mult_regression">Multiple Regressions</a></li>	
 									</ul>
 								</li>
 								<li><a href="visualization.html">Visualization</a>
 									<ul>
 										<li><a href="visualization.html#histograms">Histograms</a></li>
+										<li><a href="visualization.html#boxplot">Boxplots</a></li>
 										<li><a href="visualization.html#bargraphs">Bar Graphs</a></li>
 										<li><a href="visualization.html#scatterplots">Scatter Plots</a></li>
 										<li><a href="visualization.html#lines_and_error">Lines & Error</a></li>
@@ -125,8 +129,13 @@
 											<p>Open your survey in Qualtrics and hit the "Data & Analysis" tab in the top menu bar:</p>
 											<span class="image featured"><img src="images/q-data-tab.png" alt="qualtrics data tab location" /></span>
 											<p>Find the "Export and Import" dropdown menu above the data and select "Export Data..."</p>
+											<span class="image featured"><img src="images/qualt_expimp.png" alt="qualtrics export and import location" /></span>
+											<span class="image featured"><img src="images/qualt_chooseexportdata.png" alt="qualtrics export data menu" /></span>
 											<p>Note the default is to download the data as a CSV file with the display text in the survey entered as the data output ("Use choice text"). You also have the option to download the data as "numerical values", or dummy coded. For our purposes, download both versions ov the data so we can look at them. You'll have to go through the process of downloading twice.</p>
+											<span class="image featured"><img src="images/qualt_csvnumeric.png" alt="qualtrics choose numeric csv file" /></span>
+											<span class="image featured"><img src="images/qualt_csvvalues.png" alt="qualtrics choose character csv file" /></span>
 											<p>Make sure to save these files in a folder (directory) where you want to keep them, and where you plan to store the script you will use to analyze this data.</p>
+											<span class="image featured"><img src="images/filewindow.png" alt="RStudio file window area" /></span>
 
 											<p><b>In examples, this tutorial will use data from an informal Qualtrics experiment on altruistic behavior and the valuation of reputation. You can download both versions of the data here:</b></p>
 											
@@ -137,10 +146,13 @@
 											<p>If you don't, go to <a href="https://repo.miserver.it.umich.edu/cran/" target="blank">this page</a> and click the link consistent with your computer's OS (Windows, Mac, or Linux)
 											</p>
 											<p>If you're on a Mac, hit the first .pkg link under "Latest release" to download on the next page and go through installation.</p>
+											<span class="image featured"><img src="images/R_formac.png" alt="choose mac download screen" /></span>
 											<p>If you're using a PC, click the "install R for the first time" link on the next page to downloadand go through installation.</p>
+											<span class="image featured"><img src="images/r_forwindows.png" alt="choose windows download screen" /></span>
 
 											<h3 id=install_rstudio>Make sure you have RStudio on your computer too</h3>
 											<p>If you don't, go to <a href="https://rstudio.com/products/rstudio/download/#download" target="blank">this page</a> and you will find a list of free versions of rStudio Desktop. Download the version consistent with your OS (Windows, Mac, Linux, etc.)</p>
+											<span class="image featured"><img src="images/rstudio_installers.png" alt="choose windows download screen" /></span>
 
 											<h3 id=install_packages>Install some helpful packages in your RStudio Environemnt</h3>
 
@@ -153,8 +165,10 @@
 
 											<h4>Method 2: Use the bottom right window GUI interface</h4>
 											<p>Click on the "Packages" tab, then the "Install" button underneath it. Type the four packages names into the input bar with spaces in between:</p>
-											<p>dplyr ggplot2 ltm Hmisc</p>
+											<p>dplyr ggplot2 ltm car fastDummies psych</p>
 											<p>Then make sure the "Install dependencies" box is checked, and press "Install"</p>
+
+											<span class="image featured"><img src="images/installpackages.png" alt="installing packages in RStudio" /></span>
 
 											<p> A bunch of stuff will print in the console VERY fast. If you get warnings, that's ok. But if you get errors, read them and see if you can figure them out. Sometimes, depending on your computer, you may need to install other packages to support these ones.</p>
 

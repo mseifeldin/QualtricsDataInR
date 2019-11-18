@@ -13,6 +13,8 @@ First, we load some packages (also called libraries) that will be helpful for ou
 library(dplyr)
 library(ggplot2)
 library(ltm)
+library(car)
+library(fastDummies)
 ```
 Here we load in both versions of the data and see which one we want to use:
 ```{r, eval = TRUE}

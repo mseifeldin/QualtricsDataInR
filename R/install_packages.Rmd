@@ -9,5 +9,5 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 ```{r, eval = FALSE}
-install.packages(c("dplyr","ggplot2","ltm", "Hmisc"))
+install.packages(c("dplyr","ggplot2","ltm", "car", "fastDummies", "psych"))
 ```

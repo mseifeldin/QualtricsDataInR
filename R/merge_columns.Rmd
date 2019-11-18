@@ -10,6 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(dplyr)
 library(ggplot2)
 library(ltm)
+library(car)
 
 valdata <- read.csv("altruism_data_values.csv", header=TRUE)
 numdata <- read.csv("altruism_data_numeric.csv", header=TRUE)
@@ -34,4 +35,8 @@ Code translation: we tell R to create a new column called "vignette_response" in
 Finally, we do the same thing with the two bot catcher verbal response columns, copying the nonempty rows of both into a new column called "justification:
 ```{r, eval = TRUE}
 data$justification <- ifelse(data$bot_catcher == "", data$botcatcher, data$bot_catcher)
+```
+It's not necessary to work with this data, but it can be helpful while looking over our data to drop columns that we no longer need:
+```{r, eval = TRUE}
+data <- subset(data, select = -c(likely_nonpro, likely_pro, botcatcher, bot_catcher))
 ```

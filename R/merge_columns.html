@@ -200,6 +200,8 @@ $(document).ready(function () {
 <p>Code translation: we tell R to create a new column called “vignette_response” in the dataframe “data”, then we use an ifelse statement again to say to go through the “likely_nonpro” column. This time, for each cell, we check if it IS empty (== “”) and if this is true, fill the corresponding row in the “vignette_response” column with a copy of what is in the corresponding “likely_pro” column. Otherwise, copy what’s in the “likely_nonpro” column.</p>
 <p>Finally, we do the same thing with the two bot catcher verbal response columns, copying the nonempty rows of both into a new column called “justification:</p>
 <pre class="r"><code>data$justification &lt;- ifelse(data$bot_catcher == &quot;&quot;, data$botcatcher, data$bot_catcher)</code></pre>
+<p>It’s not necessary to work with this data, but it can be helpful while looking over our data to drop columns that we no longer need:</p>
+<pre class="r"><code>data &lt;- subset(data, select = -c(likely_nonpro, likely_pro, botcatcher, bot_catcher))</code></pre>
 
 
 

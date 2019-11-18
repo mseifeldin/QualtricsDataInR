@@ -10,6 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(dplyr)
 library(ggplot2)
 library(ltm)
+library(car)
 
 valdata <- read.csv("altruism_data_values.csv", header=TRUE)
 numdata <- read.csv("altruism_data_numeric.csv", header=TRUE)

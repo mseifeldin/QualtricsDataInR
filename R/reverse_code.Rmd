@@ -10,6 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(dplyr)
 library(ggplot2)
 library(ltm)
+library(car)
 
 valdata <- read.csv("altruism_data_values.csv", header=TRUE)
 numdata <- read.csv("altruism_data_numeric.csv", header=TRUE)
@@ -22,8 +23,20 @@ data$condition <- ifelse(data$likely_nonpro != "", "nonpro", "pro")
 data$vignette_response <- ifelse(data$likely_nonpro == "", data$likely_pro, data$likely_nonpro)
 data$justification <- ifelse(data$bot_catcher == "", data$botcatcher, data$bot_catcher)
 ```
-
+Here we create a new column in our dataframe called "reversed" and tell R to take the praise_rejection_1 column and fill our new column with recoded data as we have specified in the quotes inside the recode() function.
 ```{r, eval = TRUE}
-data$vignette_response <- as.numeric(data$vignette_response)
-data$reversed = recode(data$vignette_response, "1"="7", "2"="6", "3"="5", "5"="3", "6"="2", "7"="1", "4"="4") 
+data$reversed <- recode(data$praise_rejection_1, "1=7; 2=6; 3=5; 4=4; 5=3; 6=2; 7=1;")
+```
+compare the contents of the praise_rejection_1 column:
+```{r, eval = TRUE}
+data$praise_rejection_1
+```
+to the contents of the reversed column:
+```{r, eval = TRUE}
+data$reversed
+```
+Now, to have the "reversed" data replace the data in the original column, we delete the original column and rename the reversed column with the name of the original column:
+```{r, eval = TRUE}
+data$praise_rejection_1 <- NULL
+data <- rename(data, praise_rejection_1 = reversed)
 ```

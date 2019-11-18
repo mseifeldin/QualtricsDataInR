@@ -48,6 +48,9 @@ h3 {
 .smallframe{
 	height: 30vh;
 }
+h5 {
+	font-style: italic;
+}
 /*End of my extras*/
 
 body {

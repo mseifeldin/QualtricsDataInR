@@ -1,0 +1,39 @@
+---
+# title: "Tutorial"
+# author: "Maryam Seifeldin"
+# date: "11/4/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(ggplot2)
+library(ltm)
+library(car)
+
+valdata <- read.csv("altruism_data_values.csv", header=TRUE)
+numdata <- read.csv("altruism_data_numeric.csv", header=TRUE)
+fulldata <- numdata
+ourdata <- subset(fulldata, Consent==1)
+data <- dplyr::select(ourdata,.data$praise_rejection_1 : .data$botcatcher)
+colnames(data)[19] <- "Age"
+data[,] <- sapply(data[,], as.character)
+data$condition <- ifelse(data$likely_nonpro != "", "nonpro", "pro")
+data$vignette_response <- ifelse(data$likely_nonpro == "", data$likely_pro, data$likely_nonpro)
+data$justification <- ifelse(data$bot_catcher == "", data$botcatcher, data$bot_catcher)
+data <- subset(data, select = -c(likely_nonpro, likely_pro, botcatcher, bot_catcher))
+```
+Now we're going to convert the columns that have numbers in them to the numeric data type so that we can perform mathematical calculations on their contents:
+```{r, eval = TRUE}
+data$vignette_response <- as.numeric(data$vignette_response)
+data$Age <- as.numeric(data$Age)
+data[,1:18] <- sapply(data[,1:18],as.numeric)
+```
+Now we'll make a column that takes the mean of 
+```{r, eval = TRUE}
+data <- data %>%
+  mutate(justification,
+         praise_rejection = rowMeans(dplyr::select(., -c(Age, condition, vignette_response, justification)),na.rm = TRUE))
+```
+Code translation: we take the dataframe and tell R to create a new column based on the formula inside the mutate() function. The formula says to put the column after the "justification" column and call it "praise_rejection". Then, using the rowMeans() function, to take the mean in each row for every column value except those of the Age, condition, vignette_response, and justification columns. This just leaves the responses to the praise_rejection scale. We could also have phrased this as a list of the columns that contain scale responses, but excluding a list of non-scale data in this case makes for a shorter list.
