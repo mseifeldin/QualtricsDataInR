@@ -37,8 +37,9 @@ data$age_bracket <- ifelse(data$Age < 30 , "20s" ,
 Now we generate a dataframe of dummy variables. This is how we can generate numerical values out of categorical character variables if we need them for an analysis. Here we'll do this with our recently created age_bracket column:
 ```{r, eval = TRUE} 
 dummies <- dummy_cols(data$age_bracket)
+head(dummies)
 ```
-Take a look at it! Now we'll add the columns to our main dataframe:
+So we've got 4 columns of dummy data that we can use to represent the categorical data column. Now we'll add the columns to our main dataframe:
 ```{r, eval = TRUE} 
 data$dummies_20s <- dummies$.data_20s
 data$dummies_30s <- dummies$.data_30s

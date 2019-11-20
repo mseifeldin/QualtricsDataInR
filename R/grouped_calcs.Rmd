@@ -45,13 +45,16 @@ data %>%
   group_by(condition) %>%
     summarise(mean(vignette_response))
 ```
+Code translation: We tell R to look at teh data in the "data" dataframe, then say we're going to group a column calculation by the levels of the "condition" column with the group_by() command. Then we give R the column calculation we want: a printout of the mean of the vignette_response column.
 ```{r, eval = TRUE} 
 data %>%
   group_by(condition, age_bracket) %>%
   summarise(mean(vignette_response))
 ```
+Code translation: In the second step of the grouping, where we tell R which variables we want to group our calculation by, we can split things up into further groups with a comma between the multiple column names. Here, we tell R we want to split the data up by condition, then split that split-up data age. So we end up with 8 groups (2 condition groups x 4 age bracket groups).
 ```{r, eval = TRUE} 
 data %>%
   group_by(condition) %>%
   summarise(min(vignette_response), max(vignette_response))
 ```
+And you can generate a grouped table with more than one calculation, if you need to do more than one statistic that is grouped by another variable.

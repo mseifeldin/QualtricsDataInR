@@ -193,8 +193,16 @@ $(document).ready(function () {
 
 
 <p>Now we generate a dataframe of dummy variables. This is how we can generate numerical values out of categorical character variables if we need them for an analysis. Here we’ll do this with our recently created age_bracket column:</p>
-<pre class="r"><code>dummies &lt;- dummy_cols(data$age_bracket)</code></pre>
-<p>Take a look at it! Now we’ll add the columns to our main dataframe:</p>
+<pre class="r"><code>dummies &lt;- dummy_cols(data$age_bracket)
+head(dummies)</code></pre>
+<pre><code>##   .data .data_30s .data_20s .data_40s .data_50s
+## 1   30s         1         0         0         0
+## 2   20s         0         1         0         0
+## 3   20s         0         1         0         0
+## 4   20s         0         1         0         0
+## 5   20s         0         1         0         0
+## 6   30s         1         0         0         0</code></pre>
+<p>So we’ve got 4 columns of dummy data that we can use to represent the categorical data column. Now we’ll add the columns to our main dataframe:</p>
 <pre class="r"><code>data$dummies_20s &lt;- dummies$.data_20s
 data$dummies_30s &lt;- dummies$.data_30s
 data$dummies_40s &lt;- dummies$.data_40s

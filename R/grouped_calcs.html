@@ -200,6 +200,7 @@ $(document).ready(function () {
 ##   &lt;chr&gt;                         &lt;dbl&gt;
 ## 1 nonpro                         5.67
 ## 2 pro                            6.62</code></pre>
+<p>Code translation: We tell R to look at teh data in the “data” dataframe, then say we’re going to group a column calculation by the levels of the “condition” column with the group_by() command. Then we give R the column calculation we want: a printout of the mean of the vignette_response column.</p>
 <pre class="r"><code>data %&gt;%
   group_by(condition, age_bracket) %&gt;%
   summarise(mean(vignette_response))</code></pre>
@@ -215,6 +216,7 @@ $(document).ready(function () {
 ## 6 pro       30s                              6.4 
 ## 7 pro       40s                              7   
 ## 8 pro       50s                              7</code></pre>
+<p>Code translation: In the second step of the grouping, where we tell R which variables we want to group our calculation by, we can split things up into further groups with a comma between the multiple column names. Here, we tell R we want to split the data up by condition, then split that split-up data age. So we end up with 8 groups (2 condition groups x 4 age bracket groups).</p>
 <pre class="r"><code>data %&gt;%
   group_by(condition) %&gt;%
   summarise(min(vignette_response), max(vignette_response))</code></pre>
@@ -223,6 +225,7 @@ $(document).ready(function () {
 ##   &lt;chr&gt;                        &lt;dbl&gt;                    &lt;dbl&gt;
 ## 1 nonpro                           1                        7
 ## 2 pro                              5                        7</code></pre>
+<p>And you can generate a grouped table with more than one calculation, if you need to do more than one statistic that is grouped by another variable.</p>
 
 
 

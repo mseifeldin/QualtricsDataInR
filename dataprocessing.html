@@ -147,12 +147,20 @@
 
 											<h3 id="internal_reliability">Checking internal reliability</h3>
 
-											<p></p>
+											<p>Cronbach's alpha measures a scale's internal reliability, or how related the items in a scale are. It does this by measuriing how well each participant's answers to the scale prompts correlate with one another. So it's very important that you have reverse-coded any scale items that need it before performing this analysis, and that you use the reverse-coded columns in the code, not the original columns.</p>
 
 											<iframe src="R/cronbach.html"></iframe>
 
+											
+
+											<h4>Reporting in APA format:</h4>
+
+											<p>The [name of scale] was [not] found to be [highly] reliable (x items; α = ##).</p>
+
 											<h3 id="dummy_coding">Grouping variable levels & dummy coding</h3>
 											<p>You may want to take a continuous variable and code it as a categorical variable for your analysis in order for it to make more intuitive sense. For example, here we collected participants' ages, but we would like to analyze our data based on age range rather than specific ages.</p>
+
+											
 
 											<iframe src="R/grouping.html"></iframe>
 											<p>Conversely, some analyses may necessitate that categorical data be represented with numerical information. We do this by separating the data levels of a particular variable into separate, numerically represented data columns. In this example, we parse out the categorical age ranges we created with data grouping above into numerical dummy columns. Note that we're still representing the categories, not the specific ages of participants.</p>
