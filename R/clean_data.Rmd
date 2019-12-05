@@ -26,6 +26,14 @@ In other words, we only want the rows where Consent = 1. We can use the subset(d
 ```{r, eval = TRUE}
 ourdata <- subset(fulldata, Consent==1)
 ```
+Then, take a look around your key responses and see if there are any subjects you want to remove from your dataset on account of a lack of responses; keep in mind that one or two skipped questions in a scale isn't cause to remove them from your dataset; you'll just have to make sure you're using the na.rm=TRUE command when you perform calculations involving the cells with missing data. But if if a subject seems to have exited the survey without answering any or most of the critical questions, they'll have a lot of empty cells in their row. We use the same concept we used to get rid of the metadata columns to remove these subjects:
+
+```{r, eval = TRUE}
+ourdata <- subset(ourdata, praise_rejection_1 != "")
+```
+Code translation: dataset we're talking about <- subset(dataset we're evaluating, column of the dataset on which we're making a conditional statement [logical operator] value against which we compare every row in the column by using the logical operator)   
+We first tell R that everything we're about to do should happen to the 'ourdata' dataframe. Then, we take a subset of the rows of ourdata. (Be careful: if we do here what we did last time and tell it to take a subset of 'fulldata', we would end up with the two rows we just deleted back in our dataset. Always work on your most recently adjusted data to maintain your changes). Next, we choose a column of our data where if there is an empty row of the column, we want to delete the entire row. We choose the first column of the scale questions in this example, but it could be any column where this is true. Then, we say that, in this column if it is NOT (!=) empty (""), we will KEEP it.  
+
 
 Then, we use the select() command that we got from dplyr to copy only the columns that contain actual participant response data from our survey into a new dataframe simply called "data". (note -- the : character means "through" in R). Finally, you might have noticed that the column containing participants' responses to a question about their age is currently called "Q13". Let's rename it to "Age" too:
 ```{r, eval = TRUE}
