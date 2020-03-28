@@ -1,0 +1,212 @@
+<!DOCTYPE HTML>
+<!--
+	Arcana by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Qualtrics & R</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header">
+
+					<!-- Logo -->
+						<h1><a href="index.html" id="logo">Basic Qualtrics Data Processing & Analysis in R</h1>
+
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li><a href="index.html">Home</a></li>
+								<li>
+									<a href="setup.html">1) Setup</a>
+									<ul>
+										<li><a href="setup.html#download_data">Download Data</a></li>
+										<li><a href="setup.html#install_r">Install R</a></li>
+										<li><a href="setup.html#install_rstudio">Install RStudio</a></li>
+										<li><a href="setup.html#install_packages">Install Packages</a></li>
+									</ul>
+								</li>
+								<li class="current">
+									<a href="goals.html">2) Set Goals</a>
+									<ul>
+										<li><a href="#list_variables">List Variables</a></li>
+										<li><a href="#determine_analyses">Determine Analyses</a></li>
+										<li><a href="#find_columns">Find Columns</a></li>
+										<li><a href="#organize">Organize</a></li>
+									</ul>
+								</li>
+								<li>
+									<a href="preprocessing.html">3) Clean Data</a>
+									<ul>
+										<li><a href="#load_data">Load Data</a></li>
+										<li><a href="#clean_data">Cleaning Data</a></li>
+									</ul>
+								</li>
+
+								<li><a href="dataprocessing.html">4) Data Processing</a>
+									<ul>
+										<li><a href="dataprocessing.html#condense_columns">Condensing Columns</a></li>
+										<li><a href="dataprocessing.html#new_columns">New Columns</a></li>
+										<li><a href="dataprocessing.html#reverse_coding">Reverse Coding</a></li>
+										<li><a href="dataprocessing.html#internal_reliability">Internal Reliability</a></li>
+										<li><a href="dataprocessing.html#dummy_coding">Dummy Coding</a></li>
+									</ul>
+								</li>
+								<li><a href="descriptivestats.html">5) Descriptive Statistics</a>
+									<ul>
+										<li><a href="descriptivestats.html#calculations">Calculations</a></li>
+										<li><a href="descriptivestats.html#grouping">Grouping</a></li>
+										<li><a href="descriptivestats.html#frequency">Frequency</a></li>
+									</ul>
+								</li>
+								<li><a href="hypothesistesting.html">6) Hypothesis Testing</a>
+									<ul>
+										<li><a href="hypothesistesting.html#correlation">Correlations</a></li>
+										<li><a href="hypothesistesting.html#t_test">T-tests</a></li>
+										<li><a href="hypothesistesting.html#anova">ANOVAs</a></li>
+										<li><a href="hypothesistesting.html#mult_regression">Multiple Regressions</a></li>	
+									</ul>
+								</li>
+								<li><a href="visualization.html">7) Visualization</a>
+									<ul>
+										<li><a href="visualization.html#histograms">Histograms</a></li>
+										<li><a href="visualization.html#boxplot">Boxplots</a></li>
+										<li><a href="visualization.html#bargraphs">Bar Graphs</a></li>
+										<li><a href="visualization.html#scatterplots">Scatter Plots</a></li>
+										<li><a href="visualization.html#lines_and_error">Lines & Error</a></li>
+									</ul>
+								</li>	
+							</ul>
+						</nav>
+
+				</div>
+
+			<!-- Main -->
+				<section class="wrapper style1">
+					<div class="container">
+						<div class="row gtr-200">
+							<div class="col-2 col-12-narrower">
+								<div class="sidebar" id="sidebar">
+
+									<!-- Sidebar -->
+
+										<section>
+											<h3>Topics</h3>
+											<ul class="links">
+												<li><a href="#list_variables">List Variables</a></li>
+												<li><a href="#determine_analyses">Determine Analyses</a></li>
+												<li><a href="#find_columns">Find Columns</a></li>
+												<li><a href="#organize">Organize</a></li>
+											</ul>
+<!-- 											<footer>
+												<a href="#" class="button">Continue Reading</a>
+											</footer> -->
+										</section>
+
+
+								</div>
+							</div>
+							<div class="col-10  col-12-narrower imp-narrower">
+								<div id="content">
+
+									<!-- Content -->
+
+										<article>
+											<header>
+												<h2>Step 2: Set Goals</h2>
+											</header>
+
+											<p>
+												You are in control of your experiment and the analysis, not the other way around. Here we think through what our goals are, what steps we need to take, and what factors we need to take into account along the way.
+											</p>
+	
+											<h3 id="list_variables">Make a list of your variables</h3>
+
+											
+											<h3 id="determine_analyses">Figure out which analyses you will need to run</h3>
+											<h4>Types of Variables</h4>
+											
+											<h5>Independent vs Dependent</h5>
+											<h6>Independent Variables</h6>
+											<p>Independent variables are what would go on your x-axis if you drew a graph of your data. They are what "predicts" the dependent variable in your hypothesis. Anything you as the researcher have control over (like experimental condition) is an independent variable. Demographic modifiers are also a type of independent variable, because they are posed as predictive in the context of the research question and subsequent data analysis.</p>
+
+
+											
+											<h6>Dependent Variables</h6>
+											<p>Dependent variables are what would go on your y-axis if you drew a graph of your data. It’s what you’re “measuring", or  what is “predicted” by the independent variable. If it is something that you could not know or decide about your participants before your study, it is likely a dependent variable.</p>
+
+											<h5>Categorical vs Continuous</h5>
+											<h6>Categorical Variables</h6>
+											<p>Categorical variables a distinct set of finite possible values that don't need to be put in a particular order. For example: gender, experimental condition, geographic region, favorite movie, academic major, medical treatment status, hair color, political party registration, citizenship, age bracket, track meet event, or income bracket.</p>
+
+											
+											<h6>Continuous Variables</h6>
+											<p>Continuous variables are numeric, and can have an infinite number of values (even if there are finite ends to a the range of values; the key here is to ask if a decimalized or fractional data value would be an possible data point).  For example: time measurements, dates (because time is infinite), numerical age, likert scale scores, basketball team scores, weight measurements, height measurements, reaction time measurements, proportion of correct responses, number of sales, income, or distance measurements.</p>
+
+											<h6>Some loose rules of thumb:</h6>
+											<p>If you had a large set of responses and you attempted to sort the data for your variable into categories based on their exact responses or values, do you think each category would have more than one (maybe two) data points in it? Would you have a reasonable number of categories to analyze? If you compared the relationship between two of your variables, would it still match up in scope to your original question? If yes, it's likely a categorical variable. If no, it's likely a continuous variable. For example: If your research question is, "Are optimism level and political party related?", then breaking things down to the categories looks like: "Is there a difference between registered republicans' and registered democrats (categorical independent variable) level of optimism?", which isn't the same question, but covers a significant and interesting component of the original question. However, if our research question is, "Do people become more optimistic as they age? ", breaking things down into categories gives us the question, "Is there a difference in optimism level between someone who is 48 years 2 months old and someone who is 48 years 3 months old?". Comparing those two categories doesn't really speak to our original question. Or, if our question is: "Is extraverted behavior related to optimism?" and we use a likert scale of 1 to 7 to measure extraverted behavior, our question breaks down to: "Is there a difference in optimism between someone who scored 3.57 on the extraversion scale and someone who scored 6.35?" Even though these scores are very different, the "categories" of 3.57 and 6.35 are an arbitrary comparison in light of our original question.</p>
+
+											<h4>Analysis Decision Tree</h4>
+
+											<p>So take a moment to identify what your variables are, which ones are the independent variables, and which one is your dependent variable for the specific analysis you are about to undertake. Next, figure out for each of your dependent *and* independent variables whether the contents of its data are categorical or continuous. Then you can use this tree to figure out which is the appropriate hypothesis analysis to perform on your data.</p>
+
+											<span class="image featured"><img src="images/Variables_and_Analysis.png" alt="analysis decision tree" /></span>
+
+											<h3 id="find_columns">Figure out which columns you have, and which you will need to calculate before your analyses</h3>
+
+											<h3 id="organize">Organize a place to record your results</h3>
+
+											<h3>Now we're ready to start working on our data.<a href="preprocessing.html">Head on over to Data Cleanup</a></h3>
+
+										</article>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+			<!-- Footer -->
+				<div id="footer">
+					<div class="container">
+						<div class="row">
+							<section class="col6 col-6-narrower col-12-mobilep">
+								<h3>Links to Stuff</h3>
+								<ul class="footerlinks">
+									<li><a href="#">R Download</a></li>
+									<li><a href="#">RStudio Download</a></li>
+									<li><a href="#">Qualtrics</a></li>
+								</ul>
+							</section>
+						</div>
+					</div>
+
+
+					<!-- Copyright -->
+						<div class="copyright">
+							<ul class="menu">
+								<li>&copy; Maryam Seifeldin 2019. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

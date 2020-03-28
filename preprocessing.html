@@ -25,7 +25,7 @@
 							<ul>
 								<li><a href="index.html">Home</a></li>
 								<li>
-									<a href="setup.html">Setup</a>
+									<a href="setup.html">1) Setup</a>
 									<ul>
 										<li><a href="setup.html#download_data">Download Data</a></li>
 										<li><a href="setup.html#install_r">Install R</a></li>
@@ -33,14 +33,23 @@
 										<li><a href="setup.html#install_packages">Install Packages</a></li>
 									</ul>
 								</li>
+								<li>
+									<a href="goals.html">2) Set Goals</a>
+									<ul>
+										<li><a href="goals.html#list_variables">List Variables</a></li>
+										<li><a href="goals.html#determine_analyses">Determine Analyses</a></li>
+										<li><a href="goals.html#find_columns">Find Columns</a></li>
+										<li><a href="goals.html#organize">Organize</a></li>
+									</ul>
+								</li>						
 								<li class="current">
-									<a href="preprocessing.html">Preprocessing</a>
+									<a href="preprocessing.html">3) Clean Data</a>
 									<ul>
 										<li><a href="#load_data">Load Data</a></li>
 										<li><a href="#clean_data">Cleaning Data</a></li>
 									</ul>
 								</li>
-								<li><a href="dataprocessing.html">Data Processing</a>
+								<li><a href="dataprocessing.html">4) Data Processing</a>
 									<ul>
 										<li><a href="dataprocessing.html#condense_columns">Condensing Columns</a></li>
 										<li><a href="dataprocessing.html#new_columns">New Columns</a></li>
@@ -49,24 +58,22 @@
 										<li><a href="dataprocessing.html#dummy_coding">Dummy Coding</a></li>
 									</ul>
 								</li>
-								<li><a href="descriptivestats.html">Descriptive Statistics</a>
+								<li><a href="descriptivestats.html">5) Descriptive Statistics</a>
 									<ul>
 										<li><a href="descriptivestats.html#calculations">Calculations</a></li>
 										<li><a href="descriptivestats.html#grouping">Grouping</a></li>
 										<li><a href="descriptivestats.html#frequency">Frequency</a></li>
 									</ul>
 								</li>
-								<li><a href="hypothesistesting.html">Hypothesis Testing</a>
+								<li><a href="hypothesistesting.html">6) Hypothesis Testing</a>
 									<ul>
-										<li><a href="hypothesistesting.html#variablesl">Types of Variables</a></li>
-										<li><a href="hypothesistesting.html#decision_tree">Analysis Decision Tree</a></li>
 										<li><a href="hypothesistesting.html#correlation">Correlations</a></li>
 										<li><a href="hypothesistesting.html#t_test">T-tests</a></li>
 										<li><a href="hypothesistesting.html#anova">ANOVAs</a></li>
 										<li><a href="hypothesistesting.html#mult_regression">Multiple Regressions</a></li>	
 									</ul>
 								</li>
-								<li><a href="visualization.html">Visualization</a>
+								<li><a href="visualization.html">7) Visualization</a>
 									<ul>
 										<li><a href="visualization.html#histograms">Histograms</a></li>
 										<li><a href="visualization.html#boxplot">Boxplots</a></li>
@@ -110,7 +117,7 @@
 
 										<article>
 											<header>
-												<h2>Data Preprocessing</h2>
+												<h2>Step 3: Data Preprocessing</h2>
 											</header>
 
 											<!-- <span class="image featured"><img src="images/banner.jpg" alt="" /></span> -->
@@ -118,6 +125,8 @@
 											<h3 id="load_data">Set up an R Script and load your data into RStudio</h3>
 
 											<h4>Initiating the script</h4>
+											<p>It's critical to have a script while working with R. There are two areas of the screen where you might write code: The script and the Console. The script is where you write down a set of commands in order and run them. When you run a line or chunk of code from the script, it gets sent to the console, where the computer actually processes it. So, as a general rule, other than installing packages (which is different from <i>loading</i> packages), it's best practice to write everything in your script and run it from there, rather than writing lines of code directly into the console. This way, you can keep track of what exactly you've run and in what order (which will be very important information to have easy access to when it comes to resolving any problems or errors that come up).</p>
+
 											<p>You can open up a blank R script in RStudio similarly to how you would open a new document in Microsoft Word:</p>
 
 											<span class="image featured"><img src="images/open_new_script.png" alt="" /></span> 

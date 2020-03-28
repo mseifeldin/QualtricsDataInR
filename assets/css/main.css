@@ -51,6 +51,9 @@ h3 {
 h5 {
 	font-style: italic;
 }
+h6 {
+	font-size: 80%;
+}
 /*End of my extras*/
 
 body {
