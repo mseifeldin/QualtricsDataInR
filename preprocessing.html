@@ -28,8 +28,8 @@
 									<a href="setup.html">1) Setup</a>
 									<ul>
 										<li><a href="setup.html#download_data">Download Data</a></li>
-										<li><a href="setup.html#install_r">Install R</a></li>
-										<li><a href="setup.html#install_rstudio">Install RStudio</a></li>
+										<!-- <li><a href="setup.html#install_r">Install R</a></li> -->
+										<li><a href="#setup.setup_rstudiocloud">Set up RStudio Cloud</a></li>
 										<li><a href="setup.html#install_packages">Install Packages</a></li>
 									</ul>
 								</li>
@@ -51,29 +51,26 @@
 								</li>
 								<li><a href="dataprocessing.html">4) Data Processing</a>
 									<ul>
-										<li><a href="dataprocessing.html#condense_columns">Condensing Columns</a></li>
-										<li><a href="dataprocessing.html#new_columns">New Columns</a></li>
-										<li><a href="dataprocessing.html#reverse_coding">Reverse Coding</a></li>
-										<li><a href="dataprocessing.html#internal_reliability">Internal Reliability</a></li>
-										<li><a href="dataprocessing.html#dummy_coding">Dummy Coding</a></li>
+										<li><a href="#dataprocessing.reverse_coding">Reverse Coding</a></li>
+										<li><a href="#dataprocessing.internal_reliability">Cronabach's Alpha</a></li>
+										<li><a href="#dataprocessing.new_columns">Calculation New Columns</a></li>
 									</ul>
 								</li>
 								<li><a href="descriptivestats.html">5) Descriptive Statistics</a>
 									<ul>
-										<li><a href="descriptivestats.html#calculations">Calculations</a></li>
-										<li><a href="descriptivestats.html#grouping">Grouping</a></li>
-										<li><a href="descriptivestats.html#frequency">Frequency</a></li>
+										<li><a href="#descriptivestats.calculations">Demographics</a></li>
+										<li><a href="#descriptivestats.grouping">Grouped Stats</a></li>
 									</ul>
 								</li>
 								<li><a href="hypothesistesting.html">6) Hypothesis Testing</a>
 									<ul>
 										<li><a href="hypothesistesting.html#correlation">Correlations</a></li>
 										<li><a href="hypothesistesting.html#t_test">T-tests</a></li>
-										<li><a href="hypothesistesting.html#anova">ANOVAs</a></li>
-										<li><a href="hypothesistesting.html#mult_regression">Multiple Regressions</a></li>	
+										<li><a href="hypothesistesting.html#anova">One-way ANOVAs</a></li>
+										<li><a href="hypothesistesting.html#factorial_anova">Factorial ANOVAs</a></li>	
 									</ul>
 								</li>
-								<li><a href="visualization.html">7) Visualization</a>
+								<!-- <li><a href="visualization.html">7) Visualization</a>
 									<ul>
 										<li><a href="visualization.html#histograms">Histograms</a></li>
 										<li><a href="visualization.html#boxplot">Boxplots</a></li>
@@ -81,7 +78,7 @@
 										<li><a href="visualization.html#scatterplots">Scatter Plots</a></li>
 										<li><a href="visualization.html#lines_and_error">Lines & Error</a></li>
 									</ul>
-								</li>	
+								</li>	 -->
 							</ul>
 						</nav>
 
@@ -127,22 +124,22 @@
 											<h4>Initiating the script</h4>
 											<p>It's critical to have a script while working with R. There are two areas of the screen where you might write code: The script and the Console. The script is where you write down a set of commands in order and run them. When you run a line or chunk of code from the script, it gets sent to the console, where the computer actually processes it. So, as a general rule, other than installing packages (which is different from <i>loading</i> packages), it's best practice to write everything in your script and run it from there, rather than writing lines of code directly into the console. This way, you can keep track of what exactly you've run and in what order (which will be very important information to have easy access to when it comes to resolving any problems or errors that come up).</p>
 
-											<p>You can open up a blank R script in RStudio similarly to how you would open a new document in Microsoft Word:</p>
+											<p>For this tutorial, I've created a template script you can download to your computer then upload to your RStudio Cloud Project. Depending on your experiment's design, you will need to actually complete some sections and delete other sections. Take a look at your spreadsheets from the Set Goals page to figure out what you need and what you don't.</p>
 
-											<span class="image featured"><img src="images/open_new_script.png" alt="" /></span> 
+											<a href="R/Final_Project.R" class="button">Script Template Download</a>
 
-											<p>The script will open up in the top left hand corner window. We should save it and name it in the same folder where we saved our data.</p>
+											<p>Then click on the name of the script in your files window and it will open up in the upper left hand script area.</p>
 
 											<h4>Set the working directory</h4>
 											<p>This step is <b>very</b> important. If you forget to set the working directory, in all likelihood, you will keep getting errors when you try to load your data.</p>
 
 											<p>Imagine a tiny man named Steve who lives in your computer's hard drive. Whenever R needs access to a file on your computer, it asks Steve for the name of the file as you typed it in. Steve looks around the folder, finds it, and passes it to R to deal with. However, if Steve is sitting in the wrong folder, he looks around, doesn't find the file that R has asked for and tells R. So R throws an error to the console. Setting the working directory is how you pick Steve up from wherever he is and put him in the right folder to wait for R's request for a file.</p>
 
-											<p>Click the "Files" tab in the bottom right window in RStudio.Then navigate to the folder where your data is stored. If you can't seem to find it, find the files outside R and put them in one of the folders you can see in the window.</p>
+											<p>Click the "Files" tab in the bottom right window in RStudio. Then navigate to the folder where your data is stored. <!-- If you can't seem to find it, find the files outside R and put them in one of the folders you can see in the window. --></p>
 
 											<span class="image featured"><img src="images/filewindow.png" alt="" /></span> 
 
-											<p>When you can see your data files in the window, click the "More" dropdown menu and select "Set As Working Directory". A line of code will spit out in your Console window.</p>
+											<p><!-- When you can see your data files in the window,  -->Click the "More" dropdown menu and select "Set As Working Directory". A line of code will spit out in your Console window. Copy this into place in the template.</p>
 
 											<span class="image featured"><img src="images/wd_more.png" alt="" /></span> 
 

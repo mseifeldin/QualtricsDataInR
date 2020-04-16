@@ -180,22 +180,9 @@ summary {
 </div>
 
 
-<p>Here we analyze the correlation between age and social dominance orientation:</p>
-<pre class="r"><code>age_x_sdo &lt;- cor.test(analysis_data$Age, analysis_data$SocialDominance, 
-                method = &quot;pearson&quot;)
-age_x_sdo</code></pre>
-<pre><code>## 
-##  Pearson's product-moment correlation
-## 
-## data:  analysis_data$Age and analysis_data$SocialDominance
-## t = -0.16554, df = 84, p-value = 0.8689
-## alternative hypothesis: true correlation is not equal to 0
-## 95 percent confidence interval:
-##  -0.2290583  0.1945603
-## sample estimates:
-##         cor 
-## -0.01805946</code></pre>
-<p>You’ll need the p-value and the r-value (cor) to report a correlation properly.</p>
+<p>In this example, we’ll use the Gender column from our final analysis dataframe.</p>
+<pre class="r"><code>gender_percentages &lt;- prop.table(ftable(analysis_data$Gender)) * 100</code></pre>
+<p>Code transaltion: we make a variable called gender_percentages. To fill the varialbe, we take the Gender column from the analysis_data dataframe and make a frequency table with the ftable() command. we turn that frequency table into a proportion table with the prop.table() command. Then, we multiply the values in the proportion table by 100 to get percentages. *Key tip: if your categorical demographic has a lot of categories, keep in mind when reading the output that the end of the number lines up vertically with the end of the name of the category in the line above.</p>
 
 
 

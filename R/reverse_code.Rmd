@@ -11,32 +11,38 @@ library(dplyr)
 library(ggplot2)
 library(ltm)
 library(car)
+library(gmodels)
 
-valdata <- read.csv("altruism_data_values.csv", header=TRUE)
-numdata <- read.csv("altruism_data_numeric.csv", header=TRUE)
-fulldata <- numdata
-ourdata <- subset(fulldata, Consent==1)
-data <- dplyr::select(ourdata,.data$praise_rejection_1 : .data$botcatcher)
-colnames(data)[19] <- "Age"
-data[,] <- sapply(data[,], as.character)
-data$condition <- ifelse(data$likely_nonpro != "", "nonpro", "pro")
-data$vignette_response <- ifelse(data$likely_nonpro == "", data$likely_pro, data$likely_nonpro)
-data$justification <- ifelse(data$bot_catcher == "", data$botcatcher, data$bot_catcher)
+choice_data <- read.csv("ExampleData_choice.csv", header=TRUE)
+numeric_data <- read.csv("ExampleData_numeric.csv", header=TRUE)
+numeric_data <- subset(numeric_data, Consent==1)
+choice_data <- subset(choice_data, Consent=="Yes")
+choice_data <- choice_data[, -c(1:17)]
+numeric_data <- numeric_data[, -c(1:17)]
 ```
-Here we create a new column in our dataframe called "reversed" and tell R to take the praise_rejection_1 column and fill our new column with recoded data as we have specified in the quotes inside the recode() function.
+Here we create a new column in our dataframe called "SDO1R" and tell R to take the SDO1 column and fill our new column with recoded data as we have specified in the quotes inside the recode() function.
 ```{r, eval = TRUE}
-data$reversed <- recode(data$praise_rejection_1, "1=7; 2=6; 3=5; 4=4; 5=3; 6=2; 7=1;")
+numeric_data$SDO1R <- recode(numeric_data$SDO1, "1=7; 2=6; 3=5; 4=4; 5=3; 6=2; 7=1; else=NA")
 ```
-compare the contents of the praise_rejection_1 column:
+compare the contents of the SDO1 column:
 ```{r, eval = TRUE}
-data$praise_rejection_1
+numeric_data$SDO1
 ```
 to the contents of the reversed column:
 ```{r, eval = TRUE}
-data$reversed
+numeric_data$SDO1R
 ```
-Now, to have the "reversed" data replace the data in the original column, we delete the original column and rename the reversed column with the name of the original column:
+It worked! So, we repeat the process with each of the columns that need reverse coding:
 ```{r, eval = TRUE}
-data$praise_rejection_1 <- NULL
-data <- rename(data, praise_rejection_1 = reversed)
+numeric_data$SDO2R <- recode(numeric_data$SDO2,"1=7; 2=6; 3=5; 4=4; 5=3; 6=2; 7=1; else=NA")
+numeric_data$SDO5R <- recode(numeric_data$SDO5,"1=7; 2=6; 3=5; 4=4; 5=3; 6=2; 7=1; else=NA")
+numeric_data$SDO6R <- recode(numeric_data$SDO6,"1=7; 2=6; 3=5; 4=4; 5=3; 6=2; 7=1; else=NA")
 ```
+Now, in order to analyze this variable properly and effectively, we collect all the reversed columns and all the original versions of the non-reversed columns into a single data frame:
+```{r, eval = TRUE}
+SDO <- data.frame(numeric_data$SDO1R, numeric_data$SDO2R, 
+                  numeric_data$SDO3, numeric_data$SDO4, 
+                  numeric_data$SDO5R, numeric_data$SDO6R,
+                  numeric_data$SDO7, numeric_data$SDO8)
+```
+With this dataframe, we can calculate both Cronbach's Alpha and the mean scores for this scale.

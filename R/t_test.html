@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
@@ -83,7 +83,6 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -145,6 +144,7 @@ summary {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -156,18 +156,6 @@ summary {
   display: none;
 }
 </style>
-
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
 
 <!-- code folding -->
 
@@ -192,54 +180,23 @@ $(document).ready(function () {
 </div>
 
 
-<pre class="r"><code>t.test(data$condition == &quot;pro&quot;, data$vignette_response, var.equal = TRUE)</code></pre>
+<p>Here, we’ll test whether there’s a statistically significant differenct between men and women in social dominance orientation: First, specify the categorical predictor as a factor:</p>
+<pre class="r"><code>analysis_data$Gender &lt;- factor(analysis_data$Gender)</code></pre>
+<p>We do this so R is sure to analyze this data as categorical. Now we can run our test. Note: the dependent variable comes before the tilda.</p>
+<pre class="r"><code>Gender_x_SocDom &lt;- t.test(analysis_data$SocialDominance ~ analysis_data$Gender, na.action=na.exclude, var.equal = TRUE)
+Gender_x_SocDom</code></pre>
 <pre><code>## 
 ##  Two Sample t-test
 ## 
-## data:  data$condition == &quot;pro&quot; and data$vignette_response
-## t = -24.372, df = 98, p-value &lt; 2.2e-16
+## data:  analysis_data$SocialDominance by analysis_data$Gender
+## t = -0.65955, df = 87, p-value = 0.5113
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
-##  -6.099227 -5.180773
+##  -0.8328525  0.4178372
 ## sample estimates:
-## mean of x mean of y 
-##      0.52      6.16</code></pre>
-<pre class="r"><code>t.test(data$condition == &quot;pro&quot;, data$vignette_response, var.equal = FALSE)</code></pre>
-<pre><code>## 
-##  Welch Two Sample t-test
-## 
-## data:  data$condition == &quot;pro&quot; and data$vignette_response
-## t = -24.372, df = 59.189, p-value &lt; 2.2e-16
-## alternative hypothesis: true difference in means is not equal to 0
-## 95 percent confidence interval:
-##  -6.103021 -5.176979
-## sample estimates:
-## mean of x mean of y 
-##      0.52      6.16</code></pre>
-<pre class="r"><code>t.test(data$condition == &quot;pro&quot;,data$vignette_response, paired=TRUE)</code></pre>
-<pre><code>## 
-##  Paired t-test
-## 
-## data:  data$condition == &quot;pro&quot; and data$vignette_response
-## t = -26.923, df = 49, p-value &lt; 2.2e-16
-## alternative hypothesis: true difference in means is not equal to 0
-## 95 percent confidence interval:
-##  -6.060984 -5.219016
-## sample estimates:
-## mean of the differences 
-##                   -5.64</code></pre>
-<pre class="r"><code>t.test(data$condition == &quot;pro&quot;,data$vignette_response, paired=TRUE, alt=&quot;greater&quot;)</code></pre>
-<pre><code>## 
-##  Paired t-test
-## 
-## data:  data$condition == &quot;pro&quot; and data$vignette_response
-## t = -26.923, df = 49, p-value = 1
-## alternative hypothesis: true difference in means is greater than 0
-## 95 percent confidence interval:
-##  -5.991219       Inf
-## sample estimates:
-## mean of the differences 
-##                   -5.64</code></pre>
+## mean in group Female   mean in group Male 
+##             2.237805             2.445312</code></pre>
+<p>To report a t-test properly, you’ll need the p-value and the t-value. You’ll also need the grouped means (which are available at the bottom) and the grouped standard deviations (which you’ll need to calculate yourself; see descriptive statistics page).</p>
 
 
 
@@ -258,6 +215,23 @@ $(document).ready(function () {
 
 
 </script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

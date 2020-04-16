@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
@@ -83,7 +83,6 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -145,6 +144,7 @@ summary {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -156,18 +156,6 @@ summary {
   display: none;
 }
 </style>
-
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
 
 <!-- code folding -->
 
@@ -192,17 +180,17 @@ $(document).ready(function () {
 </div>
 
 
-<p>first we assign just the raw (and reverse-coded) columns to a new dataframe called scale_scores:</p>
-<pre class="r"><code>scale_scores &lt;- data  %&gt;% dplyr::select(., -c(Age, condition, vignette_response, justification, praise_rejection))</code></pre>
-<p>then we run cronbach’s alpha test to check our scale reliability:</p>
-<pre class="r"><code>cronbach.alpha(scale_scores, na.rm = TRUE)</code></pre>
+<p>Since we’ve already collected our properly reverse coded scale into a single data frame, we simply run the cronbach.alpha(dataframe, na.rm = TRUE) command on the dataframe and save it to a variable:</p>
+<pre class="r"><code>SDO_alpha &lt;- cronbach.alpha(SDO, na.rm = TRUE)</code></pre>
+<p>Then, you can run the name of the variable to get the results:</p>
+<pre class="r"><code>SDO_alpha</code></pre>
 <pre><code>## 
-## Cronbach's alpha for the 'scale_scores' data-set
+## Cronbach's alpha for the 'SDO' data-set
 ## 
-## Items: 18
-## Sample units: 50
-## alpha: 0.891</code></pre>
-<p>Note: alpha scores above .7 are considered a good score</p>
+## Items: 8
+## Sample units: 89
+## alpha: 0.911</code></pre>
+<p>Note: alpha scores above .7 are considered a good score.</p>
 
 
 
@@ -221,6 +209,23 @@ $(document).ready(function () {
 
 
 </script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

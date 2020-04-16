@@ -180,22 +180,17 @@ summary {
 </div>
 
 
-<p>Here we analyze the correlation between age and social dominance orientation:</p>
-<pre class="r"><code>age_x_sdo &lt;- cor.test(analysis_data$Age, analysis_data$SocialDominance, 
-                method = &quot;pearson&quot;)
-age_x_sdo</code></pre>
-<pre><code>## 
-##  Pearson's product-moment correlation
-## 
-## data:  analysis_data$Age and analysis_data$SocialDominance
-## t = -0.16554, df = 84, p-value = 0.8689
-## alternative hypothesis: true correlation is not equal to 0
-## 95 percent confidence interval:
-##  -0.2290583  0.1945603
-## sample estimates:
-##         cor 
-## -0.01805946</code></pre>
-<p>You’ll need the p-value and the r-value (cor) to report a correlation properly.</p>
+<p>Find the columns in the numeric dataframe that represent responses to your quiz questions, and figure out which answer is correct by referencing the original quiz questions and the corresponding columns in the choice dataframe. In the example data, we look at the columns “Word1”, “Word2”, “Word3”, “Word4”, and “Word5”. Word1 should be 1, Word 2 should be 0, Word3 should be 1, Word4 should be 0 and Word5 should be 1.</p>
+<pre class="r"><code>numeric_data$Word1Accuracy &lt;- ifelse(numeric_data$Word1 == 1,  1,0)
+numeric_data$Word2Accuracy &lt;- ifelse(numeric_data$Word2 == 0,  1,0)
+numeric_data$Word3Accuracy &lt;- ifelse(numeric_data$Word3 == 1,  1,0)
+numeric_data$Word4Accuracy &lt;- ifelse(numeric_data$Word4 == 0,  1,0)
+numeric_data$Word5Accuracy &lt;- ifelse(numeric_data$Word5 == 1,  1,0)</code></pre>
+<p>Code translation: we make a new column in the numeric dataframe called “Word1Accuracy”. For each row in this column, R checks the same row in the column named “Word1” is equal (==) to 1. If it is, the cell will contain a 1. If not, the cell will contain a 0. Then we do the same for “Word2”, “Word3”, “Word4”, and “Word5”.</p>
+<p>Finally, we create a dataframe that contains all our accuracy evaluations for the memory test:</p>
+<pre class="r"><code>MemoryTest &lt;- data.frame(numeric_data$Word1Accuracy, numeric_data$Word2Accuracy, 
+                         numeric_data$Word3Accuracy, numeric_data$Word4Accuracy, 
+                         numeric_data$Word5Accuracy)</code></pre>
 
 
 

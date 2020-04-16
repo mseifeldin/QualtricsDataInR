@@ -180,22 +180,9 @@ summary {
 </div>
 
 
-<p>Here we analyze the correlation between age and social dominance orientation:</p>
-<pre class="r"><code>age_x_sdo &lt;- cor.test(analysis_data$Age, analysis_data$SocialDominance, 
-                method = &quot;pearson&quot;)
-age_x_sdo</code></pre>
-<pre><code>## 
-##  Pearson's product-moment correlation
-## 
-## data:  analysis_data$Age and analysis_data$SocialDominance
-## t = -0.16554, df = 84, p-value = 0.8689
-## alternative hypothesis: true correlation is not equal to 0
-## 95 percent confidence interval:
-##  -0.2290583  0.1945603
-## sample estimates:
-##         cor 
-## -0.01805946</code></pre>
-<p>You’ll need the p-value and the r-value (cor) to report a correlation properly.</p>
+<p>To make an accuracy score, we’ll get a proportion of correct answers for each subject in our new MemoryTest data frame:</p>
+<pre class="r"><code>MemoryTest$MemoryScore &lt;- rowSums(MemoryTest) / ncol(MemoryTest)</code></pre>
+<p>Code translation: We make a new column in the MemoryTest dataframe called MemoryScore. In this new column, each row will take the sum of all the other cells in the same row of the dataframe (which gets us the number of correct answers), then divide it by the number of columns in the dataframe (which is the number of questions, or number of possible correct answers).</p>
 
 
 

@@ -180,22 +180,10 @@ summary {
 </div>
 
 
-<p>Here we analyze the correlation between age and social dominance orientation:</p>
-<pre class="r"><code>age_x_sdo &lt;- cor.test(analysis_data$Age, analysis_data$SocialDominance, 
-                method = &quot;pearson&quot;)
-age_x_sdo</code></pre>
-<pre><code>## 
-##  Pearson's product-moment correlation
-## 
-## data:  analysis_data$Age and analysis_data$SocialDominance
-## t = -0.16554, df = 84, p-value = 0.8689
-## alternative hypothesis: true correlation is not equal to 0
-## 95 percent confidence interval:
-##  -0.2290583  0.1945603
-## sample estimates:
-##         cor 
-## -0.01805946</code></pre>
-<p>You’ll need the p-value and the r-value (cor) to report a correlation properly.</p>
+<p>For our analyses, we need: the demographics Gender &amp; Age, the IVs Condition &amp; Political Party, and the DV SDO</p>
+<pre class="r"><code>analysis_data &lt;- data.frame(choice_data$GEND, numeric_data$AGE, choice_data$condition, choice_data$PPP1, SDO$SDO_mean_scores)</code></pre>
+<p>Next, because the method we used to make this dataframe results in some rather cumbersome column names to deal with, we’ll give all the columns in this new dataframe easy intuitive names like this:</p>
+<pre class="r"><code>names(analysis_data) &lt;- c(&quot;Gender&quot;, &quot;Age&quot;, &quot;Condition&quot;,&quot;PoliticalParty&quot;, &quot;SocialDominance&quot;)</code></pre>
 
 
 

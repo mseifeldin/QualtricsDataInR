@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
@@ -83,7 +83,6 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -145,6 +144,7 @@ summary {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -156,18 +156,6 @@ summary {
   display: none;
 }
 </style>
-
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
 
 <!-- code folding -->
 
@@ -192,15 +180,10 @@ $(document).ready(function () {
 </div>
 
 
-<p>Now we’re going to convert the columns that have numbers in them to the numeric data type so that we can perform mathematical calculations on their contents:</p>
-<pre class="r"><code>data$vignette_response &lt;- as.numeric(data$vignette_response)
-data$Age &lt;- as.numeric(data$Age)
-data[,1:18] &lt;- sapply(data[,1:18],as.numeric)</code></pre>
-<p>Now we’ll make a column that takes the mean of</p>
-<pre class="r"><code>data &lt;- data %&gt;%
-  mutate(justification,
-         praise_rejection = rowMeans(dplyr::select(., -c(Age, condition, vignette_response, justification)),na.rm = TRUE))</code></pre>
-<p>Code translation: we take the dataframe and tell R to create a new column based on the formula inside the mutate() function. The formula says to put the column after the “justification” column and call it “praise_rejection”. Then, using the rowMeans() function, to take the mean in each row for every column value except those of the Age, condition, vignette_response, and justification columns. This just leaves the responses to the praise_rejection scale. We could also have phrased this as a list of the columns that contain scale responses, but excluding a list of non-scale data in this case makes for a shorter list.</p>
+<p>If you have a Likert scale that you’ve already reverse coded as per the instructions above, you should have a dataframe with just the columns of raw scores for that scale. Using our example data, we run the following command to make a new column in that dataframe called SDO_mean_scores, where each row in the column contains the mean of all the other cells in the same row of the dataframe:</p>
+<pre class="r"><code>SDO$SDO_mean_scores &lt;- rowMeans(SDO, na.rm = TRUE)</code></pre>
+<p>*If you get an error similar to “Error in rowMeans(SDO, na.rm = TRUE) : ‘x’ must be numeric”, run the following code on your variable dataframe, then try the mean score calculation again:</p>
+<pre class="r"><code>SDO &lt;- mutate_all(SDO, function(x) as.numeric(as.character(x)))</code></pre>
 
 
 
@@ -219,6 +202,23 @@ $(document).ready(function () {
 
 
 </script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

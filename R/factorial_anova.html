@@ -180,22 +180,258 @@ summary {
 </div>
 
 
-<p>Here we analyze the correlation between age and social dominance orientation:</p>
-<pre class="r"><code>age_x_sdo &lt;- cor.test(analysis_data$Age, analysis_data$SocialDominance, 
-                method = &quot;pearson&quot;)
-age_x_sdo</code></pre>
-<pre><code>## 
-##  Pearson's product-moment correlation
+<p>Here, we’ll test whether there’s a statistically significant effect of condition on social dominance orientation, whether there’s a stastistically significant effect of political party on social dominance orientation, and whether there’s an interaction between condition and political party in their combined effect on social dominance orientation</p>
+<pre class="r"><code>Condition_x_SDO_PP &lt;- aov(SocialDominance ~ Condition * PoliticalParty, na.action=na.exclude, data= analysis_data)
+summary(Condition_x_SDO_PP)</code></pre>
+<pre><code>##                          Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+## Condition                 2   5.30   2.650   1.510 0.227418    
+## PoliticalParty            4  44.51  11.127   6.340 0.000183 ***
+## Condition:PoliticalParty  5   6.43   1.286   0.733 0.601171    
+## Residuals                77 135.14   1.755                     
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+<p>To report an ANOVA properly, you’ll need the following values for each of the independent variables, and the iteraction effect (in the example above, this is “Condition:PoliticalParty”): p-value (Pr(&gt;F)), the F-value, the between-groups degrees of freedom (Df x Independent Variable), and the within-groups degrees of freedom (Df x Residuals) You’ll also need the grouped means and the grouped standard deviations (which you’ll need to calculate yourself; see descriptive statistics page).</p>
+<p>If you get a statistically significant result, you should also run a Tukey post-hoc analysis:</p>
+<pre class="r"><code>Condition_x_SDO_PP_Tukey &lt;- TukeyHSD(Condition_x_SDO_PP)
+Condition_x_SDO_PP_Tukey</code></pre>
+<pre><code>##   Tukey multiple comparisons of means
+##     95% family-wise confidence level
 ## 
-## data:  analysis_data$Age and analysis_data$SocialDominance
-## t = -0.16554, df = 84, p-value = 0.8689
-## alternative hypothesis: true correlation is not equal to 0
-## 95 percent confidence interval:
-##  -0.2290583  0.1945603
-## sample estimates:
-##         cor 
-## -0.01805946</code></pre>
-<p>You’ll need the p-value and the r-value (cor) to report a correlation properly.</p>
+## Fit: aov(formula = SocialDominance ~ Condition * PoliticalParty, data = analysis_data, na.action = na.exclude)
+## 
+## $Condition
+##           diff        lwr       upr     p adj
+## 1-0 -0.0237069 -0.8482079 0.8007941 0.9974002
+## 2-0  0.5041667 -0.3133172 1.3216505 0.3090402
+## 2-1  0.5278736 -0.2966274 1.3523746 0.2826318
+## 
+## $PoliticalParty
+##                                                        diff         lwr      upr     p adj
+## Another party (please specify)-                  -2.9902299 -7.52276943 1.542310 0.3569520
+## Democrat-                                        -2.4395740 -6.18038685 1.301239 0.3687509
+## Independent voter-                               -1.7994885 -5.57358189 1.974605 0.6723134
+## Republican-                                      -0.6166284 -4.43880130 3.205545 0.9913134
+## Democrat-Another party (please specify)           0.5506559 -2.12249006 3.223802 0.9782835
+## Independent voter-Another party (please specify)  1.1907414 -1.52878235 3.910265 0.7379962
+## Republican-Another party (please specify)         2.3736015 -0.41226179 5.159465 0.1318700
+## Independent voter-Democrat                        0.6400855 -0.27946640 1.559637 0.3031311
+## Republican-Democrat                               1.8229456  0.72258168 2.923310 0.0001404
+## Republican-Independent voter                      1.1828602 -0.02581706 2.391537 0.0580867
+## 
+## $`Condition:PoliticalParty`
+##                                                                           diff         lwr
+## 1:-0:                                                                       NA          NA
+## 2:-0:                                                                       NA          NA
+## 0:Another party (please specify)-0:                                         NA          NA
+## 1:Another party (please specify)-0:                               -2.375000000 -8.93989195
+## 2:Another party (please specify)-0:                               -3.125000000 -9.68989195
+## 0:Democrat-0:                                                     -2.265625000 -7.05057114
+## 1:Democrat-0:                                                     -2.414473684 -7.17714688
+## 2:Democrat-0:                                                     -2.272727273 -7.12122130
+## 0:Independent voter-0:                                            -1.984375000 -6.90804396
+## 1:Independent voter-0:                                            -2.291666667 -7.65187850
+## 2:Independent voter-0:                                            -1.089285714 -5.89429461
+## 0:Republican-0:                                                   -1.200000000 -6.28514344
+## 1:Republican-0:                                                   -0.291666667 -5.30568571
+## 2:Republican-0:                                                    0.093750000 -5.09625279
+## 2:-1:                                                                       NA          NA
+## 0:Another party (please specify)-1:                                         NA          NA
+## 1:Another party (please specify)-1:                                         NA          NA
+## 2:Another party (please specify)-1:                                         NA          NA
+## 0:Democrat-1:                                                               NA          NA
+## 1:Democrat-1:                                                               NA          NA
+## 2:Democrat-1:                                                               NA          NA
+## 0:Independent voter-1:                                                      NA          NA
+## 1:Independent voter-1:                                                      NA          NA
+## 2:Independent voter-1:                                                      NA          NA
+## 0:Republican-1:                                                             NA          NA
+## 1:Republican-1:                                                             NA          NA
+## 2:Republican-1:                                                             NA          NA
+## 0:Another party (please specify)-2:                                         NA          NA
+## 1:Another party (please specify)-2:                                         NA          NA
+## 2:Another party (please specify)-2:                                         NA          NA
+## 0:Democrat-2:                                                               NA          NA
+## 1:Democrat-2:                                                               NA          NA
+## 2:Democrat-2:                                                               NA          NA
+## 0:Independent voter-2:                                                      NA          NA
+## 1:Independent voter-2:                                                      NA          NA
+## 2:Independent voter-2:                                                      NA          NA
+## 0:Republican-2:                                                             NA          NA
+## 1:Republican-2:                                                             NA          NA
+## 2:Republican-2:                                                             NA          NA
+## 1:Another party (please specify)-0:Another party (please specify)           NA          NA
+## 2:Another party (please specify)-0:Another party (please specify)           NA          NA
+## 0:Democrat-0:Another party (please specify)                                 NA          NA
+## 1:Democrat-0:Another party (please specify)                                 NA          NA
+## 2:Democrat-0:Another party (please specify)                                 NA          NA
+## 0:Independent voter-0:Another party (please specify)                        NA          NA
+## 1:Independent voter-0:Another party (please specify)                        NA          NA
+## 2:Independent voter-0:Another party (please specify)                        NA          NA
+## 0:Republican-0:Another party (please specify)                               NA          NA
+## 1:Republican-0:Another party (please specify)                               NA          NA
+## 2:Republican-0:Another party (please specify)                               NA          NA
+## 2:Another party (please specify)-1:Another party (please specify) -0.750000000 -7.31489195
+## 0:Democrat-1:Another party (please specify)                        0.109375000 -4.67557114
+## 1:Democrat-1:Another party (please specify)                       -0.039473684 -4.80214688
+## 2:Democrat-1:Another party (please specify)                        0.102272727 -4.74622130
+## 0:Independent voter-1:Another party (please specify)               0.390625000 -4.53304396
+## 1:Independent voter-1:Another party (please specify)               0.083333333 -5.27687850
+## 2:Independent voter-1:Another party (please specify)               1.285714286 -3.51929461
+## 0:Republican-1:Another party (please specify)                      1.175000000 -3.91014344
+## 1:Republican-1:Another party (please specify)                      2.083333333 -2.93068571
+## 2:Republican-1:Another party (please specify)                      2.468750000 -2.72125279
+## 0:Democrat-2:Another party (please specify)                        0.859375000 -3.92557114
+## 1:Democrat-2:Another party (please specify)                        0.710526316 -4.05214688
+## 2:Democrat-2:Another party (please specify)                        0.852272727 -3.99622130
+## 0:Independent voter-2:Another party (please specify)               1.140625000 -3.78304396
+## 1:Independent voter-2:Another party (please specify)               0.833333333 -4.52687850
+## 2:Independent voter-2:Another party (please specify)               2.035714286 -2.76929461
+## 0:Republican-2:Another party (please specify)                      1.925000000 -3.16014344
+## 1:Republican-2:Another party (please specify)                      2.833333333 -2.18068571
+## 2:Republican-2:Another party (please specify)                      3.218750000 -1.97125279
+## 1:Democrat-0:Democrat                                             -0.148848684 -1.72395479
+## 2:Democrat-0:Democrat                                             -0.007102273 -1.82528753
+## 0:Independent voter-0:Democrat                                     0.281250000 -1.72882944
+## 1:Independent voter-0:Democrat                                    -0.026041667 -2.94661938
+## 2:Independent voter-0:Democrat                                     1.176339286 -0.52248790
+## 0:Republican-0:Democrat                                            1.065625000 -1.31273306
+## 1:Republican-0:Democrat                                            1.973958333 -0.24826810
+## 2:Republican-0:Democrat                                            2.359375000 -0.23562639
+## 2:Democrat-1:Democrat                                              0.141746411 -1.61698722
+## 0:Independent voter-1:Democrat                                     0.430098684 -1.52636897
+## 1:Independent voter-1:Democrat                                     0.122807018 -2.76113482
+## 2:Independent voter-1:Democrat                                     1.325187970 -0.30985336
+## 0:Republican-1:Democrat                                            1.214473684 -1.11875014
+## 1:Republican-1:Democrat                                            2.122807018 -0.05104593
+## 2:Republican-1:Democrat                                            2.508223684 -0.04547532
+## 0:Independent voter-2:Democrat                                     0.288352273 -1.86863732
+## 1:Independent voter-2:Democrat                                    -0.018939394 -3.04250664
+## 2:Independent voter-2:Democrat                                     1.183441558 -0.68690562
+## 0:Republican-2:Democrat                                            1.072727273 -1.43102428
+## 1:Republican-2:Democrat                                            1.981060606 -0.37488401
+## 2:Republican-2:Democrat                                            2.366477273 -0.34391329
+## 1:Independent voter-0:Independent voter                           -0.307291667 -3.44999442
+## 2:Independent voter-0:Independent voter                            0.895089286 -1.16229261
+## 0:Republican-0:Independent voter                                   0.784375000 -1.86201755
+## 1:Republican-0:Independent voter                                   1.692708333 -0.81430119
+## 2:Republican-0:Independent voter                                   2.078125000 -0.76455660
+## 2:Independent voter-1:Independent voter                            1.202380952 -1.75095193
+## 0:Republican-1:Independent voter                                   1.091666667 -2.29842896
+## 1:Republican-1:Independent voter                                   2.000000000 -1.28244597
+## 2:Republican-1:Independent voter                                   2.385416667 -1.16003020
+## 0:Republican-2:Independent voter                                  -0.110714286 -2.52918240
+## 1:Republican-2:Independent voter                                   0.797619048 -1.46748387
+## 2:Republican-2:Independent voter                                   1.183035714 -1.44877605
+## 1:Republican-0:Republican                                          0.908333333 -1.90258546
+## 2:Republican-0:Republican                                          1.293750000 -1.82025167
+## 2:Republican-1:Republican                                          0.385416667 -2.61103284
+##                                                                        upr     p adj
+## 1:-0:                                                                   NA        NA
+## 2:-0:                                                                   NA        NA
+## 0:Another party (please specify)-0:                                     NA        NA
+## 1:Another party (please specify)-0:                               4.189892 0.9940772
+## 2:Another party (please specify)-0:                               3.439892 0.9362616
+## 0:Democrat-0:                                                     2.519321 0.9387444
+## 1:Democrat-0:                                                     2.348200 0.9001486
+## 2:Democrat-0:                                                     2.575767 0.9432202
+## 0:Independent voter-0:                                            2.939294 0.9837378
+## 1:Independent voter-0:                                            3.068545 0.9728491
+## 2:Independent voter-0:                                            3.715723 0.9999670
+## 0:Republican-0:                                                   3.885143 0.9999463
+## 1:Republican-0:                                                   4.722352 1.0000000
+## 2:Republican-0:                                                   5.283753 1.0000000
+## 2:-1:                                                                   NA        NA
+## 0:Another party (please specify)-1:                                     NA        NA
+## 1:Another party (please specify)-1:                                     NA        NA
+## 2:Another party (please specify)-1:                                     NA        NA
+## 0:Democrat-1:                                                           NA        NA
+## 1:Democrat-1:                                                           NA        NA
+## 2:Democrat-1:                                                           NA        NA
+## 0:Independent voter-1:                                                  NA        NA
+## 1:Independent voter-1:                                                  NA        NA
+## 2:Independent voter-1:                                                  NA        NA
+## 0:Republican-1:                                                         NA        NA
+## 1:Republican-1:                                                         NA        NA
+## 2:Republican-1:                                                         NA        NA
+## 0:Another party (please specify)-2:                                     NA        NA
+## 1:Another party (please specify)-2:                                     NA        NA
+## 2:Another party (please specify)-2:                                     NA        NA
+## 0:Democrat-2:                                                           NA        NA
+## 1:Democrat-2:                                                           NA        NA
+## 2:Democrat-2:                                                           NA        NA
+## 0:Independent voter-2:                                                  NA        NA
+## 1:Independent voter-2:                                                  NA        NA
+## 2:Independent voter-2:                                                  NA        NA
+## 0:Republican-2:                                                         NA        NA
+## 1:Republican-2:                                                         NA        NA
+## 2:Republican-2:                                                         NA        NA
+## 1:Another party (please specify)-0:Another party (please specify)       NA        NA
+## 2:Another party (please specify)-0:Another party (please specify)       NA        NA
+## 0:Democrat-0:Another party (please specify)                             NA        NA
+## 1:Democrat-0:Another party (please specify)                             NA        NA
+## 2:Democrat-0:Another party (please specify)                             NA        NA
+## 0:Independent voter-0:Another party (please specify)                    NA        NA
+## 1:Independent voter-0:Another party (please specify)                    NA        NA
+## 2:Independent voter-0:Another party (please specify)                    NA        NA
+## 0:Republican-0:Another party (please specify)                           NA        NA
+## 1:Republican-0:Another party (please specify)                           NA        NA
+## 2:Republican-0:Another party (please specify)                           NA        NA
+## 2:Another party (please specify)-1:Another party (please specify) 5.814892 1.0000000
+## 0:Democrat-1:Another party (please specify)                       4.894321 1.0000000
+## 1:Democrat-1:Another party (please specify)                       4.723200 1.0000000
+## 2:Democrat-1:Another party (please specify)                       4.950767 1.0000000
+## 0:Independent voter-1:Another party (please specify)              5.314294 1.0000000
+## 1:Independent voter-1:Another party (please specify)              5.443545 1.0000000
+## 2:Independent voter-1:Another party (please specify)              6.090723 0.9997646
+## 0:Republican-1:Another party (please specify)                     6.260143 0.9999584
+## 1:Republican-1:Another party (please specify)                     7.097352 0.9787317
+## 2:Republican-1:Another party (please specify)                     7.658753 0.9366025
+## 0:Democrat-2:Another party (please specify)                       5.644321 0.9999982
+## 1:Democrat-2:Another party (please specify)                       5.473200 0.9999998
+## 2:Democrat-2:Another party (please specify)                       5.700767 0.9999986
+## 0:Independent voter-2:Another party (please specify)              6.064294 0.9999571
+## 1:Independent voter-2:Another party (please specify)              6.193545 0.9999997
+## 2:Independent voter-2:Another party (please specify)              6.840723 0.9748609
+## 0:Republican-2:Another party (please specify)                     7.010143 0.9908503
+## 1:Republican-2:Another party (please specify)                     7.847352 0.8033291
+## 2:Republican-2:Another party (please specify)                     8.408753 0.6822084
+## 1:Democrat-0:Democrat                                             1.426257 1.0000000
+## 2:Democrat-0:Democrat                                             1.811083 1.0000000
+## 0:Independent voter-0:Democrat                                    2.291329 0.9999999
+## 1:Independent voter-0:Democrat                                    2.894536 1.0000000
+## 2:Independent voter-0:Democrat                                    2.875166 0.5039798
+## 0:Republican-0:Democrat                                           3.443983 0.9600802
+## 1:Republican-0:Democrat                                           4.196185 0.1370999
+## 2:Republican-0:Democrat                                           4.954376 0.1149861
+## 2:Democrat-1:Democrat                                             1.900480 1.0000000
+## 0:Independent voter-1:Democrat                                    2.386566 0.9999773
+## 1:Independent voter-1:Democrat                                    3.006749 1.0000000
+## 2:Independent voter-1:Democrat                                    2.960229 0.2486810
+## 0:Republican-1:Democrat                                           3.547698 0.8809126
+## 1:Republican-1:Democrat                                           4.296660 0.0626544
+## 2:Republican-1:Democrat                                           5.061923 0.0593673
+## 0:Independent voter-2:Democrat                                    2.445342 1.0000000
+## 1:Independent voter-2:Democrat                                    3.004628 1.0000000
+## 2:Independent voter-2:Democrat                                    3.053789 0.6519706
+## 0:Republican-2:Democrat                                           3.576479 0.9723557
+## 1:Republican-2:Democrat                                           4.337005 0.1993344
+## 2:Republican-2:Democrat                                           5.076868 0.1551205
+## 1:Independent voter-0:Independent voter                           2.835411 1.0000000
+## 2:Independent voter-0:Independent voter                           2.952471 0.9685856
+## 0:Republican-0:Independent voter                                  3.430768 0.9992558
+## 1:Republican-0:Independent voter                                  4.199718 0.5467739
+## 2:Republican-0:Independent voter                                  4.920807 0.4114124
+## 2:Independent voter-1:Independent voter                           4.155714 0.9822072
+## 0:Republican-1:Independent voter                                  4.481762 0.9981831
+## 1:Republican-1:Independent voter                                  5.282446 0.7077990
+## 2:Republican-1:Independent voter                                  5.930864 0.5527040
+## 0:Republican-2:Independent voter                                  2.307754 1.0000000
+## 1:Republican-2:Independent voter                                  3.062722 0.9954608
+## 2:Republican-2:Independent voter                                  3.814847 0.9590259
+## 1:Republican-0:Republican                                         3.719252 0.9981151
+## 2:Republican-0:Republican                                         4.407752 0.9787493
+## 2:Republican-1:Republican                                         3.381866 1.0000000</code></pre>
+<p>You won’t need to report any of these numbers, but you will need to report which condition comparisons get statistically significant results.</p>
 
 
 

@@ -28,8 +28,8 @@
 									<a href="setup.html">1) Setup</a>
 									<ul>
 										<li><a href="setup.html#download_data">Download Data</a></li>
-										<li><a href="setup.html#install_r">Install R</a></li>
-										<li><a href="setup.html#install_rstudio">Install RStudio</a></li>
+										<!-- <li><a href="setup.html#install_r">Install R</a></li> -->
+										<li><a href="#setup.setup_rstudiocloud">Set up RStudio Cloud</a></li>
 										<li><a href="setup.html#install_packages">Install Packages</a></li>
 									</ul>
 								</li>
@@ -51,29 +51,26 @@
 								</li>
 								<li><a href="dataprocessing.html">4) Data Processing</a>
 									<ul>
-										<li><a href="dataprocessing.html#condense_columns">Condensing Columns</a></li>
-										<li><a href="dataprocessing.html#new_columns">New Columns</a></li>
-										<li><a href="dataprocessing.html#reverse_coding">Reverse Coding</a></li>
-										<li><a href="dataprocessing.html#internal_reliability">Internal Reliability</a></li>
-										<li><a href="dataprocessing.html#dummy_coding">Dummy Coding</a></li>
+										<li><a href="#dataprocessing.reverse_coding">Reverse Coding</a></li>
+										<li><a href="#dataprocessing.internal_reliability">Cronabach's Alpha</a></li>
+										<li><a href="#dataprocessing.new_columns">Calculation New Columns</a></li>
 									</ul>
 								</li>
 								<li><a href="descriptivestats.html">5) Descriptive Statistics</a>
 									<ul>
-										<li><a href="descriptivestats.html#calculations">Calculations</a></li>
-										<li><a href="descriptivestats.html#grouping">Grouping</a></li>
-										<li><a href="descriptivestats.html#frequency">Frequency</a></li>
+										<li><a href="#descriptivestats.calculations">Demographics</a></li>
+										<li><a href="#descriptivestats.grouping">Grouped Stats</a></li>
 									</ul>
 								</li>
 								<li class="current"><a href="hypothesistesting.html">6) Hypothesis Testing</a>
 									<ul>
 										<li><a href="#correlation">Correlations</a></li>
 										<li><a href="#t_test">T-tests</a></li>
-										<li><a href="#anova">ANOVAs</a></li>
-										<li><a href="#mult_regression">Multiple Regressions</a></li>	
+										<li><a href="#anova">One-way ANOVAs</a></li>
+										<li><a href="#factorial_anova">Factorial ANOVAs</a></li>	
 									</ul>
 								</li>
-								<li><a href="visualization.html">7) Visualization</a>
+								<!-- <li><a href="visualization.html">7) Visualization</a>
 									<ul>
 										<li><a href="visualization.html#histograms">Histograms</a></li>
 										<li><a href="visualization.html#boxplot">Boxplots</a></li>
@@ -81,7 +78,7 @@
 										<li><a href="visualization.html#scatterplots">Scatter Plots</a></li>
 										<li><a href="visualization.html#lines_and_error">Lines & Error</a></li>
 									</ul>
-								</li>	
+								</li>	 -->
 							</ul>
 						</nav>
 
@@ -101,8 +98,8 @@
 											<ul class="links">
 												<li><a href="#correlation">Correlations</a></li>
 												<li><a href="#t_test">T-tests</a></li>
-												<li><a href="#anova">ANOVAs</a></li>
-												<li><a href="#mult_regression">Multiple Regressions</a></li>	
+												<li><a href="#anova">One-way ANOVAs</a></li>
+												<li><a href="#factorial_anova">Factorial ANOVA</a></li>	
 											</ul>
 <!-- 											<footer>
 												<a href="#" class="button">Continue Reading</a>
@@ -127,7 +124,7 @@
 											<h3 id="correlation">Correlations</h3>
 											<p>Use a Pearson correlation for data where both the independent and dependent variables are continuous.</p>
 
-											<iframe class='smallframe' src="R/correlation.html"></iframe>
+											<iframe src="R/correlation.html"></iframe>
 											<h4>Reporting in APA format:</h4>
 											<p>There was [not] a significant [positive/negative] correlation between [independent variable] and [dependent variable] (r = .###, p < .##), indicating that [participants/specific population] who [experienced/showed/demonstrated] [more/less of] [independent variable] tended to have [lower/higher] [dependent variable].</p>
 
@@ -145,18 +142,24 @@
 
 											<iframe src="R/anova.html"></iframe>
 											<h4>Reporting in APA format:</h4>
-											<p>A One-way ANOVA showed there was [not] a statistically significant difference in means on [dependent variable] based on [independent variable], F([between groups df],[within groups df]) = ####, p= .###, such that [independent variable category 1] (M= ###; SD = ###) [had/ did not have] significantly different average [scores/rates/etc] than [independent variable category 2] (M= ###; SD= ###)</p>
+											<p>A One-way ANOVA showed there was [not] a statistically significant difference in means on [dependent variable] based on [independent variable], F([between groups df],[within groups df]) = ####, p= .###, such that [independent variable category 1] (M= ###; SD = ###) [had/ did not have] significantly different average [scores/rates/etc] than [independent variable category 2] (M= ###; SD= ###) [and/or] independent variable category 3] (M= ###; SD= ###). </p>
 
 
-											<h3 id="mult_regression">Multiple Regressions</h3>
+											<h3 id="factorial_anova">Factorial ANOVA</h3>
 
-											<p>Use a multiple linear regression for data where you have more than one independent variable in your analysis.</p>
+											<p>Use a factorial ANOVA for data where you have more than one independent variable in your analysis.</p>
 
-											<iframe src="R/mult_regression.html"></iframe>
+											<iframe src="R/factorial_anova.html"></iframe>
 											<h4>Reporting in APA format:</h4>
-											<p>Results of the multiple linear regression indicated that there was a collective significant effect between the [independent variable 1], [independent variable 2], and [independent variable 3], (F([between groups df],[within groups df]) = ####, p < ###, R2 = ###, R2<sub>Adjusted</sub> = ###). The individual predictors were examined further and indicated that [independent variable 1] (t = ####, p = ####) and [independent variable 2] (t = ####, p = ####) were [not] significant predictors in the model.</p>
+											<p>A two-way analysis of variance was conducted on the influence of two independent variables ([independent variable 1], [independent variable 2]) on the [level / accuracy / number / performance] of [describe dependent variable here]. [Independent variable 1] included [3] levels ([list the levels/conditions here in words]) and [independent variable 2] consisted of [#] levels ([list the levels/conditions here in words]). [All/No/Some] effects were statistically significant at the .05 significance level [except forlist non-significant independent variables here]. The main effect for [independent variable 1] yielded an F ratio of F(between-groups df, within-groups df) - ####, p = ###, indicating there was [not] a significant difference betweeen [condition/level 1] (M = ####, SD = ####),[condition/level 2] (M = ####, SD = ####), and [condition/level 3] (M = ####, SD = ####). The main effect for [independent variable 2] yielded an F ratio of F(between-groups df, within-groups df) - ####, p = ###, indicating there was [not] a significant difference betweeen [condition/level 1] (M = ####, SD = ####),[condition/level 2] (M = ####, SD = ####), and [condition/level 3] (M = ####, SD = ####). The interaction effect was [not] significant, yielded an F ratio of F(between-groups df, within-groups df) - ####, p = ###. </p>
 
-											<h3>When you're done here, it's time to <a href="visualization.html">visualize your data so these results are more intuitive to understand</a></h3>
+											<!-- <h4>Visualizing a factorial ANOVA</h4>
+
+											<p>It may be helpful when interpreting a factorial ANOVA to get a visualizaion of your data. Here's how you can generate one:</p>
+
+											<iframe src="R/lines_error.html"></iframe> -->
+
+											<h3>And you're all done!</h3>
 										</article>
 
 								</div>

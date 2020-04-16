@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
@@ -83,7 +83,6 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -145,6 +144,7 @@ summary {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -156,18 +156,6 @@ summary {
   display: none;
 }
 </style>
-
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
 
 <!-- code folding -->
 
@@ -192,20 +180,28 @@ $(document).ready(function () {
 </div>
 
 
-<p>Here we create a new column in our dataframe called “reversed” and tell R to take the praise_rejection_1 column and fill our new column with recoded data as we have specified in the quotes inside the recode() function.</p>
-<pre class="r"><code>data$reversed &lt;- recode(data$praise_rejection_1, &quot;1=7; 2=6; 3=5; 4=4; 5=3; 6=2; 7=1;&quot;)</code></pre>
-<p>compare the contents of the praise_rejection_1 column:</p>
-<pre class="r"><code>data$praise_rejection_1</code></pre>
-<pre><code>##  [1] &quot;6&quot; &quot;7&quot; &quot;3&quot; &quot;7&quot; &quot;3&quot; &quot;5&quot; &quot;5&quot; &quot;6&quot; &quot;6&quot; &quot;4&quot; &quot;7&quot; &quot;7&quot; &quot;4&quot; &quot;7&quot; &quot;7&quot; &quot;1&quot; &quot;4&quot;
-## [18] &quot;5&quot; &quot;2&quot; &quot;7&quot; &quot;5&quot; &quot;6&quot; &quot;3&quot; &quot;5&quot; &quot;7&quot; &quot;6&quot; &quot;7&quot; &quot;7&quot; &quot;6&quot; &quot;6&quot; &quot;7&quot; &quot;6&quot; &quot;7&quot; &quot;6&quot;
-## [35] &quot;7&quot; &quot;6&quot; &quot;7&quot; &quot;6&quot; &quot;5&quot; &quot;4&quot; &quot;6&quot; &quot;4&quot; &quot;7&quot; &quot;7&quot; &quot;5&quot; &quot;5&quot; &quot;5&quot; &quot;6&quot; &quot;6&quot; &quot;7&quot;</code></pre>
+<p>Here we create a new column in our dataframe called “SDO1R” and tell R to take the SDO1 column and fill our new column with recoded data as we have specified in the quotes inside the recode() function.</p>
+<pre class="r"><code>numeric_data$SDO1R &lt;- recode(numeric_data$SDO1, &quot;1=7; 2=6; 3=5; 4=4; 5=3; 6=2; 7=1; else=NA&quot;)</code></pre>
+<p>compare the contents of the SDO1 column:</p>
+<pre class="r"><code>numeric_data$SDO1</code></pre>
+<pre><code>##  [1] 5 6 7 7 7 7 3 7 7 3 7 5 2 5 7 7 7 3 7 1 7 7 6 7 4 1 7 7 2 7 7 3 4 7 7 4 7 1 7 2 5 4 7 2 7 7 7 3 7
+## [50] 7 1 7 6 4 4 7 2 5 7 1 6 7 7 7 5 7 2 3 5 7 2 6 7 7 7 5 3 4 7 7 7 7 7 3 2 6 3 7 2
+## 10 Levels:  {&quot;ImportId&quot;:&quot;QID440&quot;} 1 2 3 4 5 6 ... An ideal society requires some groups to be on top and others to be on the bottom.</code></pre>
 <p>to the contents of the reversed column:</p>
-<pre class="r"><code>data$reversed</code></pre>
-<pre><code>##  [1] 2 1 5 1 5 3 3 2 2 4 1 1 4 1 1 7 4 3 6 1 3 2 5 3 1 2 1 1 2 2 1 2 1 2 1
-## [36] 2 1 2 3 4 2 4 1 1 3 3 3 2 2 1</code></pre>
-<p>Now, to have the “reversed” data replace the data in the original column, we delete the original column and rename the reversed column with the name of the original column:</p>
-<pre class="r"><code>data$praise_rejection_1 &lt;- NULL
-data &lt;- rename(data, praise_rejection_1 = reversed)</code></pre>
+<pre class="r"><code>numeric_data$SDO1R</code></pre>
+<pre><code>##  [1] 3 2 1 1 1 1 5 1 1 5 1 3 6 3 1 1 1 5 1 7 1 1 2 1 4 7 1 1 6 1 1 5 4 1 1 4 1 7 1 6 3 4 1 6 1 1 1 5 1
+## [50] 1 7 1 2 4 4 1 6 3 1 7 2 1 1 1 3 1 6 5 3 1 6 2 1 1 1 3 5 4 1 1 1 1 1 5 6 2 5 1 6
+## Levels: 1 2 3 4 5 6 7</code></pre>
+<p>It worked! So, we repeat the process with each of the columns that need reverse coding:</p>
+<pre class="r"><code>numeric_data$SDO2R &lt;- recode(numeric_data$SDO2,&quot;1=7; 2=6; 3=5; 4=4; 5=3; 6=2; 7=1; else=NA&quot;)
+numeric_data$SDO5R &lt;- recode(numeric_data$SDO5,&quot;1=7; 2=6; 3=5; 4=4; 5=3; 6=2; 7=1; else=NA&quot;)
+numeric_data$SDO6R &lt;- recode(numeric_data$SDO6,&quot;1=7; 2=6; 3=5; 4=4; 5=3; 6=2; 7=1; else=NA&quot;)</code></pre>
+<p>Now, in order to analyze this variable properly and effectively, we collect all the reversed columns and all the original versions of the non-reversed columns into a single data frame:</p>
+<pre class="r"><code>SDO &lt;- data.frame(numeric_data$SDO1R, numeric_data$SDO2R, 
+                  numeric_data$SDO3, numeric_data$SDO4, 
+                  numeric_data$SDO5R, numeric_data$SDO6R,
+                  numeric_data$SDO7, numeric_data$SDO8)</code></pre>
+<p>With this dataframe, we can calculate both Cronbach’s Alpha and the mean scores for this scale.</p>
 
 
 
@@ -224,6 +220,23 @@ $(document).ready(function () {
 
 
 </script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

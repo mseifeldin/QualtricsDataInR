@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
@@ -83,7 +83,6 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -145,6 +144,7 @@ summary {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -156,18 +156,6 @@ summary {
   display: none;
 }
 </style>
-
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
 
 <!-- code folding -->
 
@@ -193,16 +181,19 @@ $(document).ready(function () {
 
 
 <p>First, we load some packages (also called libraries) that will be helpful for our data analysis. We installed them earlier, but this activates them for the current session.</p>
-<pre class="r"><code>library(dplyr)
+<pre class="r"><code>#######################################
+### Load Packages:
+#######################################
+
+library(dplyr)
 library(ggplot2)
 library(ltm)
 library(car)
-library(fastDummies)</code></pre>
-<p>Here we load in both versions of the data and see which one we want to use:</p>
-<pre class="r"><code>valdata &lt;- read.csv(&quot;altruism_data_values.csv&quot;, header=TRUE)
-numdata &lt;- read.csv(&quot;altruism_data_numeric.csv&quot;, header=TRUE)</code></pre>
-<p>I encourage you to inspect these two dataframes and look at the data so you can make the best decision for your purposes. But for our current data, we choose the number based data, because otherwise we’d have to manually remove the anchor text in our scales.</p>
-<pre class="r"><code>fulldata &lt;- numdata</code></pre>
+library(gmodels)</code></pre>
+<p>Here we load in both versions of the data:</p>
+<pre class="r"><code>choice_data &lt;- read.csv(&quot;ExampleData_choice.csv&quot;, header=TRUE)
+numeric_data &lt;- read.csv(&quot;ExampleData_numeric.csv&quot;, header=TRUE)</code></pre>
+<p>I encourage you to inspect these two dataframes and look for the columns that will best suit your needs for each variable. You’ll likely want to take categorical variables out of the choice_data data frame, and continuous variables out of the numeric_data data frame.</p>
 
 
 
@@ -221,6 +212,23 @@ $(document).ready(function () {
 
 
 </script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

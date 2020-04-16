@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
@@ -83,7 +83,6 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -145,6 +144,7 @@ summary {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -156,18 +156,6 @@ summary {
   display: none;
 }
 </style>
-
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
 
 <!-- code folding -->
 
@@ -192,41 +180,27 @@ $(document).ready(function () {
 </div>
 
 
-<pre class="r"><code>condition_anova &lt;- aov(vignette_response ~ condition, na.action=na.exclude, data=data)
-summary(condition_anova)</code></pre>
-<pre><code>##             Df Sum Sq Mean Sq F value Pr(&gt;F)  
-## condition    1  11.23  11.233   5.016 0.0298 *
-## Residuals   48 107.49   2.239                 
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
-<pre class="r"><code>TukeyHSD(condition_anova)</code></pre>
-<pre><code>##   Tukey multiple comparisons of means
-##     95% family-wise confidence level
-## 
-## Fit: aov(formula = vignette_response ~ condition, data = data, na.action = na.exclude)
-## 
-## $condition
-##                 diff        lwr      upr     p adj
-## pro-nonpro 0.9487179 0.09702391 1.800412 0.0297792</code></pre>
-<pre class="r"><code>age_anova &lt;- aov(vignette_response ~ age_bracket, na.action=na.exclude, data=data)
-summary(age_anova)</code></pre>
+<p>Here, we’ll test whether there’s a statistically significant difference between the conditions in social dominance orientation:</p>
+<pre class="r"><code>Condition_x_SocialDominance &lt;- aov(SocialDominance ~ Condition, na.action=na.exclude, data= analysis_data)
+summary(Condition_x_SocialDominance)</code></pre>
 <pre><code>##             Df Sum Sq Mean Sq F value Pr(&gt;F)
-## age_bracket  3   8.07   2.691   1.119  0.351
-## Residuals   46 110.65   2.405</code></pre>
-<pre class="r"><code>TukeyHSD(age_anova)</code></pre>
+## Condition    2    5.3   2.650   1.225  0.299
+## Residuals   86  186.1   2.164</code></pre>
+<p>To report an ANOVA properly, you’ll need the p-value (Pr(&gt;F)), the F-value, the between-groups degrees of freedom (Df x Independent Variable – here, it’s Condition), and the within-groups degrees of freedom (Df x Residuals) You’ll also need the grouped means and the grouped standard deviations (which you’ll need to calculate yourself; see descriptive statistics page).</p>
+<p>If you get a statistically significant result, you should also run a Tukey post-hoc analysis:</p>
+<pre class="r"><code>Condition_x_SocialDominance_Tukey &lt;- TukeyHSD(Condition_x_SocialDominance)
+Condition_x_SocialDominance_Tukey</code></pre>
 <pre><code>##   Tukey multiple comparisons of means
 ##     95% family-wise confidence level
 ## 
-## Fit: aov(formula = vignette_response ~ age_bracket, data = data, na.action = na.exclude)
+## Fit: aov(formula = SocialDominance ~ Condition, data = analysis_data, na.action = na.exclude)
 ## 
-## $age_bracket
-##              diff        lwr      upr     p adj
-## 30s-20s 0.1052632 -1.2191050 1.429631 0.9965908
-## 40s-20s 0.9624060 -0.8653957 2.790208 0.5036762
-## 50s-20s 1.1052632 -1.1689195 3.379446 0.5704725
-## 40s-30s 0.8571429 -0.9583147 2.672600 0.5935356
-## 50s-30s 1.0000000 -1.2642734 3.264273 0.6440976
-## 50s-40s 0.1428571 -2.4482511 2.733965 0.9988515</code></pre>
+## $Condition
+##           diff        lwr       upr     p adj
+## 1-0 -0.0237069 -0.9372924 0.8898786 0.9978906
+## 2-0  0.5041667 -0.4016435 1.4099768 0.3839524
+## 2-1  0.5278736 -0.3857120 1.4414591 0.3568535</code></pre>
+<p>You won’t need to report any of these numbers, but you will need to report which condition comparisons get statistically significant results.</p>
 
 
 
@@ -245,6 +219,23 @@ $(document).ready(function () {
 
 
 </script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

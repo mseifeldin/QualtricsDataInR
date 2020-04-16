@@ -180,22 +180,18 @@ summary {
 </div>
 
 
-<p>Here we analyze the correlation between age and social dominance orientation:</p>
-<pre class="r"><code>age_x_sdo &lt;- cor.test(analysis_data$Age, analysis_data$SocialDominance, 
-                method = &quot;pearson&quot;)
-age_x_sdo</code></pre>
-<pre><code>## 
-##  Pearson's product-moment correlation
-## 
-## data:  analysis_data$Age and analysis_data$SocialDominance
-## t = -0.16554, df = 84, p-value = 0.8689
-## alternative hypothesis: true correlation is not equal to 0
-## 95 percent confidence interval:
-##  -0.2290583  0.1945603
-## sample estimates:
-##         cor 
-## -0.01805946</code></pre>
-<p>You’ll need the p-value and the r-value (cor) to report a correlation properly.</p>
+<p>Find the two columns in the choice dataframe that have the drag n drop responses, and have a list at hand of which words should be in each column. In this example, the words “happy”, “tree”, and “fun” are supposed to be in the colum “MemoryWords1”, so we check for them:</p>
+<pre class="r"><code>numeric_data$Happy &lt;- ifelse(grepl(&quot;happy&quot;,choice_data$MemoryWords1),1,0)
+numeric_data$Tree &lt;- ifelse(grepl(&quot;tree&quot;,choice_data$MemoryWords1),1,0)
+numeric_data$Fun &lt;- ifelse(grepl(&quot;fun&quot;,choice_data$MemoryWords1),1,0)</code></pre>
+<p>Code translation: we make a new column in the numeric dataframe called “Happy”. For each row in this column, R checks the same row in the choice dataframe column named “MemoryWords1” for the string of letters “happy” (make sure you use the same capitalization that exists in the data!). If the string is there, the row in the new column will contain a 1 and if the string isn’t there, the cell will contain a 0. Then we do the same for the words “Tree” and “Fun”.</p>
+<p>Then, do the same for the words that are supposed to be in the other column. In our example, the words “apple”, “good”, and “bottle” are supposed to be in the colum “MemoryWords2”, so we check for them:</p>
+<pre class="r"><code>numeric_data$Apple &lt;- ifelse(grepl(&quot;apple&quot;,choice_data$MemoryWords2),1,0)
+numeric_data$Good &lt;- ifelse(grepl(&quot;good&quot;,choice_data$MemoryWords2),1,0)
+numeric_data$Bottle &lt;- ifelse(grepl(&quot;bottle&quot;,choice_data$MemoryWords2),1,0)</code></pre>
+<p>Finally, we create a dataframe that contains all our accuracy evaluations for the memory test:</p>
+<pre class="r"><code>MemoryTest &lt;- data.frame(numeric_data$Happy, numeric_data$Tree, numeric_data$Fun,
+                         numeric_data$Apple, numeric_data$Good, numeric_data$Bottle)</code></pre>
 
 
 

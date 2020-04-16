@@ -10,18 +10,20 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 First, we load some packages (also called libraries) that will be helpful for our data analysis. We installed them earlier, but this activates them for the current session.
 ```{r, eval = FALSE}
+#######################################
+### Load Packages:
+#######################################
+
 library(dplyr)
 library(ggplot2)
 library(ltm)
 library(car)
-library(fastDummies)
+library(gmodels)
+
 ```
-Here we load in both versions of the data and see which one we want to use:
+Here we load in both versions of the data:
 ```{r, eval = TRUE}
-valdata <- read.csv("altruism_data_values.csv", header=TRUE)
-numdata <- read.csv("altruism_data_numeric.csv", header=TRUE)
+choice_data <- read.csv("ExampleData_choice.csv", header=TRUE)
+numeric_data <- read.csv("ExampleData_numeric.csv", header=TRUE)
 ```
-I encourage you to inspect these two dataframes and look at the data so you can make the best decision for your purposes. But for our current data, we choose the number based data, because otherwise we'd have to manually remove the anchor text in our scales.
-```{r, eval = TRUE}
-fulldata <- numdata
-```
+I encourage you to inspect these two dataframes and look for the columns that will best suit your needs for each variable. You'll likely want to take categorical variables out of the choice_data data frame, and continuous variables out of the numeric_data data frame.

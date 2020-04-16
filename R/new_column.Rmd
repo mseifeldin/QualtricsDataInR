@@ -11,29 +11,31 @@ library(dplyr)
 library(ggplot2)
 library(ltm)
 library(car)
+library(gmodels)
 
-valdata <- read.csv("altruism_data_values.csv", header=TRUE)
-numdata <- read.csv("altruism_data_numeric.csv", header=TRUE)
-fulldata <- numdata
-ourdata <- subset(fulldata, Consent==1)
-data <- dplyr::select(ourdata,.data$praise_rejection_1 : .data$botcatcher)
-colnames(data)[19] <- "Age"
-data[,] <- sapply(data[,], as.character)
-data$condition <- ifelse(data$likely_nonpro != "", "nonpro", "pro")
-data$vignette_response <- ifelse(data$likely_nonpro == "", data$likely_pro, data$likely_nonpro)
-data$justification <- ifelse(data$bot_catcher == "", data$botcatcher, data$bot_catcher)
-data <- subset(data, select = -c(likely_nonpro, likely_pro, botcatcher, bot_catcher))
+choice_data <- read.csv("ExampleData_choice.csv", header=TRUE)
+numeric_data <- read.csv("ExampleData_numeric.csv", header=TRUE)
+numeric_data <- subset(numeric_data, Consent==1)
+choice_data <- subset(choice_data, Consent=="Yes")
+choice_data <- choice_data[, -c(1:17)]
+numeric_data <- numeric_data[, -c(1:17)]
+numeric_data$SDO1R <- recode(numeric_data$SDO1,"1=7; 2=6; 3=5; 4=4; 5=3; 6=2; 7=1; else=NA")
+numeric_data$SDO2R <- recode(numeric_data$SDO2,"1=7; 2=6; 3=5; 4=4; 5=3; 6=2; 7=1; else=NA")
+numeric_data$SDO5R <- recode(numeric_data$SDO5,"1=7; 2=6; 3=5; 4=4; 5=3; 6=2; 7=1; else=NA")
+numeric_data$SDO6R <- recode(numeric_data$SDO6,"1=7; 2=6; 3=5; 4=4; 5=3; 6=2; 7=1; else=NA")
+SDO <- data.frame(numeric_data$SDO1R, numeric_data$SDO2R, 
+                  numeric_data$SDO3, numeric_data$SDO4, 
+                  numeric_data$SDO5R, numeric_data$SDO6R,
+                  numeric_data$SDO7, numeric_data$SDO8)
 ```
-Now we're going to convert the columns that have numbers in them to the numeric data type so that we can perform mathematical calculations on their contents:
+If you have a Likert scale that you've already reverse coded as per the instructions above, you should have a dataframe with just the columns of raw scores for that scale. Using our example data, we run the following command to make a new column in that dataframe called SDO_mean_scores, where each row in the column contains the mean of all the other cells in the same row of the dataframe:
+```{r, eval = TRUE, include=FALSE}
+SDO <- mutate_all(SDO, function(x) as.numeric(as.character(x)))
+```
 ```{r, eval = TRUE}
-data$vignette_response <- as.numeric(data$vignette_response)
-data$Age <- as.numeric(data$Age)
-data[,1:18] <- sapply(data[,1:18],as.numeric)
+SDO$SDO_mean_scores <- rowMeans(SDO, na.rm = TRUE)
 ```
-Now we'll make a column that takes the mean of 
+*If you get an error similar to "Error in rowMeans(SDO, na.rm = TRUE) : 'x' must be numeric", run the following code on your variable dataframe, then try the mean score calculation again:
 ```{r, eval = TRUE}
-data <- data %>%
-  mutate(justification,
-         praise_rejection = rowMeans(dplyr::select(., -c(Age, condition, vignette_response, justification)),na.rm = TRUE))
+SDO <- mutate_all(SDO, function(x) as.numeric(as.character(x)))
 ```
-Code translation: we take the dataframe and tell R to create a new column based on the formula inside the mutate() function. The formula says to put the column after the "justification" column and call it "praise_rejection". Then, using the rowMeans() function, to take the mean in each row for every column value except those of the Age, condition, vignette_response, and justification columns. This just leaves the responses to the praise_rejection scale. We could also have phrased this as a list of the columns that contain scale responses, but excluding a list of non-scale data in this case makes for a shorter list.

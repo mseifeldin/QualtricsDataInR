@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
@@ -83,7 +83,6 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -145,6 +144,7 @@ summary {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -156,18 +156,6 @@ summary {
   display: none;
 }
 </style>
-
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
 
 <!-- code folding -->
 
@@ -192,14 +180,12 @@ $(document).ready(function () {
 </div>
 
 
-<pre class="r"><code>mean(data$Age)</code></pre>
-<pre><code>## [1] 34.88</code></pre>
-<pre class="r"><code>sd(data$Age)</code></pre>
-<pre><code>## [1] 9.692497</code></pre>
-<pre class="r"><code>var(data$Age)</code></pre>
-<pre><code>## [1] 93.94449</code></pre>
-<pre class="r"><code>range(data$Age)</code></pre>
-<pre><code>## [1] 20 59</code></pre>
+<p>In this example, we’ll use the Age column from our final analysis dataframe. To calculate mean:</p>
+<pre class="r"><code>age_mean &lt;- mean(analysis_data$Age, na.rm = TRUE)</code></pre>
+<p>To calculate standard deviation:</p>
+<pre class="r"><code>age_sd &lt;- sd(analysis_data$demographAge, na.rm = TRUE)</code></pre>
+<p>To calculate range:</p>
+<pre class="r"><code>age_range &lt;- range(analysis_data$Age, na.rm = TRUE)</code></pre>
 
 
 
@@ -218,6 +204,23 @@ $(document).ready(function () {
 
 
 </script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

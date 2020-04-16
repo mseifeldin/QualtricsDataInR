@@ -28,8 +28,8 @@
 									<a href="setup.html">1) Setup</a>
 									<ul>
 										<li><a href="setup.html#download_data">Download Data</a></li>
-										<li><a href="setup.html#install_r">Install R</a></li>
-										<li><a href="setup.html#install_rstudio">Install RStudio</a></li>
+										<!-- <li><a href="setup.html#install_r">Install R</a></li> -->
+										<li><a href="#setup.setup_rstudiocloud">Set up RStudio Cloud</a></li>
 										<li><a href="setup.html#install_packages">Install Packages</a></li>
 									</ul>
 								</li>
@@ -52,29 +52,26 @@
 
 								<li><a href="dataprocessing.html">4) Data Processing</a>
 									<ul>
-										<li><a href="dataprocessing.html#condense_columns">Condensing Columns</a></li>
-										<li><a href="dataprocessing.html#new_columns">New Columns</a></li>
-										<li><a href="dataprocessing.html#reverse_coding">Reverse Coding</a></li>
-										<li><a href="dataprocessing.html#internal_reliability">Internal Reliability</a></li>
-										<li><a href="dataprocessing.html#dummy_coding">Dummy Coding</a></li>
+										<li><a href="#dataprocessing.reverse_coding">Reverse Coding</a></li>
+										<li><a href="#dataprocessing.internal_reliability">Cronabach's Alpha</a></li>
+										<li><a href="#dataprocessing.new_columns">Calculation New Columns</a></li>
 									</ul>
 								</li>
 								<li><a href="descriptivestats.html">5) Descriptive Statistics</a>
 									<ul>
-										<li><a href="descriptivestats.html#calculations">Calculations</a></li>
-										<li><a href="descriptivestats.html#grouping">Grouping</a></li>
-										<li><a href="descriptivestats.html#frequency">Frequency</a></li>
+										<li><a href="#descriptivestats.calculations">Demographics</a></li>
+										<li><a href="#descriptivestats.grouping">Grouped Stats</a></li>
 									</ul>
 								</li>
 								<li><a href="hypothesistesting.html">6) Hypothesis Testing</a>
 									<ul>
 										<li><a href="hypothesistesting.html#correlation">Correlations</a></li>
 										<li><a href="hypothesistesting.html#t_test">T-tests</a></li>
-										<li><a href="hypothesistesting.html#anova">ANOVAs</a></li>
-										<li><a href="hypothesistesting.html#mult_regression">Multiple Regressions</a></li>	
+										<li><a href="hypothesistesting.html#anova">One-way ANOVAs</a></li>
+										<li><a href="hypothesistesting.html#factorial_anova">Factorial ANOVAs</a></li>	
 									</ul>
 								</li>
-								<li><a href="visualization.html">7) Visualization</a>
+								<!-- <li><a href="visualization.html">7) Visualization</a>
 									<ul>
 										<li><a href="visualization.html#histograms">Histograms</a></li>
 										<li><a href="visualization.html#boxplot">Boxplots</a></li>
@@ -82,7 +79,7 @@
 										<li><a href="visualization.html#scatterplots">Scatter Plots</a></li>
 										<li><a href="visualization.html#lines_and_error">Lines & Error</a></li>
 									</ul>
-								</li>	
+								</li>	 -->
 							</ul>
 						</nav>
 
@@ -129,8 +126,22 @@
 	
 											<h3 id="list_variables">Make a list of your variables</h3>
 
+											<h4>Start a chart</h4>
+											<p>Make a chart where, for each variable you collected in your experiment, you specify:</p>
+											<ol>
+											  <li>The name of your variable for reference</li>
+											  <li>Whether the variable, in the structure of your experiment, is an independent variable, a dependent variable, or a demographic (see below if you need help distinguisting these)</li>
+											  <li>Whether the variable, as you want to analyze it (not necessarily how you collected it), should be a categorical variable or a continuous variable (see below for help distinguisting these as well).</li>
+											  <li>Imagine you only ran one subject; what information should the data column for this variable look like? Is it a mean score, a raw number, a percentage or proportion of correct answers, an assigned item, or something else?</li>
+											</ol>
+
+											<p>You should get something that looks like this:</p>
+											<span class="image featured"><img src="images/VariableChart.png" alt="analysis decision tree" /></span>
 											
-											<h3 id="determine_analyses">Figure out which analyses you will need to run</h3>
+											<p>You can make a copy of a template availale here:</p>
+
+											<a target='blank' href="https://docs.google.com/spreadsheets/d/1A_O53JppUzNUTF-jiKCNAOoSIxu-Hj8ZBTpwDtX-1g4/edit?usp=sharing" class="button">Experimental Variable Sheet</a>
+
 											<h4>Types of Variables</h4>
 											
 											<h5>Independent vs Dependent</h5>
@@ -153,17 +164,28 @@
 											<h6>Some loose rules of thumb:</h6>
 											<p>If you had a large set of responses and you attempted to sort the data for your variable into categories based on their exact responses or values, do you think each category would have more than one (maybe two) data points in it? Would you have a reasonable number of categories to analyze? If you compared the relationship between two of your variables, would it still match up in scope to your original question? If yes, it's likely a categorical variable. If no, it's likely a continuous variable. For example: If your research question is, "Are optimism level and political party related?", then breaking things down to the categories looks like: "Is there a difference between registered republicans' and registered democrats (categorical independent variable) level of optimism?", which isn't the same question, but covers a significant and interesting component of the original question. However, if our research question is, "Do people become more optimistic as they age? ", breaking things down into categories gives us the question, "Is there a difference in optimism level between someone who is 48 years 2 months old and someone who is 48 years 3 months old?". Comparing those two categories doesn't really speak to our original question. Or, if our question is: "Is extraverted behavior related to optimism?" and we use a likert scale of 1 to 7 to measure extraverted behavior, our question breaks down to: "Is there a difference in optimism between someone who scored 3.57 on the extraversion scale and someone who scored 6.35?" Even though these scores are very different, the "categories" of 3.57 and 6.35 are an arbitrary comparison in light of our original question.</p>
 
+
+											
+											<h3 id="determine_analyses">Figure out which analyses you will need to run</h3>
+											
 											<h4>Analysis Decision Tree</h4>
 
 											<p>So take a moment to identify what your variables are, which ones are the independent variables, and which one is your dependent variable for the specific analysis you are about to undertake. Next, figure out for each of your dependent *and* independent variables whether the contents of its data are categorical or continuous. Then you can use this tree to figure out which is the appropriate hypothesis analysis to perform on your data.</p>
 
-											<span class="image featured"><img src="images/Variables_and_Analysis.png" alt="analysis decision tree" /></span>
+											<span class="image featured"><img src="images/flowchart.png" alt="analysis decision tree" /></span>
 
 											<h3 id="find_columns">Figure out which columns you have, and which you will need to calculate before your analyses</h3>
 
-											<h3 id="organize">Organize a place to record your results</h3>
+											<p>Take a look at that last column in your Variable chart, and think about what the data you actually collected looks like. If you have a Likert scale, you probably don't have a column in your raw data with your scale means; you'll have to calculate them. If you need a memory task score, you also probably have to collect them based on raw scores/answers in your data frame. However, things like gender, single-trial variables, or condition likely already exist in your raw data.</p>
 
-											<h3>Now we're ready to start working on our data.<a href="preprocessing.html">Head on over to Data Cleanup</a></h3>
+											<h3 id="organize">Organize a place to record your results</h3>
+											<p>Now you know which analyses you need to carry out, you should keep track of all the figures you will need to find in order to properly report them in APA format. Write down the numbers as you find them so they're all in one place and you can just plug them into your results section when you come to writing.</p>
+
+											<p>You can make a copy of a template Google sheet that will help you do this here:</p>
+
+											<a target='blank' href="https://docs.google.com/spreadsheets/d/1de4AEaGshE1emGHPtT8XkdN1YXH1ekYFVn7KOuklOCs/edit?usp=sharing" class="button">Analysis Figure Organization</a>
+
+											<h3>Now we're ready to start working on our data. <a href="preprocessing.html">Head on over to Data Cleanup</a></h3>
 
 										</article>
 

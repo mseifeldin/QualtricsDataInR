@@ -33,23 +33,10 @@ analysis_data <- data.frame(choice_data$GEND, numeric_data$AGE, choice_data$cond
 names(analysis_data) <- c("Gender", "Age", "Condition","PoliticalParty", "SocialDominance")
 analysis_data$Age <- as.numeric(as.character(analysis_data$Age))
 ```
-We'll calculate SDO means grouped by condition here:
+In this example, we'll use the Gender column from our final analysis dataframe.
 ```{r, eval = TRUE} 
-sdo_mean_by_condition <- analysis_data %>%
-  group_by(Condition) %>%
-  summarise(mean(SocialDominance, na.rm=TRUE))
+gender_percentages <- prop.table(ftable(analysis_data$Gender)) * 100
 ```
-Code translation: We make a variable. To fill it,we tell R to look at the data in the "analysis_data" dataframe, then say we're going to group a column calculation by the levels of the "Condition" column with the group_by() command. Then we give R the column calculation we want: a printout of the mean of the SocialDominance column.
-We can do the same with standard deviations:
-```{r, eval = TRUE} 
-sdo_sd_by_condition <- analysis_data %>%
-  group_by(Condition) %>%
-  summarise(sd(SocialDominance, na.rm=TRUE))
-```
-If you run a multiple regression or factorial ANOVA, you may want things broken down by multiple groups. You can do this with basically the same commands like so:
-```{r, eval = TRUE} 
-sdo_mean_by_condition_party <- analysis_data %>%
-  group_by(Condition, PoliticalParty) %>%
-  summarise(mean(SocialDominance, na.rm=TRUE))
-```
-Code translation: In the second step of the grouping, where we tell R which variables we want to group our calculation by, we can split things up into further groups with a comma between the multiple column names. Here, we tell R we want to split the data up by condition, then split that split-up data by political party. So we end up with 12 groups (3 condition groups x 4 political party options).
+Code transaltion: we make a variable called gender_percentages. To fill the varialbe, we take the Gender column from the analysis_data dataframe and make a frequency table with the ftable() command. we turn that frequency table into a proportion table with the prop.table() command. Then, we multiply the values in the proportion table by 100 to get percentages.
+*Key tip: if your categorical demographic has a lot of categories, keep in mind when reading the output that the end of the number lines up vertically with the end of the name of the category in the line above.
+

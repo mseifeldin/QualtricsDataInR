@@ -1,0 +1,49 @@
+---
+#title: "Accuracy"
+#author: "Maryam Seifeldin"
+#date: "4/16/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(ggplot2)
+library(ltm)
+library(car)
+library(gmodels)
+
+choice_data <- read.csv("ExampleData_choice.csv", header=TRUE)
+numeric_data <- read.csv("ExampleData_numeric.csv", header=TRUE)
+numeric_data <- subset(numeric_data, Consent==1)
+choice_data <- subset(choice_data, Consent=="Yes")
+choice_data <- choice_data[, -c(1:17)]
+numeric_data <- numeric_data[, -c(1:17)]
+numeric_data$SDO1R <- recode(numeric_data$SDO1,"1=7; 2=6; 3=5; 4=4; 5=3; 6=2; 7=1; else=NA")
+numeric_data$SDO2R <- recode(numeric_data$SDO2,"1=7; 2=6; 3=5; 4=4; 5=3; 6=2; 7=1; else=NA")
+numeric_data$SDO5R <- recode(numeric_data$SDO5,"1=7; 2=6; 3=5; 4=4; 5=3; 6=2; 7=1; else=NA")
+numeric_data$SDO6R <- recode(numeric_data$SDO6,"1=7; 2=6; 3=5; 4=4; 5=3; 6=2; 7=1; else=NA")
+SDO <- data.frame(numeric_data$SDO1R, numeric_data$SDO2R, 
+                  numeric_data$SDO3, numeric_data$SDO4, 
+                  numeric_data$SDO5R, numeric_data$SDO6R,
+                  numeric_data$SDO7, numeric_data$SDO8)
+```
+Find the two columns in the choice dataframe that have the drag n drop responses, and have a list at hand of which words should be in each column. In this example, the words "happy", "tree", and "fun" are supposed to be in the colum "MemoryWords1", so we check for them:
+```{r, eval = TRUE}
+numeric_data$Happy <- ifelse(grepl("happy",choice_data$MemoryWords1),1,0)
+numeric_data$Tree <- ifelse(grepl("tree",choice_data$MemoryWords1),1,0)
+numeric_data$Fun <- ifelse(grepl("fun",choice_data$MemoryWords1),1,0)
+```
+Code translation: we make a new column in the numeric dataframe called "Happy". For each row in this column, R checks the same row in the choice dataframe column named "MemoryWords1" for the string of letters "happy" (make sure you use the same capitalization that exists in the data!). If the string is there, the row in the new column will contain a 1 and if the string isn't there, the cell will contain a 0. Then we do the same for the words "Tree" and "Fun".
+
+Then, do the same for the words that are supposed to be in the other column. In our example, the words "apple", "good", and "bottle" are supposed to be in the colum "MemoryWords2", so we check for them:
+```{r, eval = TRUE}
+numeric_data$Apple <- ifelse(grepl("apple",choice_data$MemoryWords2),1,0)
+numeric_data$Good <- ifelse(grepl("good",choice_data$MemoryWords2),1,0)
+numeric_data$Bottle <- ifelse(grepl("bottle",choice_data$MemoryWords2),1,0)
+```
+Finally, we create a dataframe that contains all our accuracy evaluations for the memory test:
+```{r, eval = TRUE}
+MemoryTest <- data.frame(numeric_data$Happy, numeric_data$Tree, numeric_data$Fun,
+                         numeric_data$Apple, numeric_data$Good, numeric_data$Bottle)
+```

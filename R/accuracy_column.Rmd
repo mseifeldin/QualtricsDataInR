@@ -1,0 +1,43 @@
+---
+#title: "Accuracy"
+#author: "Maryam Seifeldin"
+#date: "4/16/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(ggplot2)
+library(ltm)
+library(car)
+library(gmodels)
+
+choice_data <- read.csv("ExampleData_choice.csv", header=TRUE)
+numeric_data <- read.csv("ExampleData_numeric.csv", header=TRUE)
+numeric_data <- subset(numeric_data, Consent==1)
+choice_data <- subset(choice_data, Consent=="Yes")
+choice_data <- choice_data[, -c(1:17)]
+numeric_data <- numeric_data[, -c(1:17)]
+numeric_data$SDO1R <- recode(numeric_data$SDO1,"1=7; 2=6; 3=5; 4=4; 5=3; 6=2; 7=1; else=NA")
+numeric_data$SDO2R <- recode(numeric_data$SDO2,"1=7; 2=6; 3=5; 4=4; 5=3; 6=2; 7=1; else=NA")
+numeric_data$SDO5R <- recode(numeric_data$SDO5,"1=7; 2=6; 3=5; 4=4; 5=3; 6=2; 7=1; else=NA")
+numeric_data$SDO6R <- recode(numeric_data$SDO6,"1=7; 2=6; 3=5; 4=4; 5=3; 6=2; 7=1; else=NA")
+SDO <- data.frame(numeric_data$SDO1R, numeric_data$SDO2R, 
+                  numeric_data$SDO3, numeric_data$SDO4, 
+                  numeric_data$SDO5R, numeric_data$SDO6R,
+                  numeric_data$SDO7, numeric_data$SDO8)
+numeric_data$Word1Accuracy <- ifelse(numeric_data$Word1 == 1,  1,0)
+numeric_data$Word2Accuracy <- ifelse(numeric_data$Word2 == 0,  1,0)
+numeric_data$Word3Accuracy <- ifelse(numeric_data$Word3 == 1,  1,0)
+numeric_data$Word4Accuracy <- ifelse(numeric_data$Word4 == 0,  1,0)
+numeric_data$Word5Accuracy <- ifelse(numeric_data$Word5 == 1,  1,0)
+MemoryTest <- data.frame(numeric_data$Word1Accuracy, numeric_data$Word2Accuracy, 
+                         numeric_data$Word3Accuracy, numeric_data$Word4Accuracy, 
+                         numeric_data$Word5Accuracy)
+```
+To make an accuracy score, we'll get a proportion of correct answers for each subject in our new MemoryTest data frame:
+```{r, eval = TRUE}
+MemoryTest$MemoryScore <- rowSums(MemoryTest) / ncol(MemoryTest)
+```
+Code translation: We make a new column in the MemoryTest dataframe called MemoryScore. In this new column, each row will take the sum of all the other cells in the same row of the dataframe (which gets us the number of correct answers), then divide it by the number of columns in the dataframe (which is the number of questions, or number of possible correct answers).

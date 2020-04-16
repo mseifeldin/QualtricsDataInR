@@ -41,12 +41,10 @@ data$dummies_40s <- dummies$.data_40s
 data$dummies_50s <- dummies$.data_50s
 ```
 ```{r, eval = TRUE} 
-ggplot(data) +
-  aes(x = praise_rejection, y = vignette_response, color = condition) +
+ggplot(analysis_data) +
+  aes(x = Condition, y = SocialDominance, color = PoliticalParty) +
   ggtitle("altruism x rejection avoidance by social norms") +
-  labs(x="Rejection Avoidance", y="Altruism") +
-  geom_point(color = "grey") +
-  geom_smooth(method = "lm")
+  labs(x="Condition", y="Social Dominance Orientation Score") +
 ```
 
 ```{r, eval = TRUE} 

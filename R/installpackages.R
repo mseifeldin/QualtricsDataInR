@@ -1,1 +1,1 @@
-install.packages(c("dplyr","ggplot2","ltm", "Hmisc"))
+install.packages(c("dplyr","ggplot2","ltm", "psych", "car", "gmodels"))

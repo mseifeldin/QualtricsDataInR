@@ -33,23 +33,16 @@ analysis_data <- data.frame(choice_data$GEND, numeric_data$AGE, choice_data$cond
 names(analysis_data) <- c("Gender", "Age", "Condition","PoliticalParty", "SocialDominance")
 analysis_data$Age <- as.numeric(as.character(analysis_data$Age))
 ```
-We'll calculate SDO means grouped by condition here:
+Here, we'll test whether there's a statistically significant effect of condition on social dominance orientation, whether there's a stastistically significant effect of political party on social dominance orientation, and whether there's an interaction between condition and political party in their combined effect on social dominance orientation
 ```{r, eval = TRUE} 
-sdo_mean_by_condition <- analysis_data %>%
-  group_by(Condition) %>%
-  summarise(mean(SocialDominance, na.rm=TRUE))
+Condition_x_SDO_PP <- aov(SocialDominance ~ Condition * PoliticalParty, na.action=na.exclude, data= analysis_data)
+summary(Condition_x_SDO_PP)
 ```
-Code translation: We make a variable. To fill it,we tell R to look at the data in the "analysis_data" dataframe, then say we're going to group a column calculation by the levels of the "Condition" column with the group_by() command. Then we give R the column calculation we want: a printout of the mean of the SocialDominance column.
-We can do the same with standard deviations:
+To report an ANOVA properly, you'll need the following values for each of the independent variables, and the iteraction effect (in the example above, this is "Condition:PoliticalParty"): p-value (Pr(>F)), the F-value, the between-groups degrees of freedom (Df x Independent Variable), and the within-groups degrees of freedom (Df x Residuals) You'll also need the grouped means and the grouped standard deviations (which you'll need to calculate yourself; see descriptive statistics page).
+
+If you get a statistically significant result, you should also run a Tukey post-hoc analysis:
 ```{r, eval = TRUE} 
-sdo_sd_by_condition <- analysis_data %>%
-  group_by(Condition) %>%
-  summarise(sd(SocialDominance, na.rm=TRUE))
+Condition_x_SDO_PP_Tukey <- TukeyHSD(Condition_x_SDO_PP)
+Condition_x_SDO_PP_Tukey
 ```
-If you run a multiple regression or factorial ANOVA, you may want things broken down by multiple groups. You can do this with basically the same commands like so:
-```{r, eval = TRUE} 
-sdo_mean_by_condition_party <- analysis_data %>%
-  group_by(Condition, PoliticalParty) %>%
-  summarise(mean(SocialDominance, na.rm=TRUE))
-```
-Code translation: In the second step of the grouping, where we tell R which variables we want to group our calculation by, we can split things up into further groups with a comma between the multiple column names. Here, we tell R we want to split the data up by condition, then split that split-up data by political party. So we end up with 12 groups (3 condition groups x 4 political party options).
+You won't need to report any of these numbers, but you will need to report which condition comparisons get statistically significant results.

@@ -11,32 +11,41 @@ library(dplyr)
 library(ggplot2)
 library(ltm)
 library(car)
+library(gmodels)
 
-valdata <- read.csv("altruism_data_values.csv", header=TRUE)
-numdata <- read.csv("altruism_data_numeric.csv", header=TRUE)
-fulldata <- numdata
-```
-```{r, include=FALSE}
-
+choice_data <- read.csv("ExampleData_choice.csv", header=TRUE)
+numeric_data <- read.csv("ExampleData_numeric.csv", header=TRUE)
 ```
 Take a look at the column called "Consent". Two things to note here: 1) If someone didn't say yes to the consent question, even if they finished the survey anyway, it's unethical to use their data. 2) The first two rows don't contain indicators of consent either, because they're not participant data.
 
-In other words, we only want the rows where Consent = 1. We can use the subset(dataframe, logical evaluator) command to do this. Notice we have to use "==" because a single "=" is for assigning values, not evaluating whether two things are equal to one another.
+In other words, we only want the rows with a consent datapoint that indicates the participant consented. We can use the subset(dataframe, logical evaluator) command to do this. Notice we have to use "==" because a single "=" is for assigning values, not evaluating whether two things are equal to one another.
 
+For the numeric dataframe, Consent should be equal to 1:
 ```{r, eval = TRUE}
-ourdata <- subset(fulldata, Consent==1)
+numeric_data <- subset(numeric_data, Consent==1)
 ```
-Then, take a look around your key responses and see if there are any subjects you want to remove from your dataset on account of a lack of responses; keep in mind that one or two skipped questions in a scale isn't cause to remove them from your dataset; you'll just have to make sure you're using the na.rm=TRUE command when you perform calculations involving the cells with missing data. But if if a subject seems to have exited the survey without answering any or most of the critical questions, they'll have a lot of empty cells in their row. We use the same concept we used to get rid of the metadata columns to remove these subjects:
-
+But in the choice dataframe, Consent should be equal to "Yes":
 ```{r, eval = TRUE}
-ourdata <- subset(ourdata, praise_rejection_1 != "")
+choice_data <- subset(choice_data, Consent=="Yes")
+```
+Then, take a look around your key responses and see if there are any subjects you want to remove from your dataset on account of a lack of responses; keep in mind that one or two skipped questions in a scale isn't cause to remove them from your dataset; you'll just have to make sure you're using the na.rm=TRUE command when you perform calculations involving the cells with missing data. But if if a subject seems to have exited the survey without answering any or most of the critical questions, they'll have a lot of empty cells in their row. We use the same concept we used to get rid of the metadata columns to remove these subjects. This might look like:
+```{r, eval = FALSE}
+choice_data <- subset(choice_data, columnName != "")
+numeric_data <- subset(numeric_data, columnName != "")
 ```
 Code translation: dataset we're talking about <- subset(dataset we're evaluating, column of the dataset on which we're making a conditional statement [logical operator] value against which we compare every row in the column by using the logical operator)   
-We first tell R that everything we're about to do should happen to the 'ourdata' dataframe. Then, we take a subset of the rows of ourdata. (Be careful: if we do here what we did last time and tell it to take a subset of 'fulldata', we would end up with the two rows we just deleted back in our dataset. Always work on your most recently adjusted data to maintain your changes). Next, we choose a column of our data where if there is an empty row of the column, we want to delete the entire row. We choose the first column of the scale questions in this example, but it could be any column where this is true. Then, we say that, in this column if it is NOT (!=) empty (""), we will KEEP it.  
+We first tell R that everything we're about to do should happen to the dataframe. Then, we take a subset of the rows of teh dataframe. Next, we choose a column of our data where if there is an empty row of the column, we want to delete the entire row. We choose the first column of the scale questions in this example, but it could be any column where this is true. Then, we say that, in this column if it is NOT (!=) empty (""), we will KEEP it. You can use the same logic to get rid of any set rows if you can identify them with shared content.
 
 
-Then, we use the select() command that we got from dplyr to copy only the columns that contain actual participant response data from our survey into a new dataframe simply called "data". (note -- the : character means "through" in R). Finally, you might have noticed that the column containing participants' responses to a question about their age is currently called "Q13". Let's rename it to "Age" too:
+You may have noticed that there are a lot of weird columns at the beginning of your dataframe. These are extra 17 columns of metadata that Qualtrics adds automatically whenever you download data, and you won't need them. To clear these out and give us an easier set of data to deal with, we use the following lines:
 ```{r, eval = TRUE}
-data <- dplyr::select(ourdata,.data$praise_rejection_1 : .data$botcatcher)
-colnames(data)[19] <- "Age"
+choice_data <- choice_data[, -c(1:17)]
+numeric_data <- numeric_data[, -c(1:17)]
+```
+Code translation: Replace the choice dataframe (choice_data <- ) with a version of the choice dataframe (choice_data[]) that includes all rows(,) and excludes columns 1 through 17 (-c(1:17)).
+
+Finally, we drop the "levels" of the data we deleted with these steps. This is kind of like deleting the computer's data cache so these don't clutter up our output:
+```{r, eval = TRUE}
+choice_data <- droplevels(choice_data)
+numeric_data <- droplevels(numeric_data)
 ```

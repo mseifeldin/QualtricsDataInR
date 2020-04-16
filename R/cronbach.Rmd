@@ -11,31 +11,30 @@ library(dplyr)
 library(ggplot2)
 library(ltm)
 library(car)
+library(gmodels)
 
-valdata <- read.csv("altruism_data_values.csv", header=TRUE)
-numdata <- read.csv("altruism_data_numeric.csv", header=TRUE)
-fulldata <- numdata
-ourdata <- subset(fulldata, Consent==1)
-data <- dplyr::select(ourdata,.data$praise_rejection_1 : .data$botcatcher)
-colnames(data)[19] <- "Age"
-data[,] <- sapply(data[,], as.character)
-data$condition <- ifelse(data$likely_nonpro != "", "nonpro", "pro")
-data$vignette_response <- ifelse(data$likely_nonpro == "", data$likely_pro, data$likely_nonpro)
-data$justification <- ifelse(data$bot_catcher == "", data$botcatcher, data$bot_catcher)
-data <- subset(data, select = -c(likely_nonpro, likely_pro, botcatcher, bot_catcher))
-data$vignette_response <- as.numeric(data$vignette_response)
-data$Age <- as.numeric(data$Age)
-data[,1:18] <- sapply(data[,1:18],as.numeric)
-data <- data %>%
-  mutate(justification,
-         praise_rejection = rowMeans(dplyr::select(., -c(Age, condition, vignette_response, justification)),na.rm = TRUE))
+choice_data <- read.csv("ExampleData_choice.csv", header=TRUE)
+numeric_data <- read.csv("ExampleData_numeric.csv", header=TRUE)
+numeric_data <- subset(numeric_data, Consent==1)
+choice_data <- subset(choice_data, Consent=="Yes")
+choice_data <- choice_data[, -c(1:17)]
+numeric_data <- numeric_data[, -c(1:17)]
+numeric_data$SDO1R <- recode(numeric_data$SDO1,"1=7; 2=6; 3=5; 4=4; 5=3; 6=2; 7=1; else=NA")
+numeric_data$SDO2R <- recode(numeric_data$SDO2,"1=7; 2=6; 3=5; 4=4; 5=3; 6=2; 7=1; else=NA")
+numeric_data$SDO5R <- recode(numeric_data$SDO5,"1=7; 2=6; 3=5; 4=4; 5=3; 6=2; 7=1; else=NA")
+numeric_data$SDO6R <- recode(numeric_data$SDO6,"1=7; 2=6; 3=5; 4=4; 5=3; 6=2; 7=1; else=NA")
+SDO <- data.frame(numeric_data$SDO1R, numeric_data$SDO2R, 
+                  numeric_data$SDO3, numeric_data$SDO4, 
+                  numeric_data$SDO5R, numeric_data$SDO6R,
+                  numeric_data$SDO7, numeric_data$SDO8)
 ```
-first we assign just the raw (and reverse-coded) columns to a new dataframe called scale_scores:
+
+Since we've already collected our properly reverse coded scale into a single data frame, we simply run the cronbach.alpha(dataframe, na.rm = TRUE) command on the dataframe and save it to a variable:
 ```{r, eval = TRUE}
-scale_scores <- data  %>% dplyr::select(., -c(Age, condition, vignette_response, justification, praise_rejection))
+SDO_alpha <- cronbach.alpha(SDO, na.rm = TRUE)
 ```
-then we run cronbach's alpha test to check our scale reliability:
+Then, you can run the name of the variable to get the results:
 ```{r, eval = TRUE}
-cronbach.alpha(scale_scores, na.rm = TRUE)
+SDO_alpha
 ```
-Note: alpha scores above .7 are considered a good score
+Note: alpha scores above .7 are considered a good score.

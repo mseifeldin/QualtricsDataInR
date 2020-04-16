@@ -1,7 +1,7 @@
 ---
-# title: "Tutorial"
-# author: "Maryam Seifeldin"
-# date: "11/4/2019"
+#title: ''
+#author: "Maryam Seifeldin"
+#date: "4/16/2020"
 output: html_document
 ---
 
@@ -29,21 +29,13 @@ SDO <- data.frame(numeric_data$SDO1R, numeric_data$SDO2R,
                   numeric_data$SDO7, numeric_data$SDO8)
 SDO <- mutate_all(SDO, function(x) as.numeric(as.character(x)))
 SDO$SDO_mean_scores <- rowMeans(SDO, na.rm = TRUE)
+```
+For our analyses, we need: the demographics Gender & Age, the IVs Condition & Political Party, and the DV SDO
+```{r, eval = TRUE} 
 analysis_data <- data.frame(choice_data$GEND, numeric_data$AGE, choice_data$condition, choice_data$PPP1, SDO$SDO_mean_scores)
+```
+Next, because the method we used to make this dataframe results in some rather cumbersome column names to deal with, we'll give all the columns in this new dataframe easy intuitive names like this:
+```{r, eval = TRUE} 
 names(analysis_data) <- c("Gender", "Age", "Condition","PoliticalParty", "SocialDominance")
-analysis_data$Age <- as.numeric(as.character(analysis_data$Age))
 ```
-In this example, we'll use the Age column from our final analysis dataframe.
-To calculate mean:
-```{r, eval = TRUE} 
-age_mean <- mean(analysis_data$Age, na.rm = TRUE)
 
-```
-To calculate standard deviation:
-```{r, eval = TRUE} 
-age_sd <- sd(analysis_data$demographAge, na.rm = TRUE)
-```
-To calculate range:
-```{r, eval = TRUE} 
-age_range <- range(analysis_data$Age, na.rm = TRUE)
-```

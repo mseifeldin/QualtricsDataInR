@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
@@ -83,7 +83,6 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -145,6 +144,7 @@ summary {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -156,18 +156,6 @@ summary {
   display: none;
 }
 </style>
-
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
 
 <!-- code folding -->
 
@@ -192,40 +180,19 @@ $(document).ready(function () {
 </div>
 
 
-<pre class="r"><code>data %&gt;%
-  group_by(condition) %&gt;%
-    summarise(mean(vignette_response))</code></pre>
-<pre><code>## # A tibble: 2 x 2
-##   condition `mean(vignette_response)`
-##   &lt;chr&gt;                         &lt;dbl&gt;
-## 1 nonpro                         5.67
-## 2 pro                            6.62</code></pre>
-<p>Code translation: We tell R to look at teh data in the “data” dataframe, then say we’re going to group a column calculation by the levels of the “condition” column with the group_by() command. Then we give R the column calculation we want: a printout of the mean of the vignette_response column.</p>
-<pre class="r"><code>data %&gt;%
-  group_by(condition, age_bracket) %&gt;%
-  summarise(mean(vignette_response))</code></pre>
-<pre><code>## # A tibble: 8 x 3
-## # Groups:   condition [2]
-##   condition age_bracket `mean(vignette_response)`
-##   &lt;chr&gt;     &lt;chr&gt;                           &lt;dbl&gt;
-## 1 nonpro    20s                              5.3 
-## 2 nonpro    30s                              5.6 
-## 3 nonpro    40s                              6.67
-## 4 nonpro    50s                              7   
-## 5 pro       20s                              6.56
-## 6 pro       30s                              6.4 
-## 7 pro       40s                              7   
-## 8 pro       50s                              7</code></pre>
-<p>Code translation: In the second step of the grouping, where we tell R which variables we want to group our calculation by, we can split things up into further groups with a comma between the multiple column names. Here, we tell R we want to split the data up by condition, then split that split-up data age. So we end up with 8 groups (2 condition groups x 4 age bracket groups).</p>
-<pre class="r"><code>data %&gt;%
-  group_by(condition) %&gt;%
-  summarise(min(vignette_response), max(vignette_response))</code></pre>
-<pre><code>## # A tibble: 2 x 3
-##   condition `min(vignette_response)` `max(vignette_response)`
-##   &lt;chr&gt;                        &lt;dbl&gt;                    &lt;dbl&gt;
-## 1 nonpro                           1                        7
-## 2 pro                              5                        7</code></pre>
-<p>And you can generate a grouped table with more than one calculation, if you need to do more than one statistic that is grouped by another variable.</p>
+<p>We’ll calculate SDO means grouped by condition here:</p>
+<pre class="r"><code>sdo_mean_by_condition &lt;- analysis_data %&gt;%
+  group_by(Condition) %&gt;%
+  summarise(mean(SocialDominance, na.rm=TRUE))</code></pre>
+<p>Code translation: We make a variable. To fill it,we tell R to look at the data in the “analysis_data” dataframe, then say we’re going to group a column calculation by the levels of the “Condition” column with the group_by() command. Then we give R the column calculation we want: a printout of the mean of the SocialDominance column. We can do the same with standard deviations:</p>
+<pre class="r"><code>sdo_sd_by_condition &lt;- analysis_data %&gt;%
+  group_by(Condition) %&gt;%
+  summarise(sd(SocialDominance, na.rm=TRUE))</code></pre>
+<p>If you run a multiple regression or factorial ANOVA, you may want things broken down by multiple groups. You can do this with basically the same commands like so:</p>
+<pre class="r"><code>sdo_mean_by_condition_party &lt;- analysis_data %&gt;%
+  group_by(Condition, PoliticalParty) %&gt;%
+  summarise(mean(SocialDominance, na.rm=TRUE))</code></pre>
+<p>Code translation: In the second step of the grouping, where we tell R which variables we want to group our calculation by, we can split things up into further groups with a comma between the multiple column names. Here, we tell R we want to split the data up by condition, then split that split-up data by political party. So we end up with 12 groups (3 condition groups x 4 political party options).</p>
 
 
 
@@ -244,6 +211,23 @@ $(document).ready(function () {
 
 
 </script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

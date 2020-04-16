@@ -11,36 +11,32 @@ library(dplyr)
 library(ggplot2)
 library(ltm)
 library(car)
-library(fastDummies)
+library(gmodels)
 
-# valdata <- read.csv("altruism_data_values.csv", header=TRUE)
-# numdata <- read.csv("altruism_data_numeric.csv", header=TRUE)
-# fulldata <- numdata
-# ourdata <- subset(fulldata, Consent==1)
-# data <- dplyr::select(ourdata,.data$praise_rejection_1 : .data$botcatcher)
-# colnames(data)[19] <- "Age"
-# data[,] <- sapply(data[,], as.character)
-# data$condition <- ifelse(data$likely_nonpro != "", "nonpro", "pro")
-# data$vignette_response <- ifelse(data$likely_nonpro == "", data$likely_pro, data$likely_nonpro)
-# data$justification <- ifelse(data$bot_catcher == "", data$botcatcher, data$bot_catcher)
-# data <- subset(data, select = -c(likely_nonpro, likely_pro, botcatcher, bot_catcher))
-# data$vignette_response <- as.numeric(data$vignette_response)
-# data$Age <- as.numeric(data$Age)
-# data[,1:18] <- sapply(data[,1:18],as.numeric)
-# data <- data %>%
-#   mutate(justification,
-#          praise_rejection = rowMeans(dplyr::select(., -c(Age, condition, vignette_response, justification)),na.rm = TRUE))
-# data$age_bracket <- ifelse(data$Age < 30 , "20s" , 
-#                            ifelse(data$Age < 40 , "30s", 
-#                                   ifelse(data$Age < 50 , "40s", "50s")))
-# dummies <- dummy_cols(data$age_bracket)
-# 
-# data$dummies_20s <- dummies$.data_20s
-# data$dummies_30s <- dummies$.data_30s
-# data$dummies_40s <- dummies$.data_40s
-# data$dummies_50s <- dummies$.data_50s
+choice_data <- read.csv("ExampleData_choice.csv", header=TRUE)
+numeric_data <- read.csv("ExampleData_numeric.csv", header=TRUE)
+numeric_data <- subset(numeric_data, Consent==1)
+choice_data <- subset(choice_data, Consent=="Yes")
+choice_data <- choice_data[, -c(1:17)]
+numeric_data <- numeric_data[, -c(1:17)]
+numeric_data$SDO1R <- recode(numeric_data$SDO1,"1=7; 2=6; 3=5; 4=4; 5=3; 6=2; 7=1; else=NA")
+numeric_data$SDO2R <- recode(numeric_data$SDO2,"1=7; 2=6; 3=5; 4=4; 5=3; 6=2; 7=1; else=NA")
+numeric_data$SDO5R <- recode(numeric_data$SDO5,"1=7; 2=6; 3=5; 4=4; 5=3; 6=2; 7=1; else=NA")
+numeric_data$SDO6R <- recode(numeric_data$SDO6,"1=7; 2=6; 3=5; 4=4; 5=3; 6=2; 7=1; else=NA")
+SDO <- data.frame(numeric_data$SDO1R, numeric_data$SDO2R, 
+                  numeric_data$SDO3, numeric_data$SDO4, 
+                  numeric_data$SDO5R, numeric_data$SDO6R,
+                  numeric_data$SDO7, numeric_data$SDO8)
+SDO <- mutate_all(SDO, function(x) as.numeric(as.character(x)))
+SDO$SDO_mean_scores <- rowMeans(SDO, na.rm = TRUE)
+analysis_data <- data.frame(choice_data$GEND, numeric_data$AGE, choice_data$condition, choice_data$PPP1, SDO$SDO_mean_scores)
+names(analysis_data) <- c("Gender", "Age", "Condition","PoliticalParty", "SocialDominance")
+analysis_data$Age <- as.numeric(as.character(analysis_data$Age))
 ```
+Here we analyze the correlation between age and social dominance orientation:
 ```{r, eval = TRUE} 
-cor(data$praise_rejection, data$vignette_response)
+age_x_sdo <- cor.test(analysis_data$Age, analysis_data$SocialDominance, 
+                method = "pearson")
+age_x_sdo
 ```
-
+You'll need the p-value and the r-value (cor) to report a correlation properly.
